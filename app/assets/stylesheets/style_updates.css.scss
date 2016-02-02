@@ -42,25 +42,27 @@ html {
   background-color: white;
 }
 
-.card {
+
+
+
+.form {
   background-image: url("scroll.png");
   background-color: transparent;
   background-size: cover;
   min-height: inherit
-}
 
-.card .card-content {
-  padding-left: 200px;
-  padding-top: 300px;
-  border-radius: 0 0 2px 2px;
 }
-
-.label {
-  color: #000000;
-}
-.new_user {
-  max-width: 400px;
-}
+// .new_user {
+//   max-width: 400px;
+// }
+// .label {
+//   color: #000000;
+// }
+// .card-content {
+//   padding-left: 200px;
+//   padding-top: 300px;
+//   border-radius: 0 0 2px 2px;
+// }
 
 .chip b,
 strong {
