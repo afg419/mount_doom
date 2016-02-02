@@ -24,6 +24,14 @@ class UserCanLoginTest < ActionDispatch::IntegrationTest
 
     refute page.has_content?("Login")
     assert page.has_content?("Logout")
+
+    within(".right") do
+      click_link "Logout"
+    end
+
+    assert_equal root_path, current_path
+    refute page.has_content?("Logout")
+    assert page.has_content?("Login")
   end
 
   test 'assert_user_cannot_login_with_incorrect_information' do
