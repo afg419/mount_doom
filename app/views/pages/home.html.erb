@@ -1,0 +1,17 @@
+<!-- <div class="image">
+  <center><a href="/chips"><img class="home-image" src="http://i.imgur.com/EyOvY4e.jpg"></a></center>
+</div>
+ -->
+<div class="">
+  <br>
+</div>
+<div class="">
+  <% if current_user %>
+  <% else %>
+    <center>
+      <%= link_to "Create Account", new_user_path, class: "waves-effect waves-light btn-large" %>
+
+      <%= link_to "Login", login_path, class: "waves-effect waves-light btn-large"  %>
+    </center>
+  <% end %>
+</div>
