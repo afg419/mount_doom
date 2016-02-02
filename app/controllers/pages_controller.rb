@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    render layout: 'wide'
+    render layout: 'wide',  :locals => {:background => "doom"}
   end
 
   def about

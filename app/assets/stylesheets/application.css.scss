@@ -23,7 +23,37 @@ body {
 
 .application-body{
   background-image: url("http://i.imgur.com/9olXuLe.jpg");
-  opacity: 0.97
+  opacity: 0.97;
+}
+
+.application-body-doom{
+  background-image: url('doom.jpeg');
+  opacity: 0.97;
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.flavor-card{
+  .card-title{
+    font-size: xx-large;
+  }
+  .card-content{
+    font-size: large;
+  }
+  .card-action{
+    font-size: large;
+  }
+}
+
+.nav-links{
+  a {
+    font-size: large;
+    color: #ffab40;
+    &:hover {
+      color: #FDD8A8;
+    }
+  }
 }
 
 main {

@@ -1,3 +1,57 @@
 <div class="image">
-  <center><a href="/chips"><img class="home-image" src="http://i.imgur.com/EyOvY4e.jpg"></a></center>
+  <center><img class="home-image" src="<%= image_path('logo.png') %>"></center>
+</div>
+
+<!-- <div class="">
+  <br>
+</div>
+<div class="">
+  <% if current_user %>
+  <% else %>
+    <center>
+      <%= link_to "Create Account", new_user_path, class: "waves-effect waves-light black btn-large" %>
+
+      <%= link_to "Login", login_path, class: "waves-effect waves-light black btn-large"  %>
+    </center>
+  <% end %>
+</div> -->
+
+<div class="row">
+  <span class="col s3">
+    <br>
+  </span>
+  <span class="col s6 white">
+
+  </span>
+  <span class="col s3">
+    <br>
+  </span>
+</div>
+
+<div class="row">
+  <span class="col s2">
+    <br>
+  </span>
+     <div class="col s12 m8">
+       <div class="flavor-card card black darken-1">
+         <div class="card-content white-text center large">
+           <span><br> </span>
+           <span class="card-title ">A darkness has fallen across Middle Earth...</span><br>
+           <span><br></span>
+           <p>The one Ring of Power has been found.  A hero must rise and travel
+             into the lands of Mordor.  To save the world, they must cast
+             the ring into the flames from whence it came... </p>
+             <p>
+               <br>
+             </p>
+         </div>
+         <div class="card-action center">
+           <a href="<%=new_user_path%>">Create New Account</a>
+           <a href="<%=login_path%>">Log In</a>
+         </div>
+       </div>
+     </div>
+   <span class="col s2  ">
+     <br>
+   </span>
 </div>
