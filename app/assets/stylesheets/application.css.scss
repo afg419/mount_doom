@@ -46,6 +46,15 @@ body {
   }
 }
 
+.nav-links{
+  a {
+    font-size: large;
+    color: #ffab40;
+    &:hover {
+      color: #FDD8A8;
+    }
+  }
+}
 
 main {
   flex: 1 0 auto;
