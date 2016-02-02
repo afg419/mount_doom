@@ -34,6 +34,19 @@ body {
   background-position: center center;
 }
 
+.flavor-card{
+  .card-title{
+    font-size: xx-large;
+  }
+  .card-content{
+    font-size: large;
+  }
+  .card-action{
+    font-size: large;
+  }
+}
+
+
 main {
   flex: 1 0 auto;
 }
