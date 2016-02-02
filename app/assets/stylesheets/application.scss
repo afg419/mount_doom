@@ -23,7 +23,15 @@ body {
 
 .application-body{
   background-image: url("http://i.imgur.com/9olXuLe.jpg");
-  opacity: 0.97
+  opacity: 0.97;
+}
+
+.application-body-doom{
+  background-image: url('doom.jpeg');
+  opacity: 0.97;
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
 }
 
 main {
