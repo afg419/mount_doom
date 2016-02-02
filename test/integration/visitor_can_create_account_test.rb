@@ -4,16 +4,6 @@ class VisitorCanCreateAccountTest < ActionDispatch::IntegrationTest
 
   test "visitor can create account" do
 
-    category_1 = Oil.create(name: "Lard")
-
-    Chip.create(name: "Slotachips", price: 20,
-                description: "Super yummy", oil_id: category_1.id)
-
-    visit chips_path
-    within("#slotachips") do
-      click_button "Add to Cart"
-    end
-
     visit "/"
 
     within (".right") do

@@ -19,7 +19,6 @@ class UserCanLoginTest < ActionDispatch::IntegrationTest
 
     within (".right") do
       assert page.has_content?("Login")
-      assert page.has_content?("Create Account")
     end
 
     within(".right") do

@@ -2,20 +2,6 @@
   <center><img class="home-image" src="<%= image_path('logo.png') %>"></center>
 </div>
 
-<!-- <div class="">
-  <br>
-</div>
-<div class="">
-  <% if current_user %>
-  <% else %>
-    <center>
-      <%= link_to "Create Account", new_user_path, class: "waves-effect waves-light black btn-large" %>
-
-      <%= link_to "Login", login_path, class: "waves-effect waves-light black btn-large"  %>
-    </center>
-  <% end %>
-</div> -->
-
 <div class="row">
   <span class="col s3">
     <br>
@@ -46,7 +32,7 @@
              </p>
          </div>
          <div class="card-action center">
-           <a href="<%=new_user_path%>">Create New Account</a>
+           <a href="<%=new_user_path%>">Create Account</a>
            <a href="<%=login_path%>">Log In</a>
          </div>
        </div>
