@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115204107) do
+ActiveRecord::Schema.define(version: 20160202224949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "avatars", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image_url"
+    t.integer  "skill_set_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "avatars", ["skill_set_id"], name: "index_avatars_on_skill_set_id", using: :btree
+
+  create_table "characters", force: :cascade do |t|
+    t.integer  "avatar_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "characters", ["avatar_id"], name: "index_characters_on_avatar_id", using: :btree
+  add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
   create_table "chip_orders", force: :cascade do |t|
     t.integer "chip_id"
@@ -59,6 +79,15 @@ ActiveRecord::Schema.define(version: 20151115204107) do
     t.string   "address"
   end
 
+  create_table "skill_sets", force: :cascade do |t|
+    t.integer  "strength"
+    t.integer  "dexterity"
+    t.integer  "intelligence"
+    t.integer  "health"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
@@ -67,6 +96,9 @@ ActiveRecord::Schema.define(version: 20151115204107) do
     t.integer  "role",            default: 0
   end
 
+  add_foreign_key "avatars", "skill_sets"
+  add_foreign_key "characters", "avatars"
+  add_foreign_key "characters", "users"
   add_foreign_key "chip_orders", "chips"
   add_foreign_key "chip_orders", "orders"
   add_foreign_key "chips", "oils"

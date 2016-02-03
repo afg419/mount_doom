@@ -15,27 +15,48 @@
 //= require jquery
 //= require materialize-sprockets
 //= require_tree .
-var loaded = function(){
+$(document).ready(function() {
+  chooseCharacter();
 
-  $(document).ready(function() {
-    $('.modal-trigger').leanModal();
-    $(".button-collapse").sideNav();
+});
 
-    var $chips = $('.chip');
-
-    $('#name_search_name').keyup('change', function () {
-    var currentName = this.value;
-    $chips.each(function (index, chip) {
-      $chip = $(chip);
-      if ($chip.data('name').includes(currentName)) {
-        $chip.show();
-      } else {
-        $chip.hide();
-      }
+function chooseCharacter(){
+  var $avatars = $('.avatar');
+  $avatars.each(function(index, avatar){
+    var $avatar = $(avatar);
+    $('.side-'+(index+1)).on('click',function(){
+      $('#introduction').addClass('hide')
+      $avatar.removeClass('hide');
+      $avatars.each(function(index2, avatar2){
+        var $avatar2 = $(avatar2);
+        if (index !== index2 ){
+          $avatar2.addClass('hide');
+        };
+      });
     });
   });
-  });
 }
-
-
-$(document).on("page:load ready", loaded);
+//
+//
+// $('.side-'+index).on('click', function(){
+//   $('.profile-2').addClass('hide');
+//   $('.profile-1').removeClass('hide');
+//
+//
+// });
+//
+//
+// var $developers = $('.developer')
+//
+// $('#developer_filter_name').on('keyup', function () {
+//     var currentName = this.value.toUpperCase();
+//     $developers.each(function (index, developer) {
+//       var $developer = $(developer);
+//       if ($developer.data('name').indexOf(currentName) >= 0) {
+//         $developer.show();
+//       }
+//       else {
+//         $developer.hide();
+//       }
+//     });
+//   });
