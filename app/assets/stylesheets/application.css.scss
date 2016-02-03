@@ -46,15 +46,24 @@ body {
   }
 }
 
-.table-of-contents{
-
+.avatar-selection{
   a {
     color: white;
     font-size: 3.5em;
     font-family: 'Tangerine', cursive;
-    line-height: 2.0em;
+    line-height: 1.25em;
+    &:hover{
+      color: #FDD8A8;
+    }
+    &:active{
+      color: #ffab40;
+    }
   }
+}
 
+.card.large {
+  height: 520px;
+  width: 400px;
 }
 
 .nav-links{
