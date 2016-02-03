@@ -10,7 +10,11 @@
 </head>
 <body class="application-body-<%=background%>">
 
-  <%= render partial: '/shared/nav' %>
+  <% if in_game? %>
+    <%= render partial: '/shared/game_nav' %>
+  <% else %>
+    <%= render partial: '/shared/nav' %>
+  <% end %>
 
 <div class="container">
     <% flash.each do |type, msg| %>

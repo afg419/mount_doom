@@ -1,8 +1,12 @@
 class Character < ActiveRecord::Base
-  has_one :avatar
-  has_one :user
+  belongs_to :avatar
+  belongs_to :user
 
   def current_attributes
 
+  end
+
+  def bank
+    avatar.skill_set.money
   end
 end
