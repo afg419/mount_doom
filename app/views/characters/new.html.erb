@@ -23,8 +23,8 @@
             <% end %>
           </ul>
         </div>
-        <div class="card-action">
-          <%= link_to("Begin Journey!", journey_path("bree")) %>
+        <div class="card-action <%=avatar.name%>">
+          <%= link_to("Begin Journey!", new_game_path, method: :post) %>
         </div>
       </div>
     <% end  %>

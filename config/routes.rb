@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
-  get 'journey/show'
-
   post "notifications/notify" => "notifications#notify"
   post "twilio/voice" => "twilio#voice"
   root to: "pages#home"
 
   resources :characters, only: [:new]
   resources :journey, only: [:show], param: :slug
-
-
+  post "/new_game", to: 'journey#create'
   resources :oils, only: [:index, :show], param: :slug
   resources :chips, only: [:index, :show], param: :slug
   resources :cart_chips, only: [:create, :index, :destroy, :update]
