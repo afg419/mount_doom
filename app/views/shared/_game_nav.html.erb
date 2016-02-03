@@ -6,12 +6,14 @@
     <ul class="right hide-on-med-and-down nav-links" style = "padding-right: 10px">
       <li> <%= link_to "Help", root_path %> </li>
       <li> <%= link_to "Map", root_path %> </li>
-      <li> <%= link_to "Character", root_path %> </li>
+      <li> <%= link_to "#{current_avatar.name}", root_path %> </li>
+      <li><%= "$#{current_character.bank}" %></li>
     </ul>
     <ul class="side-nav" id="mobile-demo">
-      <li> <%= link_to "Help", about_path %> </li>
+      <li> <%= link_to "Help", root_path %> </li>
       <li><%= link_to "Map", logout_path, method: :delete %></li>
-      <li><%= link_to "Character", login_path %></li>
+      <li><%= link_to "#{current_avatar.name}", login_path %></li>
+      <li><%= "$#{current_character.bank}" %></li>
     </ul>
   </div>
 </nav>
