@@ -49,4 +49,14 @@ class UserCanLoginTest < ActionDispatch::IntegrationTest
     click_button "Login"
     assert page.has_content?("Invalid Login.")
   end
+
+  test 'user can sign up from login page' do
+    visit login_path
+
+    assert page.has_content?("Sign up!")
+
+    click_link "Sign up!"
+
+    assert_equal new_user_path, current_path
+  end
 end
