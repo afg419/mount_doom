@@ -1,8 +1,29 @@
-<h2>
-Dashboard for <%= current_user.username %>
+<h2 class="center dashboard-cursive">
+Dashboard for <%= current_user.username.capitalize %>
 </h2>
+<div class="container">
+  <h4 class="dashboard-cursive">Current Character</h4>
+  <div class="card avatar profile-<%= current_avatar.id %> large">
+    <div class="card-image">
+      <img src="<%= image_url(current_avatar.image_url)%>">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%=current_avatar.name%></span>
+      <p>
+        Bank: <%= current_avatar.skill_set.money %>
+      </p>
+      <p>
+        Health: <%= current_avatar.skill_set.health %>
+      </p>
+      <p>
+        Location: <%= "Bree" %>
+      </p>
+    </div>
+  </div>
+  <%= link_to "Start New Game", new_character_path, class: "btn" %>
+  <%= link_to "Continue Game", continue_game_path, class: "btn", method: :post %>
+</div>
+
 
 <h4>
-  <%= link_to "Edit Account", edit_user_path(current_user) %><br>
-  <%= link_to "Start New Game", new_character_path %>
 </h4>

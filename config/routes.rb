@@ -5,8 +5,11 @@ Rails.application.routes.draw do
 
   resources :characters, only: [:new]
   resources :journey, only: [:show], param: :slug
+  
   post "/new_game", to: 'journey#create'
   delete "/end_game", to: 'journey#destroy'
+  post "/continue_game", to: 'journey#continue'
+
   resources :stores, only: [:show], param: :slug
   resources :trades, only: [:create]
 
