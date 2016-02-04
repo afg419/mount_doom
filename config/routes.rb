@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :journey, only: [:show], param: :slug
   post "/new_game", to: 'journey#create'
   delete "/end_game", to: 'journey#destroy'
+  resources :stores, only: [:show], param: :slug
 
   resources :oils, only: [:index, :show], param: :slug
   resources :chips, only: [:index, :show], param: :slug

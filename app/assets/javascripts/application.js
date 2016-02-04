@@ -17,8 +17,12 @@
 //= require_tree .
 $(document).ready(function() {
   chooseCharacter();
-
+  // sellItem();
 });
+
+function sellItem(id){
+    $(id).toggleClass('hide');
+}
 
 function chooseCharacter(){
   var $avatars = $('.avatar');
