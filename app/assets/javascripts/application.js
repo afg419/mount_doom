@@ -36,6 +36,7 @@ function itemExchange(){
   var bought_items = $("ul.store_trades").find(".show")
 
   item_classes = [[],[]]
+  // _.map
   $.each(sold_items, function(index, sold_item){
       item_classes[0].push(this.className)
   })

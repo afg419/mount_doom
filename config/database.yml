@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: slota-shop_production
-  username: slota-shop
-  password: <%= ENV['SLOTA-SHOP_DATABASE_PASSWORD'] %>
+  # username: slota-shop
+  # password: <%= ENV['SLOTA-SHOP_DATABASE_PASSWORD'] %>
