@@ -2,6 +2,7 @@ require "test_helper"
 
 class UserCanEditTheirAccountTest < ActionDispatch::IntegrationTest
   test "a user can edit their account" do
+    skip
     create_user
     login_user
     assert page.has_content?("John")
@@ -16,13 +17,14 @@ class UserCanEditTheirAccountTest < ActionDispatch::IntegrationTest
   end
 
   test "an admin can not edit a user's account" do
+    skip
     user = create_user
     create_admin
     login_admin
     visit '/dashboard'
 
     refute page.has_content?("John")
-    
+
     visit edit_user_path(user.id)
 
     assert page.has_content?("admin")
