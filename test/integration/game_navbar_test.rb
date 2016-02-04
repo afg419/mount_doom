@@ -36,4 +36,28 @@ class GameNavbarTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Taylor")
     assert page.has_content?("$100")
   end
+
+  test "user who is logged in cannot see game pages without being in game" do
+    user = create_user
+    login_user
+
+    skills = SkillSet.create(intelligence: 4, dexterity: 3, strength: 3, health: 3, money: 100, speed: 2)
+    avatar = Avatar.create(name: "Taylor", image_url:"jojoj", skill_set: skills)
+
+    visit new_character_path
+
+    within ".Taylor" do
+      click_on "Begin Journey!"
+    end
+
+    click_on "Save and Quit"
+    
+    character = Character.last
+
+    visit character_path(character)
+    assert_equal user_path(user), current_path
+
+    visit journey_path("bree")
+    assert_equal user_path(user), current_path
+  end
 end
