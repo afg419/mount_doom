@@ -10,7 +10,7 @@
 </head>
 <body class="application-body-<%=background%>">
 
-  <% if in_game? %>
+  <% if game_playing? %>
     <%= render partial: '/shared/game_nav' %>
   <% else %>
     <%= render partial: '/shared/nav' %>
