@@ -22,6 +22,19 @@ $(document).ready(function() {
 
 function sellItem(id){
     $(id).toggleClass('hide');
+    $(id).toggleClass('show');
+}
+
+function soldItems(){
+    var sold_items = $("table.character_trades").find(".show")
+
+    item_classes = []
+    $.each(sold_items, function(index, sold_item){
+        item_classes.push(this.className)
+
+    })
+    data = {"classes": item_classes}
+    $.post("/trades", data)
 }
 
 function chooseCharacter(){
