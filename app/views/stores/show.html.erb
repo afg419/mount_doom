@@ -15,7 +15,25 @@
             <td><button onclick="sellItem('.player-item-2')">Trade</button>Item 2</td>
           </tr>
           <tr class="show item player-item-3">
-            <td><button onclick="sellItem('.player-item-3')">Trade</button>Item 3</td>
+            <td><div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png">
+              </div>
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Item 3!!!<i class="material-icons right"></i></span>
+                <p>Price:10</p><p>Sell For: 9</p>
+                <p><a onclick="sellItem('.player-item-3')">Trade this bitch</a></p>
+              </div>
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Item 3!!<i class="material-icons right"></i></span>
+                <p>Strength: +1</p>
+                <p>
+                  This is a dagger forged by God himself.
+                </p>
+                <p><a class="btn" onclick="sellItem('.player-item-3')">Trade this bitch</a></p>
+
+              </div>
+            </div></td>
           </tr>
           <tr class="show item player-item-4">
             <td><button onclick="sellItem('.player-item-4')">Trade</button>Item 4</td>
@@ -45,42 +63,40 @@
     <div class="col m3" style="padding-right: 0">
       <table class="store store_trades" cellpadding="5px" cellspacing="0">
         <tr>
-          <th>Your inventory</th>
+          <th>You are purchasing</th>
         </tr>
-        <tr class="hide">
-          <td>Item</td>
+        <tr class="hide item store-item-1">
+          <td><button onclick="buyItem('.store-item-1')">Trade</button>Item1</td>
         </tr>
-        <tr class="hide">
-          <td>Item</td>
+        <tr class="hide item store-item-2">
+          <td><button onclick="buyItem('.store-item-2')">Trade</button>Item2</td>
         </tr>
-        <tr class="hide">
-          <td>Item</td>
+        <tr class="hide item store-item-3">
+          <td><button onclick="buyItem('.store-item-3')">Trade</button>Item3</td>
         </tr>
-        <tr class="hide">
-          <td>Item</td>
+        <tr class="hide item store-item-4">
+          <td><button onclick="buyItem('.store-item-4')">Trade</button>Item4</td>
         </tr>
       </table>
     </div>
     <div class="col m3" style="padding-left: 0">
       <table class="store store_inventory" cellpadding="5px" cellspacing="0">
         <tr>
-          <th>Your inventory</th>
+          <th>Store inventory</th>
         </tr>
-        <tr>
-          <td>Item</td>
+        <tr class="show item store-item-1">
+          <td><button onclick="buyItem('.store-item-1')">Trade</button>Item1</td>
         </tr>
-        <tr>
-          <td>Item</td>
+        <tr class="show item store-item-2">
+          <td><button onclick="buyItem('.store-item-2')">Trade</button>Item2</td>
         </tr>
-        <tr>
-          <td>Item</td>
+        <tr class="show item store-item-3">
+          <td><button onclick="buyItem('.store-item-3')">Trade</button>Item3</td>
         </tr>
-        <tr>
-          <td>Item</td>
+        <tr class="show item store-item-4">
+          <td><button onclick="buyItem('.store-item-4')">Trade</button>Item4</td>
         </tr>
       </table>
     </div>
-    <button onclick="soldItems()">Finalize Trade</button>
-
-
 </div>
+<button onclick="itemExchange()">Finalize Trade</button>

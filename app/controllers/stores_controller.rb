@@ -1,7 +1,5 @@
 class StoresController < ApplicationController
-
   def show
-    # @store = Store.find_by(slug: params[:slug])
-
+    render layout: 'wide',  :locals => {:background => "armory"}
   end
 end

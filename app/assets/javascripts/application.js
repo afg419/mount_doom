@@ -25,6 +25,12 @@ function sellItem(id){
     $(id).toggleClass('show');
 }
 
+function buyItem(id){
+    $(id).toggleClass('hide');
+    $(id).toggleClass('show');
+}
+
+
 function soldItems(){
     var sold_items = $("table.character_trades").find(".show")
 
@@ -35,6 +41,22 @@ function soldItems(){
     })
     data = {"classes": item_classes}
     $.post("/trades", data)
+}
+
+function itemExchange(){
+  var sold_items = $("table.character_trades").find(".show")
+  var bought_items = $("table.store_trades").find(".show")
+
+  item_classes = [[],[]]
+  $.each(sold_items, function(index, sold_item){
+      item_classes[0].push(this.className)
+  })
+  $.each(bought_items, function(index, sold_item){
+      item_classes[1].push(this.className)
+  })
+
+  data = {"classes": item_classes}
+  $.post("/trades", data)
 }
 
 function chooseCharacter(){
