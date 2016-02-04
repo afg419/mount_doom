@@ -15,6 +15,7 @@
 //= require jquery
 //= require materialize-sprockets
 //= require_tree .
+
 $(document).ready(function() {
   chooseCharacter();
   // sellItem();
@@ -30,22 +31,9 @@ function buyItem(id){
     $(id).toggleClass('show');
 }
 
-
-function soldItems(){
-    var sold_items = $("table.character_trades").find(".show")
-
-    item_classes = []
-    $.each(sold_items, function(index, sold_item){
-        item_classes.push(this.className)
-
-    })
-    data = {"classes": item_classes}
-    $.post("/trades", data)
-}
-
 function itemExchange(){
-  var sold_items = $("table.character_trades").find(".show")
-  var bought_items = $("table.store_trades").find(".show")
+  var sold_items = $("ul.character_trades").find(".show")
+  var bought_items = $("ul.store_trades").find(".show")
 
   item_classes = [[],[]]
   $.each(sold_items, function(index, sold_item){
