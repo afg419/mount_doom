@@ -50,6 +50,21 @@ body {
   background-color: black;
 }
 
+.journal {
+  background-image: url('journal.png');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.collection {
+    border: 1px solid;
+  }
+.collection .collection-item {
+  background-color: transparent;
+}
+
+
 
 td, th {
     padding: 0px 0px;
