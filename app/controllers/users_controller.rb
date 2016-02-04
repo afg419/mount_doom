@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :require_current_user, only: [:edit, :update]
+  before_action :require_current_user, only: [:edit, :update]
+  before_action :user_logged_in?, only: [:show, :edit]
 
   def new
     @user = User.new
@@ -19,12 +20,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @orders = @user.orders.all
-    if @user.admin?
+    if current_user.admin?
       redirect_to admin_dashboard_index_path
     else
-      render :show
+      render layout: 'wide',  :locals => {:background => "dashboard"}
     end
   end
 

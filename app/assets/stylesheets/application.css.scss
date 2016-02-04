@@ -32,8 +32,22 @@ body {
   background-position: center center;
 }
 
+.application-body-dashboard{
+  background-image: url('dashboard.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
 .application-body-shire{
   background-image: url('shire.jpeg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.application-body-armory{
+  background-image: url('armory.jpg');
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
@@ -45,15 +59,6 @@ body {
   background-repeat:   no-repeat;
   background-position: center center;
 }
-
-.application-body-start{
-  background-image: url('granite.jpg');
-  background-size:     cover;
-  background-repeat:   no-repeat;
-  background-position: center center;
-}
-
-
 
 .application-body-bree{
   background-color: black;
@@ -78,6 +83,13 @@ td, th {
   .card-action{
     font-size: large;
   }
+}
+
+.dashboard-cursive{
+  color: white;
+  font-size: 3.5em;
+  font-family: 'Tangerine', cursive;
+  line-height: 1.25em;
 }
 
 .avatar-selection{
@@ -126,4 +138,9 @@ main {
 #chip-picture {
   max-height: 240px;
   width: auto;
+}
+
+.side-profile-pic {
+  max-width: 150%;
+  margin-left: 0px;
 }

@@ -19,12 +19,12 @@
           <span class="card-title activator grey-text text-darken-4"><%=avatar.name%></span>
           <ul>
             <% avatar.skills.each do |skill, value| %>
-            <li> <%= skill.capitalize %>: <%= value %> </li>
+            <%= skill.capitalize %>: <%= value %>
             <% end %>
           </ul>
         </div>
-        <div class="card-action">
-          <%= link_to("Begin Journey!", journey_path("bree")) %>
+        <div class="card-action <%=avatar.name%>">
+          <%= link_to("Begin Journey!", new_game_path(avatar: avatar.id ), method: :post) %>
         </div>
       </div>
     <% end  %>

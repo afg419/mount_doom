@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :set_cart
-  helper_method :oils, :current_user, :current_admin?, :return_oil_names, :set_background
+  helper_method :oils, :current_user, :current_admin?, :return_oil_names,
+                :set_background, :in_game?, :current_character, :current_avatar,
+                :user_logged_in?
 
   def set_cart
     @cart = Cart.new(session[:cart])
@@ -12,6 +14,25 @@ class ApplicationController < ActionController::Base
 
   def oils
     Oil.all
+  end
+
+  def user_logged_in?
+    unless current_user
+      redirect_to login_path
+      flash[:error] = "Please log in"
+    end
+  end
+
+  def in_game?
+    current_user && session[:in_game]
+  end
+
+  def current_character
+    @character ||= current_user.character
+  end
+
+  def current_avatar
+    current_character.avatar
   end
 
   # def return_oil_names

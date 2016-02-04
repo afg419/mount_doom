@@ -31,13 +31,15 @@
                <br>
              </p>
          </div>
-         <div class="card-action center">
-           <a href="<%=new_user_path%>">Create Account</a>
-           <a href="<%=login_path%>">Log In</a>
-         </div>
+         <% unless current_user %>
+           <div class="card-action center">
+             <a href="<%=new_user_path%>">Create Account</a>
+             <a href="<%=login_path%>">Log In</a>
+           </div>
+         <% end %>
        </div>
      </div>
-   <span class="col s2  ">
+   <span class="col s2">
      <br>
    </span>
 </div>

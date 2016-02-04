@@ -6,6 +6,7 @@
     <ul class="right hide-on-med-and-down nav-links" style = "padding-right: 10px">
       <li> <%= link_to "The Mission", about_path %> </li>
       <% if current_user %>
+        <li><%= link_to "Dashboard", user_path(current_user) %></li>      
         <li><%= link_to "Logout", logout_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Login", login_path %></li>
@@ -14,6 +15,7 @@
     <ul class="side-nav" id="mobile-demo">
       <li> <%= link_to "The Mission", about_path %> </li>
       <% if current_user %>
+        <li><%= link_to "Dashboard", user_path(current_user) %></li>
         <li><%= link_to "Logout", logout_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Login", login_path %></li>
