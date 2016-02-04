@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render layout: 'wide',  :locals => {:background => "start"}
   end
 
   def create

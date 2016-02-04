@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   end
 
   def about
-
+    render layout: 'wide',  :locals => {:background => "start"}
   end
 end

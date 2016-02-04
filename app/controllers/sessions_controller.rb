@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    render layout: 'wide',  :locals => {:background => "start"}
   end
 
   def create
