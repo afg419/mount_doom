@@ -8,6 +8,11 @@ class JourneyController < ApplicationController
     end
   end
 
+  def continue
+    session[:in_game] = true
+    redirect_to journey_path("bree")
+  end
+
   def create
     current_user.character = Character.create(avatar_id: params[:avatar])
     session[:in_game] = true

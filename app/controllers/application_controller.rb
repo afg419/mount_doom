@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :set_cart
   helper_method :oils, :current_user, :current_admin?, :return_oil_names,
-                :set_background, :in_game?, :current_character, :current_avatar
+                :set_background, :in_game?, :current_character, :current_avatar,
+                :user_logged_in?
 
   def set_cart
     @cart = Cart.new(session[:cart])
@@ -13,6 +14,13 @@ class ApplicationController < ActionController::Base
 
   def oils
     Oil.all
+  end
+
+  def user_logged_in?
+    unless current_user
+      redirect_to login_path
+      flash[:error] = "Please log in"
+    end
   end
 
   def in_game?

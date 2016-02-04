@@ -24,6 +24,6 @@ class CharacterCreationTest < ActionDispatch::IntegrationTest
   test "user not logged in can't visit new character page" do
     visit new_character_path
     assert_equal login_path, current_path
-    assert page.has_content?("Please log in before selecting character")
+    assert page.has_content?("Please log in")
   end
 end
