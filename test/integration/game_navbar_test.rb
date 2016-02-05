@@ -51,7 +51,7 @@ class GameNavbarTest < ActionDispatch::IntegrationTest
     end
 
     click_on "Save and Quit"
-    
+
     character = Character.last
 
     visit character_path(character)

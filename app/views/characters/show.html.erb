@@ -2,7 +2,7 @@
   <h4 class="dashboard-cursive"><%= current_avatar.name %></h4>
     <div class="row">
 
-      <div class="card avatar col s4 profile-<%= current_avatar.id %> large">
+      <div class="card avatar-show col s4 profile-<%= current_avatar.id %> large">
           <div class="card-image">
             <img src="<%= image_url(current_avatar.image_url)%>">
           </div>
@@ -32,16 +32,18 @@
         <br>
       </div>
 
-      <div  style="padding: 0px"  class="card avatar col s6 profile-<%= current_avatar.id %> large">
+      <div  style="padding: 0px"  class="card avatar-show col s6 profile-<%= current_avatar.id %> large">
           <div>
             <span class="card-title activator grey-text">Base Attributes</span>
-              <ul>
-              <% current_avatar.skills.each do |skill| %>
-                <% if skill[0] != "health" && skill[0] != "money" %>
-                  <li><%= skill[0].capitalize %>: <%= skill[1] %></li>
+              <div class="">
+                <ul>
+                <% current_avatar.skills.each do |skill| %>
+                  <% if skill[0] != "health" && skill[0] != "money" %>
+                    <li><%= skill[0].capitalize %>: <%= skill[1] %></li>
+                  <% end %>
                 <% end %>
-              <% end %>
-              </ul>
+                </ul>
+              </div>
             <span class="card-title activator grey-text ">Inventory</span>
             <ul>
               <% ["Knife", "Leather Armor", "Bread", "The Ring of Power"].each do |item| %>
