@@ -105,6 +105,24 @@ td, th {
   }
 }
 
+.card .card-action a {
+  color:black;
+}
+.card .card-action a:hover {
+  color: green;
+}
+
+.btn:hover {
+  background-color: #00b8d4;
+}
+.btn, .btn-large {
+  background-color: black;
+}
+
+.p {
+  font-weight: 100;
+}
+
 .dashboard-cursive{
   color: white;
   font-size: 3.5em;
