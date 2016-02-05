@@ -11,11 +11,12 @@ class SessionsController < ApplicationController
       redirect_to user_path(@user)
     else
       flash.now[:error] = "Invalid Login. Try Again."
-      render :new
+      render :new, layout: 'wide',  :locals => {:background => "start"}
     end
   end
 
   def destroy
+    flash[:error] = "Successfully Logged Out!"
     session.clear
     redirect_to root_path
   end

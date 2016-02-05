@@ -85,8 +85,6 @@ body {
   background-color: transparent;
 }
 
-
-
 td, th {
     padding: 0px 0px;
     display: table-cell;
@@ -127,6 +125,20 @@ td, th {
       color: #ffab40;
     }
   }
+}
+
+h1 {
+  color: white;
+  font-size: 3.5em;
+  font-family: 'Tangerine', cursive;
+  line-height: 1.25em;
+}
+a {
+  font-family: 'Tangerine', cursive;
+
+}
+button {
+  font-family: 'Tangerine', cursive;
 }
 
 .card.large {

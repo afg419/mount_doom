@@ -52,6 +52,7 @@ html {
 
 
 .entire {
+  font-family: 'Tangerine', cursive;
   background: url("scroll.png") center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -60,21 +61,18 @@ html {
   height:100%;
   top:50px;
   left:0px;
-  font-family: 'Tangerine', cursive;
   .container {
     padding-left: 28vw;
     padding-top: 10vw;
-  }
-
-  .form {
-    max-width: 200px;
-
-    .label{
-      font-size: 35px;
-      color: #000000;
+      .form {
+        max-width: 200px;
+        .label{
+          font-size: 35px;
+          color: #000000;
+        }
+      }
     }
   }
-}
 
 .chip b,
 strong {
