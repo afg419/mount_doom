@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206214420) do
+ActiveRecord::Schema.define(version: 20160206222220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,11 +35,13 @@ ActiveRecord::Schema.define(version: 20160206214420) do
   create_table "characters", force: :cascade do |t|
     t.integer  "avatar_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
   end
 
   add_index "characters", ["avatar_id"], name: "index_characters_on_avatar_id", using: :btree
+  add_index "characters", ["location_id"], name: "index_characters_on_location_id", using: :btree
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
   create_table "chip_orders", force: :cascade do |t|
@@ -68,6 +70,11 @@ ActiveRecord::Schema.define(version: 20160206214420) do
   end
 
   add_index "chips", ["category_id"], name: "index_chips_on_category_id", using: :btree
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+  end
 
   create_table "orders", force: :cascade do |t|
     t.string   "status",      default: "Ordered"
@@ -99,6 +106,7 @@ ActiveRecord::Schema.define(version: 20160206214420) do
 
   add_foreign_key "avatars", "skill_sets"
   add_foreign_key "characters", "avatars"
+  add_foreign_key "characters", "locations"
   add_foreign_key "characters", "users"
   add_foreign_key "chip_orders", "chips"
   add_foreign_key "chip_orders", "orders"

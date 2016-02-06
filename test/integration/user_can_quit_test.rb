@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class UserCanQuitTest < ActionDispatch::IntegrationTest
-  test "the truth" do
+  test "user can save and quit game" do
+    bree = Location.create(name: "Bree", slug: "bree")
     user = create_user
     login_user
 

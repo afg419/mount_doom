@@ -21,6 +21,11 @@ class Seed
                                           speed: speed, money: money)
     Avatar.create(name: name, image_url: image_url, skill_set: s)
   end
+
+  def self.create_locations
+    Location.create(name: "Bree", slug: "bree")
+    Location.create(name: "Rivendell", slug: "rivendell")
+  end
 end
 
 Seed.start

@@ -2,6 +2,7 @@ require 'test_helper'
 
 class GameNavbarTest < ActionDispatch::IntegrationTest
   test "user starts game and sees game nav" do
+    bree = Location.create(name: "Bree", slug: "bree")
     create_user
     login_user
 
@@ -14,13 +15,14 @@ class GameNavbarTest < ActionDispatch::IntegrationTest
       click_on "Begin Journey!"
     end
 
-    assert_equal journey_path("bree"), current_path
+    assert_equal journey_path(bree), current_path
     assert page.has_content?("Help")
     refute page.has_content?("Logout")
     refute page.has_content?("Login")
   end
 
   test "user can see their character's name and money in navbar" do
+    bree = Location.create(name: "Bree", slug: "bree")
     create_user
     login_user
 

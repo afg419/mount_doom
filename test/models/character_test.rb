@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class CharacterTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should belong_to :avatar
+  should belong_to :user
+  should belong_to :location
 end

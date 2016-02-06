@@ -2,7 +2,8 @@ require 'test_helper'
 
 class GameAuthenticationChecksTest < ActionDispatch::IntegrationTest
   test "not logged in user can't access any game pages" do
-    visit journey_path("bree")
+    bree = Location.create(name: "Bree", slug: "bree")
+    visit journey_path(bree)
     assert_equal login_path, current_path
 
     visit store_path("bree-armory")
@@ -22,6 +23,7 @@ class GameAuthenticationChecksTest < ActionDispatch::IntegrationTest
   end
 
   test "user who is logged in cannot see game pages without being in game" do
+    bree = Location.create(name: "Bree", slug: "bree")
     user = create_user
     login_user
 
@@ -41,7 +43,7 @@ class GameAuthenticationChecksTest < ActionDispatch::IntegrationTest
     visit character_path(character)
     assert_equal user_path(user), current_path
 
-    visit journey_path("bree")
+    visit journey_path(bree)
     assert_equal user_path(user), current_path
   end
 

@@ -7,6 +7,7 @@ class CharacterCreationTest < ActionDispatch::IntegrationTest
 
     skills = SkillSet.create(intelligence: 4, dexterity: 3, strength: 3, health: 3)
     avatar = Avatar.create(name: "Taylor", image_url:"jojoj", skill_set: skills)
+    location = Location.create(name: "Bree", slug: "bree")
 
     user = User.last
 
@@ -18,6 +19,6 @@ class CharacterCreationTest < ActionDispatch::IntegrationTest
       click_on "Begin Journey!"
     end
 
-    assert_equal journey_path("bree"), current_path
+    assert_equal journey_path(location), current_path
   end
 end

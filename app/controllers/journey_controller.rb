@@ -5,13 +5,14 @@ class JourneyController < ApplicationController
 
   def continue
     session[:in_game] = true
-    redirect_to journey_path("bree")
+    redirect_to journey_path(current_character.location)
   end
 
   def create
-    current_user.character = Character.create(avatar_id: params[:avatar])
+    bree = Location.find_by(slug: "bree")
+    current_user.character = Character.create(avatar_id: params[:avatar], location: bree)
     session[:in_game] = true
-    redirect_to journey_path("bree")
+    redirect_to journey_path(bree)
   end
 
   def destroy
