@@ -11,7 +11,7 @@
 </head>
 <body class="application-body">
 
-  <% if game_playing? %>
+  <% if in_game %>
     <%= render partial: '/shared/game_nav' %>
   <% else %>
     <%= render partial: '/shared/nav' %>

@@ -1,5 +1,4 @@
 class JourneyController < ApplicationController
-  before_action :in_game?, only: [:show]
   def show
     render layout: 'wide',  :locals => {:background => params[:slug]}
   end

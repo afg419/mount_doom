@@ -1,7 +1,4 @@
 class CharactersController < ApplicationController
-  before_action :user_logged_in?
-  before_action :in_game?, only:[:show]
-
   def show
     render layout: 'wide',  :locals => {:background => "doom"}
   end
