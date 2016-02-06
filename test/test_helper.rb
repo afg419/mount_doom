@@ -8,6 +8,7 @@ require "simplecov"
 SimpleCov.start("rails")
 
 class ActiveSupport::TestCase
+  include FactoryGirl::Syntax::Methods
 
   def create_user
     User.create(username: "John", password: "Password", role: 0)
