@@ -83,6 +83,8 @@ GEM
     json (1.8.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    lodash-rails (4.0.0)
+      railties (>= 3.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -203,6 +205,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  lodash-rails
   materialize-sass
   mocha
   paperclip
