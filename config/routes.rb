@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  post "notifications/notify" => "notifications#notify"
-  post "twilio/voice" => "twilio#voice"
+  # post "notifications/notify" => "notifications#notify"
+  # post "twilio/voice" => "twilio#voice"
   root to: "pages#home"
 
   resources :characters, only: [:new, :show]

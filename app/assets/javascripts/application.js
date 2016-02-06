@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery
+//= require lodash
 //= require materialize-sprockets
 //= require_tree .
 
@@ -24,11 +25,40 @@ $(document).ready(function() {
 function sellItem(id){
     $(id).toggleClass('hide');
     $(id).toggleClass('show');
+    findSellTotal();
+    updateTotal();
+}
+
+function findSellTotal(){
+  var sold_items = $("ul.character_trades").find(".show")
+  items_total = [0]
+  $.each(sold_items, function(index, sold_item){
+      items_total.push(parseInt($(this).find('.price').text()))
+  })
+  total = _.sum(items_total);
+  $( ".sold_value" ).text( total );
 }
 
 function buyItem(id){
     $(id).toggleClass('hide');
     $(id).toggleClass('show');
+    findBoughtTotal();
+    updateTotal();
+}
+
+function findBoughtTotal(){
+  var bought_items = $("ul.store_trades").find(".show")
+  items_total = [0]
+  $.each(bought_items, function(index, bought_item){
+      items_total.push(parseInt($(this).find('.price').text()))
+  })
+  total =  _.sum(items_total);
+  $( ".bought_value" ).text( total );
+}
+
+function updateTotal(){
+  total = parseInt($('.sold_value').text()) - parseInt($('.bought_value').text())
+  $( ".total_value" ).text( total );
 }
 
 function itemExchange(){
@@ -36,16 +66,19 @@ function itemExchange(){
   var bought_items = $("ul.store_trades").find(".show")
 
   item_classes = [[],[]]
+  // _.map
   $.each(sold_items, function(index, sold_item){
+    console.log(this)
       item_classes[0].push(this.className)
   })
   $.each(bought_items, function(index, sold_item){
       item_classes[1].push(this.className)
   })
-
-  data = {"classes": item_classes}
+  total = parseInt($('.total_value').text())
+  data = {"classes": item_classes, "total": total}
   $.post("/trades", data)
 }
+
 
 function chooseCharacter(){
   var $avatars = $('.avatar');
