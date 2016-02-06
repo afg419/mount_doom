@@ -202,3 +202,16 @@ main {
   color: white;
   box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.7);
 }
+
+.town_table td{
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  padding-bottom: 0px
+}
+
+.town_table img.responsive-img {
+    max-width: inherit !important;
+    vertical-align: bottom;
+    display: block;
+  }

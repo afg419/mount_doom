@@ -16,8 +16,8 @@ class VisitorCanCreateAccountTest < ActionDispatch::IntegrationTest
     fill_in "Password", with: "Password"
 
     click_button "Create Account"
-
-    assert page.has_content? "Logged in as John"
+    
+    assert page.has_content? "Dashboard for John"
     assert_equal user_path(User.last.id), current_path
 
     refute page.has_content?("Login")
