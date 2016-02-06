@@ -17,7 +17,7 @@ class VisitorCanViewItemsTest < ActionDispatch::IntegrationTest
   #
   # test "visitor can view items by category" do
   #   create_shop
-  #   visit oils_path
+  #   visit categories_path
   #
   #   within("#lard") do
   #     click_link "Lard"
@@ -29,13 +29,13 @@ class VisitorCanViewItemsTest < ActionDispatch::IntegrationTest
   #     assert page.has_content?("Slotachips")
   #   end
   #
-  #   click_link "Return to oils"
+  #   click_link "Return to categories"
   #
-  #   within("#coconut-oil") do
-  #     click_link "Coconut Oil"
+  #   within("#coconut-category") do
+  #     click_link "Coconut Category"
   #   end
   #
-  #   assert current_path, '/coconut-oil'
+  #   assert current_path, '/coconut-category'
   #
   #   within(".chips") do
   #     assert page.has_content?("Dang Coconut")

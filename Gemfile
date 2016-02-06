@@ -43,6 +43,7 @@ group :development, :test do
   gem "launchy"
   gem "mocha"
   gem "simplecov"
+  gem 'shoulda-matchers', '~> 2.0'
 end
 
 group :development do

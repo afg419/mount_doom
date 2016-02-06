@@ -1,0 +1,18 @@
+<center><h2>Category Types</h2></center>
+
+<div class="categories">
+  <div class="row">
+    <%# @categories.each do |category| %>
+    <div class="col m4" id="grayscale">
+      <div class="card" id="<%#=category.slug%>">
+        <div class="card-image">
+          <img src="<%#=category.category_index_image%>">
+        </div>
+        <div class="card-content">
+          <h5> <%#= link_to category.name, category_path(category.slug) %></h5>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_cart
   before_action :authorize!
 
-  helper_method :oils, :current_user, :current_admin?, :return_oil_names,
+  helper_method :categories, :current_user, :current_admin?, :return_category_names,
                 :set_background, :in_game, :current_character, :current_avatar,
                 :user_logged_in?
 
@@ -44,11 +44,11 @@ class ApplicationController < ActionController::Base
     current_character.avatar
   end
 
-  # def return_oil_names
-  #   oil_names = Oil.all.map do |oil|
-  #     oil.name
+  # def return_category_names
+  #   category_names = Category.all.map do |category|
+  #     category.name
   #   end
-  #   oil_names
+  #   category_names
   # end
 
   def current_user
@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
     @cart = Cart.new(session[:cart])
   end
 
-  def oils
-    Oil.all
+  def categories
+    Category.all
   end
 end

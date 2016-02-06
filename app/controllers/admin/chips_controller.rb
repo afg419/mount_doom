@@ -45,6 +45,6 @@ class Admin::ChipsController < Admin::BaseController
 
   private
     def chip_params
-      params.require(:chip).permit(:name, :price, :description, :oil_id, :image)
+      params.require(:chip).permit(:name, :price, :description, :category_id, :image)
     end
 end

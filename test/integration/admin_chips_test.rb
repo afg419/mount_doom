@@ -10,9 +10,9 @@ class AdminChipsTest < ActionDispatch::IntegrationTest
   #
   # test "logged in admin sees chips index" do
   #   create_admin
-  #   category_1 = Oil.create(name: "Lard")
+  #   category_1 = Category.create(name: "Lard")
   #   Chip.create(name: "Slotachips", price: 20,
-  #               description: "Super yummy", oil_id: category_1.id)
+  #               description: "Super yummy", category_id: category_1.id)
   #
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #   visit admin_chips_path
@@ -33,9 +33,9 @@ class AdminChipsTest < ActionDispatch::IntegrationTest
   #
   # test "admin can edit chip" do
   #   create_admin
-  #   category_1 = Oil.create(name: "Lard")
+  #   category_1 = Category.create(name: "Lard")
   #   Chip.create(name: "Slotachips", price: 20,
-  #               description: "Super yummy", oil_id: category_1.id)
+  #               description: "Super yummy", category_id: category_1.id)
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #
   #   visit admin_chips_path
@@ -52,9 +52,9 @@ class AdminChipsTest < ActionDispatch::IntegrationTest
   #
   # test "admin cannot remove name from chip" do
   #   create_admin
-  #   category_1 = Oil.create(name: "Lard")
+  #   category_1 = Category.create(name: "Lard")
   #   Chip.create(name: "Slotachips", price: 20,
-  #               description: "Super yummy", oil_id: category_1.id)
+  #               description: "Super yummy", category_id: category_1.id)
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #
   #   visit admin_chips_path
@@ -70,7 +70,7 @@ class AdminChipsTest < ActionDispatch::IntegrationTest
   #
   # test "admin can add chip" do
   #   create_admin
-  #   category_1 = Oil.create(name: "Lard")
+  #   category_1 = Category.create(name: "Lard")
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #
   #   visit admin_chips_path
@@ -89,7 +89,7 @@ class AdminChipsTest < ActionDispatch::IntegrationTest
   #
   # test "admin cannot add chip without a name" do
   #   create_admin
-  #   category_1 = Oil.create(name: "Lard")
+  #   category_1 = Category.create(name: "Lard")
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #
   #   visit admin_chips_path

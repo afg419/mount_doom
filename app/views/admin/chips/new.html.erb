@@ -6,8 +6,8 @@
   <%= f.text_field :name %>
   <%= f.label :price %>
   <%= f.text_field :price %>
-  <%= f.label :oil_id %>
-  <%= f.collection_select(:oil_id, oils, :id, :name, { prompt: "Choose a category" }, class: "browser-default") %>
+  <%= f.label :category_id %>
+  <%= f.collection_select(:category_id, categories, :id, :name, { prompt: "Choose a category" }, class: "browser-default") %>
   <%= f.label :description %>
   <%= f.text_area(:description, class: "materialize-textarea") %>
   <%= f.label :image, "Attach an Image" %><br />

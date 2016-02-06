@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203211119) do
+ActiveRecord::Schema.define(version: 20160206214420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20160203211119) do
   end
 
   add_index "avatars", ["skill_set_id"], name: "index_avatars_on_skill_set_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "characters", force: :cascade do |t|
     t.integer  "avatar_id"
@@ -52,7 +58,7 @@ ActiveRecord::Schema.define(version: 20160203211119) do
     t.string   "description"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
-    t.integer  "oil_id"
+    t.integer  "category_id"
     t.string   "slug"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -61,14 +67,7 @@ ActiveRecord::Schema.define(version: 20160203211119) do
     t.string   "status",             default: "Available"
   end
 
-  add_index "chips", ["oil_id"], name: "index_chips_on_oil_id", using: :btree
-
-  create_table "oils", force: :cascade do |t|
-    t.string   "name"
-    t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  add_index "chips", ["category_id"], name: "index_chips_on_category_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "status",      default: "Ordered"
@@ -103,5 +102,5 @@ ActiveRecord::Schema.define(version: 20160203211119) do
   add_foreign_key "characters", "users"
   add_foreign_key "chip_orders", "chips"
   add_foreign_key "chip_orders", "orders"
-  add_foreign_key "chips", "oils"
+  add_foreign_key "chips", "categories"
 end

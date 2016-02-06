@@ -2,18 +2,18 @@ require "test_helper"
 
 class VisitorCanEditCartTest < ActionDispatch::IntegrationTest
   # test "visitor can remove an item from his or her cart" do
-  #   category_1 = Oil.create(name: "Lard")
-  #   category_2 = Oil.create(name: "Coconut Oil")
+  #   category_1 = Category.create(name: "Lard")
+  #   category_2 = Category.create(name: "Coconut Category")
   #
   #   Chip.create(name: "Slotachips", price: 20,
-  #               description: "Super yummy", oil_id: category_1.id)
+  #               description: "Super yummy", category_id: category_1.id)
   #   Chip.create(name: "Trader Joe's BBQ", price: 15,
   #               description: "I'd trade slota for these!",
-  #               oil_id: category_2.id)
+  #               category_id: category_2.id)
   #   Chip.create(name: "Dang Coconut", price: 17,
-  #               description: "Dang, these are good", oil_id: category_2.id)
+  #               description: "Dang, these are good", category_id: category_2.id)
   #   Chip.create(name: "Lard Yummies", price: 19,
-  #               description: "Chock Full of Lard", oil_id: category_1.id)
+  #               description: "Chock Full of Lard", category_id: category_1.id)
   #
   #   visit chips_path
   #
@@ -40,18 +40,18 @@ class VisitorCanEditCartTest < ActionDispatch::IntegrationTest
   # end
   #
   # test "user can adjust the quantity of an item in the cart" do
-  #   category_1 = Oil.create(name: "Lard")
-  #   category_2 = Oil.create(name: "Coconut Oil")
+  #   category_1 = Category.create(name: "Lard")
+  #   category_2 = Category.create(name: "Coconut Category")
   #
   #   Chip.create(name: "Slotachips", price: 20.50,
-  #               description: "Super yummy", oil_id: category_1.id)
+  #               description: "Super yummy", category_id: category_1.id)
   #   Chip.create(name: "Trader Joe's BBQ", price: 15,
   #               description: "I'd trade slota for these!",
-  #               oil_id: category_2.id)
+  #               category_id: category_2.id)
   #   Chip.create(name: "Dang Coconut", price: 17,
-  #               description: "Dang, these are good", oil_id: category_2.id)
+  #               description: "Dang, these are good", category_id: category_2.id)
   #   Chip.create(name: "Lard Yummies", price: 19,
-  #               description: "Chock Full of Lard", oil_id: category_1.id)
+  #               description: "Chock Full of Lard", category_id: category_1.id)
   #
   #   visit chips_path
   #
