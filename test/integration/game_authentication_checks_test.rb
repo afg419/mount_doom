@@ -13,11 +13,14 @@ class GameAuthenticationChecksTest < ActionDispatch::IntegrationTest
     visit character_path(c)
     assert_equal login_path, current_path
   end
+
   test "user not logged in can't visit new character page" do
     visit new_character_path
     assert_equal login_path, current_path
-    assert page.has_content?("Please Login")
+
+    assert page.has_content?("Login")
   end
+
   test "user who is logged in cannot see game pages without being in game" do
     user = create_user
     login_user
