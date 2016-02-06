@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       flash.now[:error] = @user.errors.full_messages.join(', ')
-      render :new
+      render :new, layout: 'wide',  :locals => {:background => "start"}
     end
   end
 

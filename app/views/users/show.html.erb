@@ -22,8 +22,8 @@ Dashboard for <%= current_user.username.capitalize %>
         </div>
     </div>
   <% end %>
-  <%= link_to "Start New Game", new_character_path, class: "btn" %>
-  <%= link_to("Continue Game", continue_game_path, class: "btn", method: :post) if current_character%>
+  <%= link_to "Start New Game", new_character_path, class: "btn waves-effect waves-green" %>
+  <%= link_to("Continue Game", continue_game_path, class: "btn waves-effect waves-green", method: :post) if current_character%>
 </div>
 
 

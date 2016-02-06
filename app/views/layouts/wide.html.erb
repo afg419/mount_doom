@@ -16,16 +16,11 @@
     <%= render partial: '/shared/nav' %>
   <% end %>
 
-<div class="container">
     <% flash.each do |type, msg| %>
-    <div class="card">
-      <p>
-        <center style='color:green'><%= content_tag :div, msg.html_safe %></center>
-      </p>
-    </div>
-
+        <script text="text/javascript">
+          Materialize.toast('<%= msg %> ', 5000, 'rounded <%= "flash_#{type}" %>');
+        </script>
     <% end %>
-</div>
     <%= yield %>
 </body>
 </html>
