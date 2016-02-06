@@ -1,19 +1,28 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   before_action :set_cart
+  before_action :authorize!
+
   helper_method :oils, :current_user, :current_admin?, :return_oil_names,
-                :set_background, :in_game?, :current_character, :current_avatar,
+                :set_background, :in_game, :current_character, :current_avatar,
                 :user_logged_in?
 
-  def set_cart
-    @cart = Cart.new(session[:cart])
+
+  def current_permission
+    @current_permission ||= PermissionService.new(current_user)
   end
 
-  def oils
-    Oil.all
+  def authorize!
+    permitted = authorize?
+    unless permitted[1]
+      flash[:error] = permitted[2]
+      redirect_to send(permitted[0])
+    end
+  end
+
+  def authorize?
+    current_permission.allow?(params[:controller], params[:action],in_game)
   end
 
   def user_logged_in?
@@ -23,8 +32,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def in_game?
-    current_user && session[:in_game]
+  def in_game
+    session[:in_game]
   end
 
   def current_character
@@ -52,5 +61,13 @@ class ApplicationController < ActionController::Base
 
   def current_admin?
     current_user && current_user.admin?
+  end
+
+  def set_cart
+    @cart = Cart.new(session[:cart])
+  end
+
+  def oils
+    Oil.all
   end
 end

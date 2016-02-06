@@ -12,7 +12,7 @@
 </head>
 <body class="application-body">
 
-  <% if in_game? %>
+  <% if in_game %>
     <%= render partial: '/shared/game_nav' %>
   <% else %>
     <%= render partial: '/shared/nav' %>
@@ -23,6 +23,7 @@
         Materialize.toast('<%= msg %> ', 5000, 'rounded <%= "flash_#{type}" %>');
       </script>
   <% end %>
+
     <%= yield %>
 </body>
 </html>
