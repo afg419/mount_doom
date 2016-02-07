@@ -17,8 +17,8 @@ class CharacterTest < ActiveSupport::TestCase
                                         money: 5,
                                         speed: 6)
 
-    item1 = Item.create(name: "dagger", skill_set: item_skill_set)
-    item2 = Item.create(name: "bowling ball", skill_set: item_skill_set)
+    item1 = Item.create(name: "dagger", skill_set: item_skill_set, price: 5)
+    item2 = Item.create(name: "bowling ball", skill_set: item_skill_set, price: 10)
     char.items << [item1, item2]
 
     current_skills = char.current_skills

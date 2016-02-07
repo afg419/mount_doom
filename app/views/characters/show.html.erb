@@ -2,7 +2,7 @@
   <h4 class="dashboard-cursive"><%= current_avatar.name %></h4>
     <div class="row">
 
-      <div style="padding:0px" class="card avatar-show col s4 profile-<%= current_avatar.id %> large">
+      <div style="padding:0px" class="card avatar-show aggregate-stats col s4 profile-<%= current_avatar.id %> large">
           <div class="card-image">
             <img src="<%= image_url(current_avatar.image_url)%>">
           </div>
@@ -10,21 +10,20 @@
           <div class="row">
             <ul style="padding-left:25px" class="col s6">
               <span class="card-title activator grey-text">Current Attributes</span>
-              <% current_avatar.skills.each do |skill| %>
-                <% if skill[0] != "health" && skill[0] != "money" %>
-                <li><%= skill[0].capitalize %>: <%= skill[1] %></li>
+              <% current_character.current_skills.each do |skill, value| %>
+                <% if skill != "health" && skill != "money" %>
+                  <li><%= skill.capitalize %>: <%= value %></li>
                 <% end %>
               <% end %>
             </ul>
 
             <ul class="col s6">
               <span class="card-title activator grey-text">Summary</span>
-              <li>Bank: <%= current_avatar.skill_set.money %></li>
-              <li>Health: <%= current_avatar.skill_set.health %></li>
-              <li>Location: <%= "Bree" %></li>
+              <li>Bank: <%= current_character.bank %></li>
+              <li>Health: <%= current_character.hp %></li>
+              <li>Location: <%= current_character.location.name %></li>
             </ul>
           </div>
-
 
       </div>
 
@@ -32,24 +31,26 @@
         <br>
       </div>
 
-      <div  class="card avatar-show col s6 profile-<%= current_avatar.id %> large">
+      <div  class="card avatar-show  col s6 profile-<%= current_avatar.id %> large">
           <div >
-            <span class="card-title activator grey-text">Base Attributes</span>
-              <div class="">
-                <ul>
-                <% current_avatar.skills.each do |skill| %>
-                  <% if skill[0] != "health" && skill[0] != "money" %>
-                    <li><%= skill[0].capitalize %>: <%= skill[1] %></li>
-                  <% end %>
+            <span class="card-title  activator grey-text">Base Attributes</span>
+            <div class="avatar-stats">
+              <ul>
+              <% current_avatar.skills.each do |skill| %>
+                <% if skill[0] != "health" && skill[0] != "money" %>
+                  <li><%= skill[0].capitalize %>: <%= skill[1] %></li>
                 <% end %>
-                </ul>
-              </div>
+              <% end %>
+              </ul>
+            </div>
+
             <span class="card-title activator grey-text ">Inventory</span>
-            <ul>
-              <% ["Knife", "Leather Armor", "Bread", "The Ring of Power"].each do |item| %>
-                <li><%= item %><%= " ||" %> Strength: +2, Dexterity: +1, Intelligence: -1</li>
+            <ul class="inventory">
+              <% current_character.items.each do |item| %>
+                <li><%= item.name.capitalize %></li>
               <% end %>
             </ul>
+
             <span class="card-title activator grey-text">Injuries</span>
             <ul>
               <% current_avatar.skills.each do |skill| %>
