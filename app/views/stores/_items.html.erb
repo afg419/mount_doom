@@ -1,0 +1,12 @@
+<li class="collection-item avatar show item player-item-1">
+  <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
+  <% current_character.items.each do |item|  %>
+  <span class="title"><%= item.name  %></span>
+  <p>Price: <%= item.price %> <br>
+     Sell For: 10 <br>
+     <% item.skill_set.non_zero_attributes.each do |attribute, value| %>
+     <%= attribute %>: <%= value %>
+     <% end %>
+  </p>
+  <button class="secondary-content" onclick="sellItem('.player-item-1')">Sell</button>
+</li>
