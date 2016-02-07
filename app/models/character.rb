@@ -18,7 +18,7 @@ class Character < ActiveRecord::Base
   def hp
     current_skills["health"]
   end
-  
+
 private
 
   def sum_skills(attribute_array)

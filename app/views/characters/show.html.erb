@@ -19,7 +19,7 @@
 
             <ul class="col s6">
               <span class="card-title activator grey-text">Summary</span>
-              <li>Bank: <%= current_character.bank %></li>
+              <li>Money: $<%= current_character.bank %></li>
               <li>Health: <%= current_character.hp %></li>
               <li>Location: <%= current_character.location.name %></li>
             </ul>
@@ -36,29 +36,47 @@
             <span class="card-title  activator grey-text">Base Attributes</span>
             <div class="avatar-stats">
               <ul>
-              <% current_avatar.skills.each do |skill| %>
-                <% if skill[0] != "health" && skill[0] != "money" %>
-                  <li><%= skill[0].capitalize %>: <%= skill[1] %></li>
-                <% end %>
+              <% current_avatar.skill_set.attributes.each do |skill, value| %>
+                <li><%= skill.capitalize %>: <%= value %></li>
               <% end %>
               </ul>
             </div>
 
             <span class="card-title activator grey-text ">Inventory</span>
-            <ul class="inventory">
+
+            <table class="inventory">
+              <tr class="inventory-header">
+                <th>Name</th><th>Strength</th><th>Dexterity</th><th>Intelligence</th><th>Speed</th><th>Price</th><th>Health</th>
+              </tr>
               <% current_character.items.each do |item| %>
-                <li><%= item.name.capitalize %></li>
+                </tr>
+                <td>
+                  <%= item.name.capitalize %>
+                </td>
+                  <% item.skill_set.attributes(-1).each do |skill, value| %>
+                    <td class="center"><%= value %></td>
+                  <% end %>
+                <tr>
               <% end %>
-            </ul>
+            </table>
+            <br>
 
             <span class="card-title activator grey-text">Injuries</span>
-            <ul>
-              <% current_avatar.skills.each do |skill| %>
-                <% if skill[0] != "health" && skill[0] != "money" %>
-                  <li><%= skill[0].capitalize %>: <%= skill[1] %></li>
-                <% end %>
+            <table class="incidents">
+              <tr class="inventory-header">
+                <th>Name</th><th>Strength</th><th>Dexterity</th><th>Intelligence</th><th>Speed</th><th>Price</th><th>Health</th>
+              </tr>
+              <% current_character.items.each do |item| %>
+                </tr>
+                  <td>
+                    <%= item.name %>
+                  </td>
+                  <% item.skill_set.attributes.each do |skill, value| %>
+                    <td class="center"> <%= value %></td>
+                  <% end %>
+                <tr>
               <% end %>
-            </ul>
+            </table>
           </div>
       </div>
   </div>

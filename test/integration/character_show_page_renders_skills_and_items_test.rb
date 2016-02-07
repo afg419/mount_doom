@@ -9,7 +9,7 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
                                     dexterity: 2,
                                  intelligence: 3,
                                        health: 4,
-                                        money: 5,
+                                        money: -3,
                                         speed: 6)
 
     item1 = Item.create(name: "dagger", skill_set: item_skill_set)
@@ -24,7 +24,7 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
       assert page.has_content?("Intelligence: 16")
       assert page.has_content?("Speed: 22")
 
-      assert page.has_content?("Bank: 20")
+      assert page.has_content?("Money: $4")
       assert page.has_content?("Health: 18")
       assert page.has_content?("Location: Bree")
     end
@@ -34,6 +34,8 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
       assert page.has_content?("Dexterity: 10")
       assert page.has_content?("Intelligence: 10")
       assert page.has_content?("Speed: 10")
+      assert page.has_content?("Health: 10")
+      assert page.has_content?("Money: 10")
     end
 
     within(".inventory") do
