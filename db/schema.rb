@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160203211119) do
+ActiveRecord::Schema.define(version: 20160207021531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,48 +26,43 @@ ActiveRecord::Schema.define(version: 20160203211119) do
 
   add_index "avatars", ["skill_set_id"], name: "index_avatars_on_skill_set_id", using: :btree
 
-  create_table "characters", force: :cascade do |t|
-    t.integer  "avatar_id"
-    t.integer  "user_id"
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "characters", ["avatar_id"], name: "index_characters_on_avatar_id", using: :btree
-  add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
-
-  create_table "chip_orders", force: :cascade do |t|
-    t.integer "chip_id"
-    t.integer "order_id"
-    t.integer "quantity"
-    t.float   "subtotal"
+  create_table "characters", force: :cascade do |t|
+    t.integer  "avatar_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
   end
 
-  add_index "chip_orders", ["chip_id"], name: "index_chip_orders_on_chip_id", using: :btree
-  add_index "chip_orders", ["order_id"], name: "index_chip_orders_on_order_id", using: :btree
+  add_index "characters", ["avatar_id"], name: "index_characters_on_avatar_id", using: :btree
+  add_index "characters", ["location_id"], name: "index_characters_on_location_id", using: :btree
+  add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
-  create_table "chips", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "name"
     t.float    "price"
-    t.string   "description"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.integer  "oil_id"
-    t.string   "slug"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "category_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "status",             default: "Available"
+    t.integer  "itemable_id"
+    t.string   "itemable_type"
   end
 
-  add_index "chips", ["oil_id"], name: "index_chips_on_oil_id", using: :btree
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
 
-  create_table "oils", force: :cascade do |t|
-    t.string   "name"
-    t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -90,6 +85,17 @@ ActiveRecord::Schema.define(version: 20160203211119) do
     t.integer  "speed"
   end
 
+  create_table "stores", force: :cascade do |t|
+    t.integer  "location_id"
+    t.integer  "category_id"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "stores", ["category_id"], name: "index_stores_on_category_id", using: :btree
+  add_index "stores", ["location_id"], name: "index_stores_on_location_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password_digest"
@@ -100,8 +106,9 @@ ActiveRecord::Schema.define(version: 20160203211119) do
 
   add_foreign_key "avatars", "skill_sets"
   add_foreign_key "characters", "avatars"
+  add_foreign_key "characters", "locations"
   add_foreign_key "characters", "users"
-  add_foreign_key "chip_orders", "chips"
-  add_foreign_key "chip_orders", "orders"
-  add_foreign_key "chips", "oils"
+  add_foreign_key "items", "categories"
+  add_foreign_key "stores", "categories"
+  add_foreign_key "stores", "locations"
 end

@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
       redirect_to orders_path
     else
       flash[:error] = "Cart cannot be empty."
-      redirect_to cart_chips_path
+      redirect_to cart_items_path
     end
   end
 end

@@ -1,7 +1,5 @@
 require 'test_helper'
 
 class AvatarTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  # should belong_to :skill_set
 end

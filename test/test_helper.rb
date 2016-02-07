@@ -8,37 +8,37 @@ require "simplecov"
 SimpleCov.start("rails")
 
 class ActiveSupport::TestCase
+  include FactoryGirl::Syntax::Methods
 
   def create_user
     User.create(username: "John", password: "Password", role: 0)
   end
 
   def create_shop
-    category_1 = Oil.create(name: "Lard")
-    category_2 = Oil.create(name: "Coconut Oil")
-    Chip.create(name: "Slotachips", price: 20,
-                description: "Super yummy", oil_id: category_1.id)
-    Chip.create(name: "Dang Coconut", price: 17,
-                description: "Dang, these are good", oil_id: category_2.id)
-    Chip.create(name: "Old Chips", price: 20,
-                description: "Super yummy", oil_id: category_1.id,
-                status: "retired")
+    category_1 = Category.create(name: "Lard")
+    category_2 = Category.create(name: "Coconut Category")
+    Item.create(name: "Slotaitems", price: 20,
+                category_id: category_1.id)
+    Item.create(name: "Dang Coconut", price: 17,
+                category_id: category_2.id)
+    Item.create(name: "Old Items", price: 20,
+                category_id: category_1.id)
   end
 
-  def create_chip(name, price, description)
-    Chip.create(name: name, price: price,
-                description: description)
+  def create_item(name, price)
+    Item.create(name: name, price: price,
+                )
   end
 
-  def create_cart(chip)
-    @cart = Cart.new( { chip.id.to_s => 1 } )
+  def create_cart(item)
+    @cart = Cart.new( { item.id.to_s => 1 } )
   end
 
-  def create_two_chip_cart
-    @chip1 = create_chip("Slotachip", 6.99, "yummy")
-    @chip2 = create_chip("Doritos", 2.99, "cheesy")
-    create_cart(@chip1)
-    @cart.add_chip(@chip2.id.to_s)
+  def create_two_item_cart
+    @item1 = create_item("Slotaitem", 6.99, "yummy")
+    @item2 = create_item("Doritos", 2.99, "cheesy")
+    create_cart(@item1)
+    @cart.add_item(@item2.id.to_s)
   end
 end
 
@@ -48,9 +48,8 @@ class ActionDispatch::IntegrationTest
     reset_session!
   end
 
-  def create_chip(name, price, description)
-    Chip.create(name: name, price: price,
-                description: description)
+  def create_item(name, price)
+    Item.create(name: name, price: price)
   end
 
   def create_user(name = "John", password = "Password")
@@ -62,10 +61,18 @@ class ActionDispatch::IntegrationTest
   end
 
   def create_cart_for_visitor
-    visit chips_path
-    within("#slotachips") do
+    visit items_path
+    within("#slotaitems") do
       click_button "Add to Cart"
     end
+  end
+
+  def create_start_of_game
+    @store = create(:store)
+    @character = create(:character)
+    @user = @character.user
+    @location = @store.location
+    ApplicationController.any_instance.stubs(:current_user).returns(@user)
   end
 
   def login_user(name = "John", password = "Password")
@@ -87,24 +94,23 @@ class ActionDispatch::IntegrationTest
   end
 
   def create_shop
-    category_1 = Oil.create(name: "Lard")
-    category_2 = Oil.create(name: "Coconut Oil")
-    Chip.create(name: "Slotachips", price: 20,
-                description: "Super yummy", oil_id: category_1.id)
-    Chip.create(name: "Dang Coconut", price: 17,
-                description: "Dang, these are good", oil_id: category_2.id)
-    Chip.create(name: "Old Chips", price: 20,
-                description: "Super yummy", oil_id: category_1.id,
-                status: "retired")
+    category_1 = Category.create(name: "Lard")
+    category_2 = Category.create(name: "Coconut Category")
+    Item.create(name: "Slotaitems", price: 20,
+                 category_id: category_1.id)
+    Item.create(name: "Dang Coconut", price: 17,
+                category_id: category_2.id)
+    Item.create(name: "Old Items", price: 20,
+                 category_id: category_1.id)
   end
 
   def create_shop_and_logged_in_user
     create_shop
     user = create_user
     order = user.orders.create(total_price: 20)
-    order.chip_orders.create(chip_id: Chip.all.first.id,
+    order.item_orders.create(item_id: Item.all.first.id,
                              quantity: 1, subtotal: 20)
-    order.chip_orders.create(chip_id: Chip.all.last.id,
+    order.item_orders.create(item_id: Item.all.last.id,
                              quantity: 1, subtotal: 20)
 
     login_user

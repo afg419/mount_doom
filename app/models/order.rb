@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
-  has_many :chip_orders
-  has_many :chips, through: :chip_orders
+  has_many :item_orders
+  has_many :items, through: :item_orders
   belongs_to :user
   validates :total_price, numericality: { greater_than: 0 }
   scope :ordered,       -> { where status: 'Ordered' }

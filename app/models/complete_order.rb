@@ -8,15 +8,15 @@ class CompleteOrder
 
   def create_order
     if @order.save
-      create_chip_order
+      create_item_order
       clear_cart
     else
       # something else
     end
   end
 
-  def create_chip_order
-    ChipOrder.create_chip_order(@order, @cart)
+  def create_item_order
+    ItemOrder.create_item_order(@order, @cart)
   end
 
   def clear_cart

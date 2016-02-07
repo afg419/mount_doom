@@ -4,39 +4,39 @@ class VisitorCanAddItemsToCartTest < ActionDispatch::IntegrationTest
 
   test "visitor can add items to cart from index" do
     skip
-    category_1 = Oil.create(name: "Lard")
-    category_2 = Oil.create(name: "Coconut Oil")
+    category_1 = Category.create(name: "Lard")
+    category_2 = Category.create(name: "Coconut Category")
 
-    Chip.create(name: "Slotachips", price: 20,
-                description: "Super yummy", oil_id: category_1.id)
-    Chip.create(name: "Trader Joe's BBQ", price: 15,
+    Item.create(name: "Slotaitems", price: 20,
+                description: "Super yummy", category_id: category_1.id)
+    Item.create(name: "Trader Joe's BBQ", price: 15,
                 description: "I'd trade slota for these!",
-                oil_id: category_2.id)
-    Chip.create(name: "Dang Coconut", price: 17,
-                description: "Dang, these are good", oil_id: category_2.id)
-    Chip.create(name: "Lard Yummies", price: 19,
-                description: "Chock Full of Lard", oil_id: category_1.id)
+                category_id: category_2.id)
+    Item.create(name: "Dang Coconut", price: 17,
+                description: "Dang, these are good", category_id: category_2.id)
+    Item.create(name: "Lard Yummies", price: 19,
+                description: "Chock Full of Lard", category_id: category_1.id)
 
-    visit chips_path
+    visit items_path
 
     within(".right") do
       assert page.has_content?("Cart (0)")
     end
 
-    within("#slotachips") do
+    within("#slotaitems") do
       click_button "Add to Cart"
     end
 
-    assert page.has_content?("Added Slotachips to cart.")
+    assert page.has_content?("Added Slotaitems to cart.")
     assert page.has_content?("Cart (1)")
 
     within(".right") do
       click_link "Cart"
     end
 
-    assert_equal cart_chips_path, current_path
+    assert_equal cart_items_path, current_path
 
-    assert page.has_content?("Slotachips")
+    assert page.has_content?("Slotaitems")
     assert page.has_content?("20")
     assert page.has_content?("Super yummy")
     assert page.has_content?("Total: $20")
@@ -44,28 +44,28 @@ class VisitorCanAddItemsToCartTest < ActionDispatch::IntegrationTest
 
   test "can add multiple items to cart" do
     skip
-    category_1 = Oil.create(name: "Lard")
-    category_2 = Oil.create(name: "Coconut Oil")
+    category_1 = Category.create(name: "Lard")
+    category_2 = Category.create(name: "Coconut Category")
 
-    Chip.create(name: "Slotachips", price: 20,
-                description: "Super yummy", oil_id: category_1.id)
-    Chip.create(name: "Trader Joe's BBQ", price: 15,
+    Item.create(name: "Slotaitems", price: 20,
+                description: "Super yummy", category_id: category_1.id)
+    Item.create(name: "Trader Joe's BBQ", price: 15,
                 description: "I'd trade slota for these!",
-                oil_id: category_2.id)
-    Chip.create(name: "Dang Coconut", price: 17,
-                description: "Dang, these are good", oil_id: category_2.id)
-    Chip.create(name: "Lard Yummies", price: 19,
-                description: "Chock Full of Lard", oil_id: category_1.id)
+                category_id: category_2.id)
+    Item.create(name: "Dang Coconut", price: 17,
+                description: "Dang, these are good", category_id: category_2.id)
+    Item.create(name: "Lard Yummies", price: 19,
+                description: "Chock Full of Lard", category_id: category_1.id)
 
-    visit chips_path
+    visit items_path
 
     assert page.has_content?("Cart (0)")
 
-    within("#slotachips") do
+    within("#slotaitems") do
       click_button "Add to Cart"
     end
 
-    assert page.has_content?("Added Slotachips to cart.")
+    assert page.has_content?("Added Slotaitems to cart.")
     assert page.has_content?("Cart (1)")
 
     within("#lard-yummies") do
@@ -76,9 +76,9 @@ class VisitorCanAddItemsToCartTest < ActionDispatch::IntegrationTest
       click_link "Cart"
     end
 
-    assert_equal cart_chips_path, current_path
+    assert_equal cart_items_path, current_path
 
-    assert page.has_content?("Slotachips")
+    assert page.has_content?("Slotaitems")
     assert page.has_content?("20")
     assert page.has_content?("Super yummy")
 
@@ -91,37 +91,37 @@ class VisitorCanAddItemsToCartTest < ActionDispatch::IntegrationTest
 
   test "can add item to cart from category show pages" do
     skip
-    category_1 = Oil.create(name: "Lard")
-    category_2 = Oil.create(name: "Coconut Oil")
+    category_1 = Category.create(name: "Lard")
+    category_2 = Category.create(name: "Coconut Category")
 
-    Chip.create(name: "Slotachips", price: 20,
-                description: "Super yummy", oil_id: category_1.id)
-    Chip.create(name: "Trader Joe's BBQ", price: 15,
+    Item.create(name: "Slotaitems", price: 20,
+                description: "Super yummy", category_id: category_1.id)
+    Item.create(name: "Trader Joe's BBQ", price: 15,
                 description: "I'd trade slota for these!",
-                oil_id: category_2.id)
-    Chip.create(name: "Dang Coconut", price: 17,
-                description: "Dang, these are good", oil_id: category_2.id)
-    Chip.create(name: "Lard Yummies", price: 19,
-                description: "Chock Full of Lard", oil_id: category_1.id)
+                category_id: category_2.id)
+    Item.create(name: "Dang Coconut", price: 17,
+                description: "Dang, these are good", category_id: category_2.id)
+    Item.create(name: "Lard Yummies", price: 19,
+                description: "Chock Full of Lard", category_id: category_1.id)
 
     visit "/lard"
 
     assert page.has_content?("Cart (0)")
 
-    within("#slotachips") do
+    within("#slotaitems") do
       click_button "Add to Cart"
     end
 
-    assert page.has_content?("Added Slotachips to cart.")
+    assert page.has_content?("Added Slotaitems to cart.")
     assert page.has_content?("Cart (1)")
 
     within(".right") do
       click_link "Cart"
     end
 
-    assert_equal cart_chips_path, current_path
+    assert_equal cart_items_path, current_path
 
-    assert page.has_content?("Slotachips")
+    assert page.has_content?("Slotaitems")
     assert page.has_content?("20")
     assert page.has_content?("Super yummy")
     assert page.has_content?("Total: $20")

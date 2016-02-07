@@ -1,0 +1,18 @@
+<%= form_for @item, url: admin_item_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name%>
+  <%= f.label :price %>
+  <%= f.text_field :price%>
+  <%= f.label :category_id %>
+  <%= f.collection_select(:category_id, categories, :id, :name, { prompt: "Choose a category" }, class: "browser-default") %>
+  <%= f.label :description %>
+  <%= f.text_area(:description, class: "materialize-textarea") %>
+  <%= f.label :status %>
+  <%= f.text_field :status%>
+  <% if @item.image.exists? %>
+      <%= image_tag @item.image.url %><br/>
+  <% end %>
+  <%= f.label :image %>
+  <%= f.file_field :image%><br><br>
+  <%= f.submit 'Update Item', class: 'btn' %>
+<% end %>

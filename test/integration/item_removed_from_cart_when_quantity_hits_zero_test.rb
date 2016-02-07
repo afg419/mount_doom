@@ -3,9 +3,9 @@ require "test_helper"
 class ItemRemovedFromCartWhenQuantityHitsZeroTest < ActionDispatch::IntegrationTest
   # test "when quantity hits zero item is removed from cart" do
   #   create_shop
-  #   visit chips_path
+  #   visit items_path
   #
-  #   within("#slotachips") do
+  #   within("#slotaitems") do
   #     click_button "Add to Cart"
   #   end
   #
@@ -13,23 +13,23 @@ class ItemRemovedFromCartWhenQuantityHitsZeroTest < ActionDispatch::IntegrationT
   #     click_button "Add to Cart"
   #   end
   #
-  #   visit cart_chips_path
+  #   visit cart_items_path
   #
-  #   within ('#slotachips') do
-  #     assert page.has_content?("Slotachips")
+  #   within ('#slotaitems') do
+  #     assert page.has_content?("Slotaitems")
   #     within ('.quantity') do
   #       assert page.has_content?("1")
   #     end
   #     click_button "remove"
   #   end
   #
-  #   assert_equal cart_chips_path, current_path
+  #   assert_equal cart_items_path, current_path
   #
-  #   within (".chips") do
-  #     refute page.has_content?("Slotachips")
+  #   within (".items") do
+  #     refute page.has_content?("Slotaitems")
   #   end
   #
-  #   assert page.has_content?("Successfully removed Slotachips from your cart.")
+  #   assert page.has_content?("Successfully removed Slotaitems from your cart.")
   #
   #   within (".cart_total") do
   #     assert page.has_content?("$17")

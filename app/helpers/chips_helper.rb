@@ -1,4 +1,0 @@
-module ChipsHelper
-
-
-end
