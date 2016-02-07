@@ -247,6 +247,12 @@ main {
   margin-bottom: 0px;
 }
 
+.town_table img.responsive-img {
+    max-width: inherit !important;
+    vertical-align: bottom;
+    display: block;
+}
+
 .town img.responsive-img {
   max-width: inherit !important;
   // max-width: 90% !important;
@@ -256,4 +262,8 @@ main {
   display: block;
   padding-right: 0px;
   margin-right: 0px;
+}
+
+.inventory-header{
+  border-bottom: 2px solid white;
 }

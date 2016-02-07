@@ -42,32 +42,28 @@ class GameAuthenticationChecksTest < ActionDispatch::IntegrationTest
   end
 
   test "logged in and in game can't access any non-game pages" do
-    user = create_user
-    ApplicationController.any_instance.stubs(:current_user).returns(user)
-    ApplicationController.any_instance.stubs(:in_game).returns("true")
+    create_start_of_game
 
-    skills = SkillSet.create(intelligence: 4, dexterity: 3, strength: 3, health: 3, money: 100, speed: 2)
-    avatar = Avatar.create(name: "Taylor", image_url:"jojoj", skill_set: skills)
-    character = Character.create(avatar: avatar)
-
-    ApplicationController.any_instance.stubs(:current_character).returns(character)
+    ApplicationController.any_instance.stubs(:current_user).returns(@user)
+    ApplicationController.any_instance.stubs(:in_game).returns(true)
+    ApplicationController.any_instance.stubs(:current_character).returns(@character)
 
     visit root_path
-    assert_equal character_path(character), current_path
+    assert_equal character_path(@character), current_path
 
     visit new_character_path
-    assert_equal character_path(character), current_path
+    assert_equal character_path(@character), current_path
 
     visit about_path
-    assert_equal character_path(character), current_path
+    assert_equal character_path(@character), current_path
 
     visit login_path
-    assert_equal character_path(character), current_path
+    assert_equal character_path(@character), current_path
 
     visit new_user_path
-    assert_equal character_path(character), current_path
+    assert_equal character_path(@character), current_path
 
-    visit user_path(user)
-    assert_equal character_path(character), current_path
+    visit user_path(@user)
+    assert_equal character_path(@character), current_path
   end
 end
