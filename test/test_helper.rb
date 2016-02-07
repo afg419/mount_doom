@@ -96,11 +96,11 @@ class ActionDispatch::IntegrationTest
   def create_shop
     category_1 = Category.create(name: "Lard")
     category_2 = Category.create(name: "Coconut Category")
-    Item.create(name: "Slotaitems", price: 20,
+    Item.create(name: "Slotaitems",
                  category_id: category_1.id)
-    Item.create(name: "Dang Coconut", price: 17,
+    Item.create(name: "Dang Coconut",
                 category_id: category_2.id)
-    Item.create(name: "Old Items", price: 20,
+    Item.create(name: "Old Items",
                  category_id: category_1.id)
   end
 

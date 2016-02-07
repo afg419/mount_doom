@@ -27,7 +27,7 @@
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4"><%=avatar.name%></span>
           <ul>
-            <% avatar.skills.each do |skill, value| %>
+            <% avatar.skill_set.attributes.each do |skill, value| %>
             <%= skill.capitalize %>: <%= value %>
             <% end %>
           </ul>
