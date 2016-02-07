@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show], param: :slug
   resources :users, only: [:new, :create, :show, :edit, :update]
 
-  resources :stores, only: [:show], param: :slug
+  resources :stores, only: [:show], path: ":location_slug", param: :slug
   resource :journey, only: [:show], path: ":slug", controller: 'journey' #needs to be last
 
 
