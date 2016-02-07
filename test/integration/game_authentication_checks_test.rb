@@ -7,7 +7,7 @@ class GameAuthenticationChecksTest < ActionDispatch::IntegrationTest
     visit journey_path(bree)
     assert_equal login_path, current_path
 
-    visit store_path(store)
+    visit store_path(bree, store)
     assert_equal login_path, current_path
 
     c = Character.create
