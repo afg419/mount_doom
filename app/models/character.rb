@@ -5,8 +5,28 @@ class Character < ActiveRecord::Base
   has_many :items, :as => :itemable
 
 
-  def current_attributes
+  def current_skills
+    avatar_attributes = avatar.skill_set.attributes
+    item_attributes = items.map{ |item| item.skill_set.attributes }
+    character_attribute_array = item_attributes << avatar_attributes
+    sum_skills(character_attribute_array)
+  end
 
+  def sum_skills(attribute_array)
+    total_skills = {
+                    "strength" => 0,
+                   "dexterity" => 0,
+                "intelligence" => 0,
+                       "speed" => 0,
+                      "health" => 0,
+                       "money" => 0
+                     }
+    attribute_array.reduce(total_skills) do |acc, skill_set|
+      total_skills.keys.each do |attribute|
+        acc[attribute] += skill_set[attribute]
+      end
+      acc
+    end
   end
 
   def bank
