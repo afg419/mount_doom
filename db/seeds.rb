@@ -1,6 +1,9 @@
 class Seed
   def self.start
     create_avatars
+    @bree, @rivendell = create_locations
+    @armory, @inn, @apothecary, @blacksmith = create_categories
+    create_stores
   end
 
   def self.create_avatars
@@ -23,8 +26,31 @@ class Seed
   end
 
   def self.create_locations
-    Location.create(name: "Bree", slug: "bree")
-    Location.create(name: "Rivendell", slug: "rivendell")
+    [
+      Location.create(name: "Bree", slug: "bree"),
+      Location.create(name: "Rivendell", slug: "rivendell")
+    ]
+  end
+
+  def self.create_categories
+    [
+      Category.create(name: "armory"),
+      Category.create(name: "inn"),
+      Category.create(name: "apothecary"),
+      Category.create(name: "blacksmith")
+    ]
+  end
+
+  def self.create_stores
+    Store.create(category: @armory, location: @bree, name: "HANKS")
+    Store.create(category: @inn, location: @bree, name: "Prancing Pony")
+    Store.create(category: @apothecary, location: @bree, name: "Aaron's Drugs")
+    Store.create(category: @blacksmith, location: @bree, name: "HANKS")
+
+    Store.create(category: @armory, location: @rivendell, name: "TODDS")
+    Store.create(category: @inn, location: @rivendell, name: "Beds by Shannon")
+    Store.create(category: @apothecary, location: @rivendell, name: "TODDS")
+    Store.create(category: @blacksmith, location: @rivendell, name: "Taylor's discount metal things")
   end
 end
 

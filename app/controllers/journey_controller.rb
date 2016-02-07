@@ -1,5 +1,6 @@
 class JourneyController < ApplicationController
   def show
+    @location = Location.where(slug: params[:slug]).includes(:stores)[0]
     render layout: 'wide',  :locals => {:background => params[:slug]}
   end
 

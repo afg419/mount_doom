@@ -30,4 +30,14 @@ FactoryGirl.define do
     avatar
     location
   end
+
+  factory :category do
+    name "armory"
+  end
+
+  factory :store do
+    name "Taylor Rules"
+    location
+    category
+  end
 end

@@ -69,6 +69,14 @@ class ActionDispatch::IntegrationTest
     end
   end
 
+  def create_start_of_game
+    @store = create(:store)
+    @character = create(:character)
+    @user = @character.user
+    @location = @store.location
+    ApplicationController.any_instance.stubs(:current_user).returns(@user)
+  end
+
   def login_user(name = "John", password = "Password")
     visit login_path
 
