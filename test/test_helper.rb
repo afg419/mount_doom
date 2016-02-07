@@ -18,17 +18,16 @@ class ActiveSupport::TestCase
     category_1 = Category.create(name: "Lard")
     category_2 = Category.create(name: "Coconut Category")
     Item.create(name: "Slotaitems", price: 20,
-                description: "Super yummy", category_id: category_1.id)
+                category_id: category_1.id)
     Item.create(name: "Dang Coconut", price: 17,
-                description: "Dang, these are good", category_id: category_2.id)
+                category_id: category_2.id)
     Item.create(name: "Old Items", price: 20,
-                description: "Super yummy", category_id: category_1.id,
-                status: "retired")
+                category_id: category_1.id)
   end
 
-  def create_item(name, price, description)
+  def create_item(name, price)
     Item.create(name: name, price: price,
-                description: description)
+                )
   end
 
   def create_cart(item)
@@ -49,9 +48,8 @@ class ActionDispatch::IntegrationTest
     reset_session!
   end
 
-  def create_item(name, price, description)
-    Item.create(name: name, price: price,
-                description: description)
+  def create_item(name, price)
+    Item.create(name: name, price: price)
   end
 
   def create_user(name = "John", password = "Password")
@@ -99,12 +97,11 @@ class ActionDispatch::IntegrationTest
     category_1 = Category.create(name: "Lard")
     category_2 = Category.create(name: "Coconut Category")
     Item.create(name: "Slotaitems", price: 20,
-                description: "Super yummy", category_id: category_1.id)
+                 category_id: category_1.id)
     Item.create(name: "Dang Coconut", price: 17,
-                description: "Dang, these are good", category_id: category_2.id)
+                category_id: category_2.id)
     Item.create(name: "Old Items", price: 20,
-                description: "Super yummy", category_id: category_1.id,
-                status: "retired")
+                 category_id: category_1.id)
   end
 
   def create_shop_and_logged_in_user

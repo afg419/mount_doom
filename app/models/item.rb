@@ -3,7 +3,6 @@ class Item < ActiveRecord::Base
   belongs_to :category_type
   has_many :item_orders
   has_many :orders, through: :item_orders
-  before_save :set_slug
   has_attached_file :image
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
   scope :available, -> { where(status: "Available").order(name: :asc) }

@@ -15,7 +15,7 @@
   <div class="items_ordered col m6">
     <h5>Items Ordered</h5>
     <% @order.items.each_with_index do |item, i| %>
-      <span class="<%=item.slug%>">
+      <!-- <span class="<%#=item.slug%>"> -->
         <%= i + 1 %>. <%= item.name %> (<em><%= item.status %></em>)<br />
         <%= link_to "View Item", item_path(item.slug) %><br>
         <% item_order = @order.item_orders.find_by(order_id: @order.id) %><br />
