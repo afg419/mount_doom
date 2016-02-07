@@ -69,6 +69,18 @@ body {
 
 .application-body-bree{
   background-color: black;
+  background-image: url('bree.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.application-body-rivendell{
+  background-color: black;
+  background-image: url('rivendell.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
 }
 
 .journal {
@@ -203,17 +215,53 @@ main {
   box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.7);
 }
 
-.town_table td{
+// .town_table{
+//   max-width: 800px !important;
+//   display: block;
+// }
+//
+// .town_table td{
+//   border: none;
+//   border-collapse: collapse;
+//   border-spacing: 0px;
+//   padding-bottom: 0px;
+// }
+//
+// .town_table img.responsive-img {
+//   max-width: inherit !important;
+//   // max-width: 90% !important;
+//   height: auto;
+//   width: auto;
+//   vertical-align: bottom;
+//   display: block;
+//   padding-right: 0px;
+//   margin-right: 0px;
+// }
+.town.row{
+  max-width: 800px !important;
+  display: block;
   border: none;
   border-collapse: collapse;
   border-spacing: 0px;
-  padding-bottom: 0px
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .town_table img.responsive-img {
     max-width: inherit !important;
     vertical-align: bottom;
     display: block;
+}
+
+.town img.responsive-img {
+  max-width: inherit !important;
+  // max-width: 90% !important;
+  height: auto;
+  width: auto;
+  vertical-align: bottom;
+  display: block;
+  padding-right: 0px;
+  margin-right: 0px;
 }
 
 .inventory-header{
