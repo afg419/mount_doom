@@ -17,29 +17,29 @@ class ActiveSupport::TestCase
   def create_shop
     category_1 = Category.create(name: "Lard")
     category_2 = Category.create(name: "Coconut Category")
-    Chip.create(name: "Slotachips", price: 20,
+    Item.create(name: "Slotaitems", price: 20,
                 description: "Super yummy", category_id: category_1.id)
-    Chip.create(name: "Dang Coconut", price: 17,
+    Item.create(name: "Dang Coconut", price: 17,
                 description: "Dang, these are good", category_id: category_2.id)
-    Chip.create(name: "Old Chips", price: 20,
+    Item.create(name: "Old Items", price: 20,
                 description: "Super yummy", category_id: category_1.id,
                 status: "retired")
   end
 
-  def create_chip(name, price, description)
-    Chip.create(name: name, price: price,
+  def create_item(name, price, description)
+    Item.create(name: name, price: price,
                 description: description)
   end
 
-  def create_cart(chip)
-    @cart = Cart.new( { chip.id.to_s => 1 } )
+  def create_cart(item)
+    @cart = Cart.new( { item.id.to_s => 1 } )
   end
 
-  def create_two_chip_cart
-    @chip1 = create_chip("Slotachip", 6.99, "yummy")
-    @chip2 = create_chip("Doritos", 2.99, "cheesy")
-    create_cart(@chip1)
-    @cart.add_chip(@chip2.id.to_s)
+  def create_two_item_cart
+    @item1 = create_item("Slotaitem", 6.99, "yummy")
+    @item2 = create_item("Doritos", 2.99, "cheesy")
+    create_cart(@item1)
+    @cart.add_item(@item2.id.to_s)
   end
 end
 
@@ -49,8 +49,8 @@ class ActionDispatch::IntegrationTest
     reset_session!
   end
 
-  def create_chip(name, price, description)
-    Chip.create(name: name, price: price,
+  def create_item(name, price, description)
+    Item.create(name: name, price: price,
                 description: description)
   end
 
@@ -63,8 +63,8 @@ class ActionDispatch::IntegrationTest
   end
 
   def create_cart_for_visitor
-    visit chips_path
-    within("#slotachips") do
+    visit items_path
+    within("#slotaitems") do
       click_button "Add to Cart"
     end
   end
@@ -98,11 +98,11 @@ class ActionDispatch::IntegrationTest
   def create_shop
     category_1 = Category.create(name: "Lard")
     category_2 = Category.create(name: "Coconut Category")
-    Chip.create(name: "Slotachips", price: 20,
+    Item.create(name: "Slotaitems", price: 20,
                 description: "Super yummy", category_id: category_1.id)
-    Chip.create(name: "Dang Coconut", price: 17,
+    Item.create(name: "Dang Coconut", price: 17,
                 description: "Dang, these are good", category_id: category_2.id)
-    Chip.create(name: "Old Chips", price: 20,
+    Item.create(name: "Old Items", price: 20,
                 description: "Super yummy", category_id: category_1.id,
                 status: "retired")
   end
@@ -111,9 +111,9 @@ class ActionDispatch::IntegrationTest
     create_shop
     user = create_user
     order = user.orders.create(total_price: 20)
-    order.chip_orders.create(chip_id: Chip.all.first.id,
+    order.item_orders.create(item_id: Item.all.first.id,
                              quantity: 1, subtotal: 20)
-    order.chip_orders.create(chip_id: Chip.all.last.id,
+    order.item_orders.create(item_id: Item.all.last.id,
                              quantity: 1, subtotal: 20)
 
     login_user

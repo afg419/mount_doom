@@ -1,4 +1,4 @@
-<%= form_for @chip, url: admin_chip_path do |f| %>
+<%= form_for @item, url: admin_item_path do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name%>
   <%= f.label :price %>
@@ -9,10 +9,10 @@
   <%= f.text_area(:description, class: "materialize-textarea") %>
   <%= f.label :status %>
   <%= f.text_field :status%>
-  <% if @chip.image.exists? %>
-      <%= image_tag @chip.image.url %><br/>
+  <% if @item.image.exists? %>
+      <%= image_tag @item.image.url %><br/>
   <% end %>
   <%= f.label :image %>
   <%= f.file_field :image%><br><br>
-  <%= f.submit 'Update Chip', class: 'btn' %>
+  <%= f.submit 'Update Item', class: 'btn' %>
 <% end %>

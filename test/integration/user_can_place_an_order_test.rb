@@ -5,7 +5,7 @@ class UserCanPlaceAnOrderTest < ActionDispatch::IntegrationTest
     skip
     category_1 = Category.create(name: "Lard")
 
-    Chip.create(name: "Slotachips", price: 20,
+    Item.create(name: "Slotaitems", price: 20,
                 description: "Super yummy", category_id: category_1.id)
 
     User.create(username: "John", password: "Password")
@@ -21,9 +21,9 @@ class UserCanPlaceAnOrderTest < ActionDispatch::IntegrationTest
 
     click_button "Login"
 
-    visit chips_path
+    visit items_path
 
-    within("#slotachips") do
+    within("#slotaitems") do
       click_button "Add to Cart"
     end
 

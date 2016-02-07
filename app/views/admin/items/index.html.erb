@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col s4">
-    <h1>All Chips</h1>
+    <h1>All Items</h1>
   </div>
   <div class="col s4" style="margin-top: 48px">
-    <%= link_to "Add New Chip", new_admin_chip_path, class: "btn" %>
+    <%= link_to "Add New Item", new_admin_item_path, class: "btn" %>
   </div>
 </div>
-<div class="chips">
+<div class="items">
   <div class="row">
-    <%= render @chips %>
+    <%= render @items %>
   </div>
 </div>

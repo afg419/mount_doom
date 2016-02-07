@@ -4,11 +4,11 @@ class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
   # test "user can view all past orders" do
   #   category_1 = Category.create(name: "Lard")
   #   item_1 =
-  #   Chip.create(name: "Slotachips", price: 20,
+  #   Item.create(name: "Slotaitems", price: 20,
   #               description: "Super yummy", category_id: category_1.id)
   #   user = User.create(username: "John", password: "Password")
   #   order = user.orders.create(total_price: 20)
-  #   order.chip_orders.create(chip_id: item_1.id,
+  #   order.item_orders.create(item_id: item_1.id,
   #                            quantity: 1, subtotal: 20)
   #
   #   visit "/"
@@ -30,11 +30,11 @@ class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
   # test "user can view a singular past order" do
   #   category_1 = Category.create(name: "Lard")
   #   item_1 =
-  #   Chip.create(name: "Slotachips", price: 20,
+  #   Item.create(name: "Slotaitems", price: 20,
   #               description: "Super yummy", category_id: category_1.id)
   #   user = User.create(username: "John", password: "Password")
   #   order = user.orders.create(status: "Ordered", total_price: 20)
-  #   order.chip_orders.create(chip_id: item_1.id,
+  #   order.item_orders.create(item_id: item_1.id,
   #                            quantity: 1, subtotal: 20)
   #
   #   visit "/"
@@ -51,11 +51,11 @@ class UserCanViewPastOrdersTest < ActionDispatch::IntegrationTest
   #   visit orders_path(user.id)
   #
   #   click_link "View Order Details"
-  #   within(".chips_ordered") do
-  #     assert page.has_content?("Slotachips")
+  #   within(".items_ordered") do
+  #     assert page.has_content?("Slotaitems")
   #     assert page.has_content?("1")
   #     assert page.has_content?("20")
-  #     assert page.has_content?("View Chip")
+  #     assert page.has_content?("View Item")
   #     assert page.has_content?("Available")
   #   end
   #

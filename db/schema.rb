@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160206225947) do
+ActiveRecord::Schema.define(version: 20160207014052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,17 +44,7 @@ ActiveRecord::Schema.define(version: 20160206225947) do
   add_index "characters", ["location_id"], name: "index_characters_on_location_id", using: :btree
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
 
-  create_table "chip_orders", force: :cascade do |t|
-    t.integer "chip_id"
-    t.integer "order_id"
-    t.integer "quantity"
-    t.float   "subtotal"
-  end
-
-  add_index "chip_orders", ["chip_id"], name: "index_chip_orders_on_chip_id", using: :btree
-  add_index "chip_orders", ["order_id"], name: "index_chip_orders_on_order_id", using: :btree
-
-  create_table "chips", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "name"
     t.float    "price"
     t.string   "description"
@@ -69,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160206225947) do
     t.string   "status",             default: "Available"
   end
 
-  add_index "chips", ["category_id"], name: "index_chips_on_category_id", using: :btree
+  add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
@@ -119,9 +109,7 @@ ActiveRecord::Schema.define(version: 20160206225947) do
   add_foreign_key "characters", "avatars"
   add_foreign_key "characters", "locations"
   add_foreign_key "characters", "users"
-  add_foreign_key "chip_orders", "chips"
-  add_foreign_key "chip_orders", "orders"
-  add_foreign_key "chips", "categories"
+  add_foreign_key "items", "categories"
   add_foreign_key "stores", "categories"
   add_foreign_key "stores", "locations"
 end

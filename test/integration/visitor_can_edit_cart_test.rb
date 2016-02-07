@@ -5,57 +5,57 @@ class VisitorCanEditCartTest < ActionDispatch::IntegrationTest
   #   category_1 = Category.create(name: "Lard")
   #   category_2 = Category.create(name: "Coconut Category")
   #
-  #   Chip.create(name: "Slotachips", price: 20,
+  #   Item.create(name: "Slotaitems", price: 20,
   #               description: "Super yummy", category_id: category_1.id)
-  #   Chip.create(name: "Trader Joe's BBQ", price: 15,
+  #   Item.create(name: "Trader Joe's BBQ", price: 15,
   #               description: "I'd trade slota for these!",
   #               category_id: category_2.id)
-  #   Chip.create(name: "Dang Coconut", price: 17,
+  #   Item.create(name: "Dang Coconut", price: 17,
   #               description: "Dang, these are good", category_id: category_2.id)
-  #   Chip.create(name: "Lard Yummies", price: 19,
+  #   Item.create(name: "Lard Yummies", price: 19,
   #               description: "Chock Full of Lard", category_id: category_1.id)
   #
-  #   visit chips_path
+  #   visit items_path
   #
-  #   within("#slotachips") do
+  #   within("#slotaitems") do
   #     click_button "Add to Cart"
   #   end
   #
-  #   visit cart_chips_path
+  #   visit cart_items_path
   #
-  #   within('#slotachips') do
+  #   within('#slotaitems') do
   #     click_link "Remove"
   #   end
   #
-  #   assert_equal cart_chips_path, current_path
+  #   assert_equal cart_items_path, current_path
   #
-  #   assert page.has_content?("Successfully removed Slotachips from your cart.")
+  #   assert page.has_content?("Successfully removed Slotaitems from your cart.")
   #
-  #   within(".chips") do
-  #     refute page.has_content?("Slotachips")
+  #   within(".items") do
+  #     refute page.has_content?("Slotaitems")
   #   end
   #
-  #   click_link "Slotachips"
-  #   assert_equal "/chips/slotachips", current_path
+  #   click_link "Slotaitems"
+  #   assert_equal "/items/slotaitems", current_path
   # end
   #
   # test "user can adjust the quantity of an item in the cart" do
   #   category_1 = Category.create(name: "Lard")
   #   category_2 = Category.create(name: "Coconut Category")
   #
-  #   Chip.create(name: "Slotachips", price: 20.50,
+  #   Item.create(name: "Slotaitems", price: 20.50,
   #               description: "Super yummy", category_id: category_1.id)
-  #   Chip.create(name: "Trader Joe's BBQ", price: 15,
+  #   Item.create(name: "Trader Joe's BBQ", price: 15,
   #               description: "I'd trade slota for these!",
   #               category_id: category_2.id)
-  #   Chip.create(name: "Dang Coconut", price: 17,
+  #   Item.create(name: "Dang Coconut", price: 17,
   #               description: "Dang, these are good", category_id: category_2.id)
-  #   Chip.create(name: "Lard Yummies", price: 19,
+  #   Item.create(name: "Lard Yummies", price: 19,
   #               description: "Chock Full of Lard", category_id: category_1.id)
   #
-  #   visit chips_path
+  #   visit items_path
   #
-  #   within("#slotachips") do
+  #   within("#slotaitems") do
   #     click_button "Add to Cart"
   #   end
   #
@@ -63,19 +63,19 @@ class VisitorCanEditCartTest < ActionDispatch::IntegrationTest
   #     click_button "Add to Cart"
   #   end
   #
-  #   visit cart_chips_path
+  #   visit cart_items_path
   #
-  #   within ('#slotachips') do
-  #     assert page.has_content?("Slotachips")
+  #   within ('#slotaitems') do
+  #     assert page.has_content?("Slotaitems")
   #     within ('.quantity') do
   #       assert page.has_content?("1")
   #     end
   #     click_button "add"
   #   end
   #
-  #   assert_equal cart_chips_path, current_path
+  #   assert_equal cart_items_path, current_path
   #
-  #   within ('#slotachips') do
+  #   within ('#slotaitems') do
   #     within ('.quantity') do
   #       assert page.has_content?("2")
   #     end
@@ -88,13 +88,13 @@ class VisitorCanEditCartTest < ActionDispatch::IntegrationTest
   #     assert page.has_content?("$58")
   #   end
   #
-  #   within ('#slotachips') do
+  #   within ('#slotaitems') do
   #     click_button "remove"
   #   end
   #
-  #   assert_equal cart_chips_path, current_path
+  #   assert_equal cart_items_path, current_path
   #
-  #   within ('#slotachips') do
+  #   within ('#slotaitems') do
   #     within ('.quantity') do
   #       assert page.has_content?("1")
   #     end

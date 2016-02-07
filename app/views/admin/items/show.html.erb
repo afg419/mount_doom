@@ -1,0 +1,17 @@
+<h2><%= @item.name %></h2>
+<div class="row">
+  <div class="col m3">
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag @item.image.url, class: "responsive-img" %>
+      </div>
+    </div>
+  </div>
+  <div class = "col m9" id="<%= @item.slug %>">
+    <h5><%= @item.name %></h5>
+    <%= @item.description %><br><br>
+    <p><center><%= number_to_currency @item.price %></center></p>
+    <p><center><%= link_to "Edit", edit_admin_item_path(@item.id), class: "btn" %><center></p><br>
+    <p><center><%= link_to "Delete", admin_item_path(@item.id), method: :delete, class: "btn" %><center></p>
+  </div>
+</div>

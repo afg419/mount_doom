@@ -1,0 +1,8 @@
+<b><center><%= link_to item.name, admin_item_path(item.slug) %></center></b>
+<p><center><%= number_to_currency item.price %></center></p>
+<p><center><%= item.description_type(source) %></center></p>
+<% if item.status == "retired" %>
+ <center><p class="btn disabled"> Item is Retired </p></center>
+<% end %>
+<p><center><%= link_to "Edit", edit_admin_item_path(item.id), class: "btn" %>
+<%= link_to "Delete", admin_item_path(item.id), method: :delete, class: "btn" %></center></p>

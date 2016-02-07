@@ -1,0 +1,8 @@
+<b><center><%= link_to item.name, item_path(item.slug) %></center></b>
+<p><center><%= number_to_currency item.price %></center></p>
+ <% if item.status == "Available" %>
+  <p><center><%= button_to "Add to Cart", cart_items_path(item_id: item.id), class: "btn"%></center></p>
+<% else %>
+  <center><p class="btn disabled"> Item is Retired </p></center>
+<% end %>
+<p><%= item.description_type(source) %></p>

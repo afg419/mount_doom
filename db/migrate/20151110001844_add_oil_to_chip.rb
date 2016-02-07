@@ -1,5 +1,5 @@
-class AddCategoryToChip < ActiveRecord::Migration
+class AddOilToChip < ActiveRecord::Migration
   def change
-    add_reference :chips, :category, index: true, foreign_key: true
+    add_reference :chips, :oil, index: true, foreign_key: true
   end
 end

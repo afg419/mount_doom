@@ -1,6 +1,6 @@
-class CreateCategorys < ActiveRecord::Migration
+class CreateOils < ActiveRecord::Migration
   def change
-    create_table :categories do |t|
+    create_table :oils do |t|
       t.string :name
       t.string :slug
 

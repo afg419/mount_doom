@@ -1,0 +1,10 @@
+<div class="col m4" id= "grayscale">
+  <div class="card medium item" data-name="<%= item.name %>">
+    <div class="card-image">
+      <center><%= image_tag item.image.url, class: "responsive-img" %></center>
+    </div>
+    <div class="card-content" id="<%= item.slug %>">
+      <%= render partial: 'items/item_layout', locals: {item: item, source: "index"} %>
+    </div>
+  </div>
+</div>

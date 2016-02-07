@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AdminChipsTest < ActionDispatch::IntegrationTest
+class AdminItemsTest < ActionDispatch::IntegrationTest
 
   # def create_admin
   #   @admin = User.create(username: "admin",
@@ -8,16 +8,16 @@ class AdminChipsTest < ActionDispatch::IntegrationTest
   #                       role: 1)
   # end
   #
-  # test "logged in admin sees chips index" do
+  # test "logged in admin sees items index" do
   #   create_admin
   #   category_1 = Category.create(name: "Lard")
-  #   Chip.create(name: "Slotachips", price: 20,
+  #   Item.create(name: "Slotaitems", price: 20,
   #               description: "Super yummy", category_id: category_1.id)
   #
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
-  #   visit admin_chips_path
-  #   assert page.has_content?("All Chips")
-  #   assert page.has_content?("Slotachips")
+  #   visit admin_items_path
+  #   assert page.has_content?("All Items")
+  #   assert page.has_content?("Slotaitems")
   # end
   #
   # test "default user does not see admin categories index" do
@@ -26,96 +26,96 @@ class AdminChipsTest < ActionDispatch::IntegrationTest
   #                       role: 0)
   #
   #   ApplicationController.any_instance.stubs(:current_user).returns(user)
-  #   visit admin_chips_path
-  #   refute page.has_content?("All Chips")
+  #   visit admin_items_path
+  #   refute page.has_content?("All Items")
   #   assert page.has_content?("The page you were looking for doesn't exist.")
   # end
   #
-  # test "admin can edit chip" do
+  # test "admin can edit item" do
   #   create_admin
   #   category_1 = Category.create(name: "Lard")
-  #   Chip.create(name: "Slotachips", price: 20,
+  #   Item.create(name: "Slotaitems", price: 20,
   #               description: "Super yummy", category_id: category_1.id)
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #
-  #   visit admin_chips_path
-  #   within "#slotachips" do
+  #   visit admin_items_path
+  #   within "#slotaitems" do
   #     click_link "Edit"
   #   end
   #
   #   fill_in "Name", with: "EditedName"
-  #   click_button "Update Chip"
+  #   click_button "Update Item"
   #
-  #   assert_equal admin_chips_path, current_path
+  #   assert_equal admin_items_path, current_path
   #   assert page.has_content? "EditedName"
   # end
   #
-  # test "admin cannot remove name from chip" do
+  # test "admin cannot remove name from item" do
   #   create_admin
   #   category_1 = Category.create(name: "Lard")
-  #   Chip.create(name: "Slotachips", price: 20,
+  #   Item.create(name: "Slotaitems", price: 20,
   #               description: "Super yummy", category_id: category_1.id)
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #
-  #   visit admin_chips_path
-  #   within "#slotachips" do
+  #   visit admin_items_path
+  #   within "#slotaitems" do
   #     click_link "Edit"
   #   end
   #
   #   fill_in "Name", with: ""
-  #   click_button "Update Chip"
+  #   click_button "Update Item"
   #
-  #   assert page.has_content?("A chip must have a name")
+  #   assert page.has_content?("A item must have a name")
   # end
   #
-  # test "admin can add chip" do
+  # test "admin can add item" do
   #   create_admin
   #   category_1 = Category.create(name: "Lard")
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #
-  #   visit admin_chips_path
-  #   click_link "Add New Chip"
-  #   fill_in "Name", with: "NewChip"
+  #   visit admin_items_path
+  #   click_link "Add New Item"
+  #   fill_in "Name", with: "NewItem"
   #   fill_in "Price", with: 1.99
-  #   fill_in "Description", with: "Coolest of the chips"
-  #   click_button "Create Chip"
+  #   fill_in "Description", with: "Coolest of the items"
+  #   click_button "Create Item"
   #
-  #   assert admin_chips_path, current_path
+  #   assert admin_items_path, current_path
   #
-  #   within(".chips") do
-  #     assert page.has_content?("NewChip")
+  #   within(".items") do
+  #     assert page.has_content?("NewItem")
   #   end
   # end
   #
-  # test "admin cannot add chip without a name" do
+  # test "admin cannot add item without a name" do
   #   create_admin
   #   category_1 = Category.create(name: "Lard")
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #
-  #   visit admin_chips_path
-  #   click_link "Add New Chip"
+  #   visit admin_items_path
+  #   click_link "Add New Item"
   #   fill_in "Price", with: 1.99
-  #   fill_in "Description", with: "Coolest of the chips"
-  #   click_button "Create Chip"
+  #   fill_in "Description", with: "Coolest of the items"
+  #   click_button "Create Item"
   #
-  #   assert page.has_content?("A chip must have a name")
+  #   assert page.has_content?("A item must have a name")
   # end
   #
-  # test "admin can delete chip" do
+  # test "admin can delete item" do
   #   create_admin
   #   create_shop
   #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
   #
-  #   visit admin_chips_path
+  #   visit admin_items_path
   #
-  #   within("#slotachips") do
+  #   within("#slotaitems") do
   #     click_link "Delete"
   #   end
   #
-  #   assert admin_chips_path, current_path
+  #   assert admin_items_path, current_path
   #
-  #   within(".chips") do
-  #     refute page.has_content?("Slotachips")
+  #   within(".items") do
+  #     refute page.has_content?("Slotaitems")
   #   end
   # end
 end

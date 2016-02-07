@@ -2,14 +2,14 @@ require "test_helper"
 
 class VisitorCanViewItemsTest < ActionDispatch::IntegrationTest
   # test "visitor can view items test" do
-  #   create_chip("Slotachips", 20, "Super yummy")
-  #   create_chip("Trader Joe's BBQ", 15, "I'd trade slota for these!")
-  #   create_chip("Dang Coconut", 17, "Dang, these are good")
+  #   create_item("Slotaitems", 20, "Super yummy")
+  #   create_item("Trader Joe's BBQ", 15, "I'd trade slota for these!")
+  #   create_item("Dang Coconut", 17, "Dang, these are good")
   #
-  #   visit '/chips'
+  #   visit '/items'
   #
-  #   within(".chips") do
-  #     assert page.has_content?("Slotachips")
+  #   within(".items") do
+  #     assert page.has_content?("Slotaitems")
   #     assert page.has_content?("Trader Joe's BBQ")
   #     assert page.has_content?("Dang Coconut")
   #   end
@@ -25,8 +25,8 @@ class VisitorCanViewItemsTest < ActionDispatch::IntegrationTest
   #
   #   assert current_path, "/lard"
   #
-  #   within(".chips") do
-  #     assert page.has_content?("Slotachips")
+  #   within(".items") do
+  #     assert page.has_content?("Slotaitems")
   #   end
   #
   #   click_link "Return to categories"
@@ -37,7 +37,7 @@ class VisitorCanViewItemsTest < ActionDispatch::IntegrationTest
   #
   #   assert current_path, '/coconut-category'
   #
-  #   within(".chips") do
+  #   within(".items") do
   #     assert page.has_content?("Dang Coconut")
   #   end
   # end

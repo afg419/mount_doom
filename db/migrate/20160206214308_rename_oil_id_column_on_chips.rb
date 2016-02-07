@@ -1,5 +1,5 @@
-class RenameCategoryIdColumnOnChips < ActiveRecord::Migration
+class RenameOilIdColumnOnChips < ActiveRecord::Migration
   def change
-    rename_column :chips, :category_id, :category_id
+    rename_column :chips, :oil_id, :category_id
   end
 end

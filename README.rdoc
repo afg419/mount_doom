@@ -1,7 +1,7 @@
 == README
 
 E-Commerce School Project:
-  - Created online chip store with user and administrative login, authentication and cart capabilities.
+  - Created online item store with user and administrative login, authentication and cart capabilities.
   - Incorporated Twilio to confirm user purchases via text.
 
 Heroku App link: young-harbor-1645.herokuapp.com

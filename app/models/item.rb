@@ -1,8 +1,8 @@
-class Chip < ActiveRecord::Base
+class Item < ActiveRecord::Base
   validates :name, presence: true
   belongs_to :category_type
-  has_many :chip_orders
-  has_many :orders, through: :chip_orders
+  has_many :item_orders
+  has_many :orders, through: :item_orders
   before_save :set_slug
   has_attached_file :image
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]

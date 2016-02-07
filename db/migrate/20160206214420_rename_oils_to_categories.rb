@@ -1,6 +1,6 @@
-class RenameCategorysToCategories < ActiveRecord::Migration
+class RenameOilsToCategories < ActiveRecord::Migration
   def change
-    remove_column :categories, :slug, :string
-    rename_table :categories, :categories
+    remove_column :oils, :slug, :string
+    rename_table :oils, :categories
   end
 end

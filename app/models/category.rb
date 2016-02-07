@@ -1,9 +1,9 @@
 class Category < ActiveRecord::Base
-  has_many :chips
+  has_many :items
   validates :name, presence: true, uniqueness: true
 
-  def gimee_your_chips
-    chips.available
+  def gimee_your_items
+    items.available
   end
 
   def category_index_image

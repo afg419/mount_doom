@@ -1,0 +1,21 @@
+<h2><%= @item.name %></h2>
+
+<div class="row">
+  <div class="col m3">
+    <div class="card">
+      <div class="card-image">
+        <%= image_tag @item.image.url, class: "responsive-img" %>
+      </div>
+    </div>
+  </div>
+  <div class = "col m9" id="<%= @item.slug %>">
+    <h5><%= @item.name %></h5>
+    <%= @item.description %><br><br>
+    <p><center><%= number_to_currency @item.price %></center></p>
+    <% if @item.status == "Available" %>
+     <p><center><%= button_to "Add to Cart", cart_items_path(item_id: @item.id), class: "btn"%></center></p>
+   <% else %>
+     <center><p class="btn disabled"> Item is Retired </p></center>
+   <% end %>
+  </div>
+</div>

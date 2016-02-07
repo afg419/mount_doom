@@ -4,15 +4,15 @@ class UserCanSeeIfItemIsRetiredTest < ActionDispatch::IntegrationTest
   # test "user can see retired item status on order show page" do
   #   create_shop_and_logged_in_user
   #
-  #   within(".old-chips") do
+  #   within(".old-items") do
   #     assert page.has_content?("retired")
   #   end
   # end
   #
-  # test "user can NOT see retired item status on chip show pages" do
+  # test "user can NOT see retired item status on item show pages" do
   #   create_shop_and_logged_in_user
   #
-  #   visit "/chips"
+  #   visit "/items"
   #   refute page.has_content?("Item is Retired")
   #
   #   visit "/lard"
@@ -22,7 +22,7 @@ class UserCanSeeIfItemIsRetiredTest < ActionDispatch::IntegrationTest
   # test "user sees if item is retired on show page" do
   #   create_shop_and_logged_in_user
   #
-  #   visit chip_path("old-chips")
+  #   visit item_path("old-items")
   #
   #   assert page.has_content?("Retired")
   # end
