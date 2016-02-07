@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207021531) do
+ActiveRecord::Schema.define(version: 20160207183322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(version: 20160207021531) do
     t.datetime "image_updated_at"
     t.integer  "itemable_id"
     t.string   "itemable_type"
+    t.integer  "skill_set_id"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
+  add_index "items", ["skill_set_id"], name: "index_items_on_skill_set_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
@@ -109,6 +111,7 @@ ActiveRecord::Schema.define(version: 20160207021531) do
   add_foreign_key "characters", "locations"
   add_foreign_key "characters", "users"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "skill_sets"
   add_foreign_key "stores", "categories"
   add_foreign_key "stores", "locations"
 end
