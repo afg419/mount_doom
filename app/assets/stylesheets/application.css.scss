@@ -215,6 +215,24 @@ main {
   box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.7);
 }
 
+.scrolling {
+  width: auto;
+  height: 500px;
+  overflow: scroll;
+}
+
+.collection .collection-item {
+  border-bottom: none;
+}
+.title {
+  font-size: 110% !important;
+  font-weight: bold !important;
+}
+
+.collection .collection-item.avatar {
+  // position: inherit;
+}
+
 // .town_table{
 //   max-width: 800px !important;
 //   display: block;
