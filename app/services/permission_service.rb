@@ -11,9 +11,10 @@ class PermissionService
   def allow?(controller, action, in_game)
     @in_game = in_game
     @controller = controller
+    @action = action
 
     case
-    when platform_admin?        then platform_admin_permissions
+    when user && platform_admin?        then platform_admin_permissions
     when user && in_game        then logged_in_in_game_permissions
     when user && !in_game       then logged_in_no_game_permissions
     else

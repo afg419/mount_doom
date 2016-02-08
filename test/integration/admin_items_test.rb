@@ -1,24 +1,15 @@
 require "test_helper"
 
 class AdminItemsTest < ActionDispatch::IntegrationTest
-
-  # def create_admin
-  #   @admin = User.create(username: "admin",
-  #                       password: "password",
-  #                       role: 1)
-  # end
-  #
-  # test "logged in admin sees items index" do
-  #   create_admin
-  #   category_1 = Category.create(name: "Lard")
-  #   Item.create(name: "Slotaitems", price: 20,
-  #               description: "Super yummy", category_id: category_1.id)
-  #
-  #   ApplicationController.any_instance.stubs(:current_user).returns(@admin)
-  #   visit admin_items_path
-  #   assert page.has_content?("All Items")
-  #   assert page.has_content?("Slotaitems")
-  # end
+  test "logged in admin sees items index" do
+    create_admin
+    visit admin_dashboard_index_path
+    click_button "Edit Items"
+    
+    assert_equal admin_items_path, current_path
+    assert page.has_content?("All Items")
+    assert page.has_content?("Slotaitems")
+  end
   #
   # test "default user does not see admin categories index" do
   #   user = User.create(username: "default_user",
