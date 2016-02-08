@@ -3,7 +3,7 @@ require 'test_helper'
 class GameNavbarTest < ActionDispatch::IntegrationTest
   test "user starts game and sees game nav" do
     create_start_of_game
-
+binding.pry
     visit new_character_path
 
     within ".Legolas" do

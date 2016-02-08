@@ -1,19 +1,14 @@
 require "test_helper"
 
 class AdminCanViewOrdersTest < ActionDispatch::IntegrationTest
-  # test "when an admin logs in they see the admin dashboard" do
-  #   create_admin
-  #   login_admin
-  #
-  #   assert_equal "/admin/dashboard", current_path
-  # end
-  #
-  # test "admin can view the dashboard" do
-  #   create_admin
-  #   login_admin
-  #
-  #   assert page.has_content?("Admin Dashboard")
-  # end
+  test "admin can view their dashboard" do
+    create_admin
+
+    visit admin_dashboard_index_path
+    assert_equal admin_dashboard_index_path, current_path
+
+    assert page.has_content?("Admin Dashboard")
+  end
   #
   # test "a registered user can not see the dashboard" do
   #   create_user

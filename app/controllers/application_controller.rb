@@ -58,9 +58,9 @@ class ApplicationController < ActionController::Base
   def require_current_user
     render file: "/public/404" unless current_user
   end
-
+  #
   def current_admin?
-    current_user && current_user.admin?
+    current_user && current_user.platform_admin?
   end
 
   def set_cart

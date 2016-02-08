@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
                      uniqueness: true
 
   enum role: %w(default admin)
+
+  def platform_admin?
+    self.role == "admin"
+  end
 end
