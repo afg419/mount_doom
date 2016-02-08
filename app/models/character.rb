@@ -30,6 +30,7 @@ private
       "health" => 0,
       "money" => 0
     }
+    
     attribute_array.reduce(total_skills) do |acc, skill_set|
       total_skills.keys.each do |attribute|
         acc[attribute] += skill_set[attribute]

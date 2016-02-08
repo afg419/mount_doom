@@ -10,6 +10,14 @@ SimpleCov.start("rails")
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 
+  def create_start_of_game
+    @store = create(:store) #creates store with location and category
+    @character = create(:character) #creates character with user, avatar, skillset
+    @user = @character.user
+    @location = @store.location
+    ApplicationController.any_instance.stubs(:current_user).returns(@user)
+  end
+
   def create_user
     User.create(username: "John", password: "Password", role: 0)
   end
@@ -70,8 +78,8 @@ class ActionDispatch::IntegrationTest
   end
 
   def create_start_of_game
-    @store = create(:store)
-    @character = create(:character)
+    @store = create(:store) #creates store with location and category
+    @character = create(:character) #creates character with user, avatar, skillset
     @user = @character.user
     @location = @store.location
     ApplicationController.any_instance.stubs(:current_user).returns(@user)
