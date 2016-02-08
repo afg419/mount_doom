@@ -3,6 +3,7 @@ class Character < ActiveRecord::Base
   belongs_to :user
   belongs_to :location
   has_many :items, :as => :itemable
+  has_many :incidents
 
   def current_skills
     avatar_attributes = avatar.skill_set.attributes
@@ -30,7 +31,7 @@ private
       "health" => 0,
       "money" => 0
     }
-    
+
     attribute_array.reduce(total_skills) do |acc, skill_set|
       total_skills.keys.each do |attribute|
         acc[attribute] += skill_set[attribute]
