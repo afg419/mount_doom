@@ -1,4 +1,6 @@
 class JourneyController < ApplicationController
+  include JourneyHelper
+
   def show
     @location = Location.where(slug: params[:slug]).includes(:stores)[0]
     render layout: 'wide',  :locals => {:background => params[:slug]}
@@ -12,6 +14,7 @@ class JourneyController < ApplicationController
   def create
     bree = Location.find_by(slug: "bree")
     current_user.character = Character.create(avatar_id: params[:avatar], location: bree)
+    add_start_items[current_character.avatar.name]
     session[:in_game] = true
     redirect_to journey_path(bree)
   end

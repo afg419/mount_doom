@@ -83,14 +83,13 @@ class Seed
       create_item("Milk", 0, 0, 0, 0, 0, 3),
       create_item("Sausage", 0, 0, 0, 0, 0, 3),
       create_item("Dried Beans", 0, 0, 0, 0, 0, 3),
-      create_item("Soup", 0, 0, 0, 0, 0, 3),
       create_item("Salted Beef", 0, 0, 0, 0, 0, 5)
     ]
     @bree_apothecary.items = [
       create_item("Health Potion", 0, 0, 0, 0, 0, 2),
       create_item("Antidote", 0, 0, 0, 0, 0, 2),
       create_item("Splint", 0, 0, 0, 0, 0, 3), #broken stuff
-      create_item("Bandage", 0, 0, 0, 0, 0, 5),
+      create_item("Bandage", 0, 0, 0, 0, 0, 5), #cut
       create_item("Ginger Root", 0, 0, 0, 0, 0, 3), #heals from being sick
       create_item("Comfrey", 0, 0, 0, 0, 0, 3), #heals cuts
       create_item("Osha", 0, 0, 0, 0, 0, 1) #helps from being sick

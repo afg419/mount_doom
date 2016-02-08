@@ -221,6 +221,18 @@ main {
   overflow: scroll;
 }
 
+.collection .collection-item {
+  border-bottom: none;
+}
+.title {
+  font-size: 110% !important;
+  font-weight: bold !important;
+}
+
+.collection .collection-item.avatar {
+  // position: inherit;
+}
+
 // .town_table{
 //   max-width: 800px !important;
 //   display: block;
