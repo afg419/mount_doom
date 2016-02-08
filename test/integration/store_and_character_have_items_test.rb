@@ -10,16 +10,19 @@ class StoreAndCharacterHaveItemsTest < ActionDispatch::IntegrationTest
     @character.items = items2
 
     visit store_path(@location, @store)
-
-
+    # save_and_open_page
     assert page.has_content? "Welcome to the Taylor Rules armory"
 
     within ".character_selling" do
-      assert page.has_content? "Item 1"
+      assert page.has_content? "Item 4"
+      assert page.has_content? "Item 5"
+      assert page.has_content? "Item 6"
     end
 
     within ".store_selling" do
       assert page.has_content? "Item 1"
+      assert page.has_content? "Item 2"
+      assert page.has_content? "Item 3"
     end
 
   end

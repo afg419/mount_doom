@@ -1,4 +1,4 @@
-<h1>Welcome to the Armory in Bree</h1>
+<h1 class="center">Welcome to the <%= @store.name %> <%= @store.category.name %></h1>
 
 <div class="container journal">
   <div class="row">
@@ -7,101 +7,49 @@
       <!-- First Column/Charcter Inventory -->
       <div class="col m3" style="padding-right: 0">
         Your Inventory
-        <ul class="collection">
-          <li class="collection-item avatar show item player-item-1">
-            <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
-            <span class="title">Dagger 1</span>
-            <p>Price: 10 <br>
-               Sell For: 9 <br>
-               Strength: 1, Speed: -1
-            </p>
-            <button class="secondary-content" onclick="sellItem('.player-item-1')">Sell</button>
-          </li>
-          <li class="collection-item avatar show item player-item-2">
-            <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
-            <span class="title">Dagger 2</span>π
-            <p>Price: 10 <br>
-               Sell For: 8 <br>
-               Strength: 1, Speed: -1
-            </p>
-            <button class="secondary-content" onclick="sellItem('.player-item-2')">Sell</button>
-          </li>
-        <ul>
+        <ul class="scrolling collection">
+          <%= render partial: "items", locals: { holder: "player",
+                                                 display: "show",
+                                                 owner: current_character,
+                                                 type: "sell" } %>
+        </ul>
       </div>
 
       <!-- Column Two/Character Selling -->
       <div class="col m3" style="padding-left: 0">
         You Are Selling
-        <ul class="collection character_trades">
-          <li class="collection-item avatar hide item player-item-1">
-            <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
-            <span class="title">Dagger 1</span>
-            <p>Price: 10 <br>
-               Sell For: <span class="price">9</span> <br>
-               Strength: 1, Speed: -1
-            </p>
-            <button class="secondary-content" onclick="sellItem('.player-item-1')">Remove</button>
-          </li>
-          <li class="collection-item avatar hide item player-item-2">
-            <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
-            <span class="title">Dagger 2</span>
-            <p>Price: 10 <br>
-               Sell For: <span class="price">8</span> <br>
-               Strength: 1, Speed: -1
-            </p>
-            <button class="secondary-content" onclick="sellItem('.player-item-2')">Remove</button>
-          </li>
-        <ul>
+        <ul class="scrolling collection character_trades">
+          <%= render partial: "items", locals: { holder: "player",
+                                                 display: "hide",
+                                                 owner: current_character,
+                                                 type: "sell" } %>
+        </ul>
       </div>
 
     </div>
 
 
     <!-- Third Column/Store Trades -->
-    <div class="store_trades">
+    <div class="store_trades store_selling">
       <div class="col m3" style="padding-right: 0">
         You are buying
-        <ul class="collection store_trades">
-          <li class="collection-item avatar hide item store-item-3">
-            <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
-            <span class="title">Dagger 3</span>
-            <p>Price: <span class="price">2</span> <br>
-               Strength: 1, Speed: -1
-            </p>
-            <button class="secondary-content" onclick="buyItem('.store-item-3')">Remove</button>
-          </li>
-          <li class="collection-item avatar hide item store-item-4">
-              <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
-              <span class="title">Dagger 4</span>
-              <p>Price: <span class="price">4</span> <br>
-                 Strength: 1, Speed: -1
-              </p>
-              <button class="secondary-content" onclick="buyItem('.store-item-4')">Remove</button>
-            </li>
-          <ul>
+        <ul class="scrolling collection store_trades">
+          <%= render partial: "items", locals: { holder: "store",
+                                                 display: "hide",
+                                                 owner: @store,
+                                                 type: "buy" } %>
+          </ul>
       </div>
 
       <!-- Fourth Column/Store Inventory -->
       <div class="col m3" style="padding-left: 0">
         Store Inventory
-        <ul class="collection store_inventory">
-          <li class="collection-item avatar show item store-item-3">
-            <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
-            <span class="title">Dagger 3</span>
-            <p>Price: 2 <br>
-               Strength: 1, Speed: -1
-            </p>
-            <button class="secondary-content" onclick="buyItem('.store-item-3')">Buy</button>
-          </li>
-          <li class="collection-item avatar show item store-item-4">
-            <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
-            <span class="title">Dagger 4</span>
-            <p>Price: 4 <br>
-               Strength: 1, Speed: -1
-            </p>
-            <button class="secondary-content" onclick="buyItem('.store-item-4')">Buy</button>
-          </li>
-        <ul>
+        <ul class="scrolling collection store_inventory ">
+          <%= render partial: "items", locals: { holder: "store",
+                                                 display: "show",
+                                                 owner: @store,
+                                                 type: "buy" } %>
+        </ul>
       </div>
     </div>
 
