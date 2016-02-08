@@ -35,9 +35,18 @@ FactoryGirl.define do
     name "armory"
   end
 
+  factory :item do
+    name
+    skill_set
+  end
+
   factory :store do
     name "Taylor Rules"
     location
     category
+  end
+
+  sequence :name do |n|
+    "Item #{n}"
   end
 end
