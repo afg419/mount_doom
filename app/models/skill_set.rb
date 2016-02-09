@@ -1,12 +1,12 @@
 class SkillSet < ActiveRecord::Base
   def attributes(display_price = 1)
     {
-     "strength" => strength,
-    "dexterity" => dexterity,
- "intelligence" => intelligence,
-        "speed" => speed,
-        "money" => display_price * money,
-       "health" => health
+     "strength" => strength.to_i,
+    "dexterity" => dexterity.to_i,
+ "intelligence" => intelligence.to_i,
+        "speed" => speed.to_i,
+        "money" => display_price * money.to_i,
+       "health" => health.to_i
      }
   end
 
