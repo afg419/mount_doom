@@ -30,7 +30,7 @@
         <br>
       </div>
 
-      <div  class="card avatar-show  col s6 profile-<%= current_avatar.id %> large">
+      <div  class="card avatar-show scrolling col s7 profile-<%= current_avatar.id %> large">
           <div >
             <span class="card-title  activator grey-text">Base Attributes</span>
             <div class="avatar-stats">
@@ -45,22 +45,23 @@
 
             <table class="inventory scrolling">
               <tr class="inventory-header">
-                <th>Name</th><th>Strength</th><th>Dexterity</th><th>Intelligence</th><th>Speed</th><th>Price</th><th>Health</th>
+                <th>Name</th><th>Str</th><th>Dex</th><th>Int</th><th>Spd</th><th>Price</th><th>Hp</th><th></th>
               </tr>
               <% current_character.items.of_category("blacksmith").each do |item| %>
                 </tr>
                 <td id="blacksmith-item-<%= item.id %>">
                   <%= item.name.capitalize %>
 
-                  <% if current_character.equipped_weapon == item %>
-                    <%= ("Equipped") %>
-                  <% else %>
-                    <%= link_to("Equip Weapon", character_path(type: "blacksmith", item: item.id), method: :patch)%>
-                  <% end %>
-
                   <% item.skill_set.attributes(-1).each do |skill, value| %>
                     <td class="center"><%= value %></td>
                   <% end %>
+                  <td>
+                    <% if current_character.equipped_weapon == item %>
+                    <%= ("Equipped") %>
+                    <% else %>
+                    <%= link_to("Equip Weapon", character_path(type: "blacksmith", item: item.id), method: :patch)%>
+                    <% end %>
+                  </td>
                 <tr>
               <% end %>
               <% current_character.items.of_category("armory").each do |item| %>
@@ -68,16 +69,17 @@
 
                 <td id="armory-item-<%= item.id %>">
                   <%= item.name.capitalize %>
-                  <% if current_character.equipped_armor == item %>
-                    <%= ("Equipped") %>
-                  <% else %>
-                    <%= link_to("Equip Armor", character_path(type: "armory", item: item.id), method: :patch)%>
-                  <% end %>
                 </td>
-
                   <% item.skill_set.attributes(-1).each do |skill, value| %>
                     <td class="center"><%= value %></td>
                   <% end %>
+                  <td>
+                    <% if current_character.equipped_armor == item %>
+                      <%= ("Equipped") %>
+                    <% else %>
+                      <%= link_to("Equip Armor", character_path(type: "armory", item: item.id), method: :patch)%>
+                    <% end %>
+                  </td>
                 <tr>
               <% end %>
               <% current_character.items.of_category("apothecary").each do |item| %>
