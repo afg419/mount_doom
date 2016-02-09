@@ -13,9 +13,8 @@ class Item < ActiveRecord::Base
     -1 * skill_set.money
   end
 
-
   def self.of_category(category_name)
-    all.select{ |item| item.category.name == category_name}
+    all.select{ |item| item.category.name == category_name if item.category}
     # joins(:category).where(category: {name: category_name})
   end
 
@@ -23,5 +22,4 @@ class Item < ActiveRecord::Base
     of_category(category_name).map{ |item| item.skill_set.non_zero_attributes }
     # of_category(category_name).map{ |item| item.non_zero_attributes }
   end
-
 end

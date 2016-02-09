@@ -26,6 +26,6 @@ class GameNavbarTest < ActionDispatch::IntegrationTest
     end
 
     assert page.has_content?("Legolas")
-    assert page.has_content?("$14")
+    assert page.has_content?("$10")
   end
 end

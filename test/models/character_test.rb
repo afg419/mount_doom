@@ -7,11 +7,12 @@ class CharacterTest < ActiveSupport::TestCase
   should have_many :items
 
   test "can compute total skills from items and avatar" do
-    create_character_with_many_items
+    character = create(:character)
+    create_character_with_many_items(character)
 
-    @character.equip_weapon(@sword)
-    @character.equip_armor(@armor)
-    current_skills = @character.current_skills
+    character.equip_weapon(@sword)
+    character.equip_armor(@armor)
+    current_skills = character.current_skills
 
     assert_equal 11, current_skills["strength"]
     assert_equal 10, current_skills["dexterity"]
@@ -22,10 +23,11 @@ class CharacterTest < ActiveSupport::TestCase
   end
 
   test "can compute total skills without equipped items" do
-    create_character_with_many_items
+    character = create(:character)
+    create_character_with_many_items(character)
 
-    @character.equip_weapon(@sword)
-    current_skills = @character.current_skills
+    character.equip_weapon(@sword)
+    current_skills = character.current_skills
 
     assert_equal 11, current_skills["strength"]
     assert_equal 10, current_skills["dexterity"]
