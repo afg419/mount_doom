@@ -14,7 +14,7 @@ class JourneyController < ApplicationController
   def create
     bree = Location.find_by(slug: "bree")
     current_user.character = Character.create(avatar_id: params[:avatar], location: bree)
-    add_start_items[current_character.avatar.name]
+    add_start_items
     session[:in_game] = true
     redirect_to journey_path(bree)
   end

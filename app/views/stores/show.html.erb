@@ -10,7 +10,7 @@
         <ul class="scrolling collection">
           <%= render partial: "items", locals: { holder: "player",
                                                  display: "show",
-                                                 owner: current_character,
+                                                 owner: @character_items,
                                                  type: "sell" } %>
         </ul>
       </div>
@@ -21,7 +21,7 @@
         <ul class="scrolling collection character_trades">
           <%= render partial: "items", locals: { holder: "player",
                                                  display: "hide",
-                                                 owner: current_character,
+                                                 owner: @character_items,
                                                  type: "sell" } %>
         </ul>
       </div>
@@ -36,7 +36,7 @@
         <ul class="scrolling collection store_trades">
           <%= render partial: "items", locals: { holder: "store",
                                                  display: "hide",
-                                                 owner: @store,
+                                                 owner: @store.items,
                                                  type: "buy" } %>
           </ul>
       </div>
@@ -47,7 +47,7 @@
         <ul class="scrolling collection store_inventory ">
           <%= render partial: "items", locals: { holder: "store",
                                                  display: "show",
-                                                 owner: @store,
+                                                 owner: @store.items,
                                                  type: "buy" } %>
         </ul>
       </div>
@@ -71,7 +71,8 @@
       Total Trade Amount
       <div class="total_value">0
       </div>
-    <button onclick="itemExchange( <%= @store.id %> )">Finalize Trade</button>
+    <!-- <button id="finalize-trade">Finalize Trade</button> -->
+    <button onclick="itemExchange( <%= @store.id %>, <%= current_character.id %> )">Finalize Trade</button>
     </div>
   </div>
 </div>

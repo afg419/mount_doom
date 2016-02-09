@@ -12,7 +12,7 @@ class SkillSet < ActiveRecord::Base
 
   def non_zero_attributes
     attributes.select do |k,v|
-      v != 0
+      v != 0 && k != "money"
     end
   end
 end

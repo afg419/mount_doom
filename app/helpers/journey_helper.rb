@@ -1,48 +1,51 @@
 module JourneyHelper
   def add_start_items
-    {
-      "Gandalf" => current_character.items = [
-        create_item("Staff", 0, 0, 0, 0, 0, 2),
-        create_item("Robe", 0, 0, 0, 0, 0, 2)
-      ],
-      "Aragorn" => current_character.items = [
-        create_item("Sword", 0, 0, 0, 0, 0, 2),
-        create_item("Dirty Shirt", 0, 0, 0, 0, 0, 2)
-      ],
-      "Gimli" => current_character.items = [
-        create_item("Axe", 0, 0, 0, 0, 0, 2),
-        create_item("Shirt", 0, 0, 0, 0, 0, 2)
-      ],
-      "Legolas" => current_character.items = [
-        create_item("Bow", 0, 0, 0, 0, 0, 2),
-        create_item("Elvish Shirt", 0, 0, 0, 0, 0, 2)
-      ],
-      "Boromir" => current_character.items = [
-        create_item("Sword", 0, 0, 0, 0, 0, 2),
-        create_item("Shirt", 0, 0, 0, 0, 0, 2)
-      ],
-      "Frodo" => current_character.items = [
-        create_item("Sword", 0, 0, 0, 0, 0, 2),
-        create_item("Shirt", 0, 0, 0, 0, 0, 2)
-      ],
-      "Sam" => current_character.items = [
-        create_item("Sword", 0, 0, 0, 0, 0, 2),
-        create_item("Shirt", 0, 0, 0, 0, 0, 2)
-      ],
-      "Merry" => current_character.items = [
-        create_item("Sword", 0, 0, 0, 0, 0, 2),
-        create_item("Shirt", 0, 0, 0, 0, 0, 2)
-      ],
-      "Pippen" => current_character.items = [
-        create_item("Sword", 0, 0, 0, 0, 0, 2),
-        create_item("Shirt", 0, 0, 0, 0, 0, 2)
-      ]
-    }
+    @armory, @inn, @apothecary, @blacksmith = Category.all
+    case current_character.avatar.name
+      when "Gandalf"
+        current_character.items = [ create_item("Staff", @blacksmith, 0, 1, 0, 0, 0, -2),
+                                    create_item("Robe", @armory, 0, 0, 0, 0, 0, -2)
+                                  ]
+      when "Aragorn"
+        current_character.items = [ create_item("Sword", @blacksmith, 1, 0, 0, 0, 0, -2),
+                                    create_item("Dirty Shirt", @armory, 0, 0, 0, -1, 0, -2)
+                                  ]
+      when "Gimli"
+        current_character.items = [ create_item("Axe", @blacksmith, 0, 0, 0, 0, -1, -2),
+                                    create_item("Rusty Chainmail", @armory, 1, 0, 0, 0, 0, -2)
+                                  ]
+      when "Legolas"
+        current_character.items = [ create_item("Bow", @blacksmith, 0, 0, 0, 0, -1, -2),
+                                    create_item("Elvish Shirt", @armory, 0, 1, 0, 0, 0, -2)
+                                  ]
+      when "Boromir"
+        current_character.items = [ create_item("Sword", @blacksmith, 1, 0, 0, 0, 0, -2),
+                                    create_item("Shirt", @armory, 0, 0, 0, -1, 0, -2)
+                                  ]
+      when "Frodo"
+        current_character.items = [ create_item("Hobbit Sword", @blacksmith, 0, 0, 0, 0, 1, -2),
+                                    create_item("Shirt", @armory, 0, 0, 0, -1, 0, -2)
+                                  ]
+      when "Sam"
+        current_character.items = [ create_item("Hobbit Sword", @blacksmith, 0, 0, 0, 0, 1, -2),
+                                    create_item("Shirt", @armory, 0, 0, 0, -1, 0, -2)
+                                  ]
+      when "Merry"
+        current_character.items = [ create_item("Hobbit Sword", @blacksmith, 0, 0, 0, 0, 1, -2),
+                                    create_item("Shirt", @armory, 0, 0, 0, -1, 0, -2)
+                                  ]
+      when "Pippen"
+        current_character.items = [ create_item("Hobbit Sword", @blacksmith, 0, 0, 0, 0, 1, -2),
+                                    create_item("Shirt", @armory, 0, 0, 0, -1, 0, -2)
+                                  ]
+    end
   end
-  def create_item(name, strength, intelligence, dexterity, health, speed, money)
+
+  def create_item(name, category, strength, intelligence, dexterity, health, speed, money)
     s = SkillSet.create(strength: strength, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
-    Item.create(name: name, skill_set: s)
+    Item.create(name: name, skill_set: s, category: category)
   end
+
 end
