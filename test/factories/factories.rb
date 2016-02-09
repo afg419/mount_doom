@@ -44,7 +44,7 @@
   factory :store do
     name "Taylor Rules"
     location
-    category 
+    category
   end
 
   sequence :name do |n|

@@ -1,4 +1,4 @@
-<a href="<%#= store_path(@location.blacksmith) %>">
+<a href="<%= store_path(@location, @location.blacksmith) %>">
   <img class="responsive-img" src="<%= image_url('images/blacksmith.png') %>"
                               onmouseover	="this.src='<%= image_url('images/blacksmith_hover.png') %>'"
                               onmouseout	="this.src='<%= image_url('images/blacksmith.png') %>'"></a>
