@@ -63,40 +63,40 @@ class Seed
 
   def self.create_store_items
     @bree_blacksmith.items = [
-      create_item("Dagger", @blacksmith, 1, 0, 0, 0, 0, 2),
-      create_item("Elvish Sword", @blacksmith, 3, 0, 0, 0, 0, 30),
-      create_item("Short Sword", @blacksmith, 1, 0, 0, 0, 1, 10),
-      create_item("Heavy Axe", @blacksmith, 2, 0, 0, 0, -1, 15),
-      create_item("Dwarves Axe", @blacksmith, 2, 0, 0, 0, 0, 23),
-      create_item("Long Sword", @blacksmith, 2, 0, 0, 0, -1, 20),
-      create_item("Long Bow", @blacksmith, 0, 0, 1, 0, 0, 10),
-      create_item("Elvish Bow", @blacksmith, 0, 0, 3, 0, 0, 40),
-      create_item("Recurve Bow", @blacksmith, 0, 0, 2, 0, 0, 30),
-      create_item("Red Oak Staff", @blacksmith, 0, 2, 0, 0, 0, 20),
-      create_item("Sapphire Stone Staff", @blacksmith, 0, 3, 0, 0, 0, 40),
+      create_item("Dagger", @blacksmith, 1, 0, 0, 0, 0, -2),
+      create_item("Elvish Sword", @blacksmith, 3, 0, 0, 0, 0, -30),
+      create_item("Short Sword", @blacksmith, 1, 0, 0, 0, 1, -10),
+      create_item("Heavy Axe", @blacksmith, 2, 0, 0, 0, -1, -15),
+      create_item("Dwarves Axe", @blacksmith, 2, 0, 0, 0, 0, -23),
+      create_item("Long Sword", @blacksmith, 2, 0, 0, 0, -1, -20),
+      create_item("Long Bow", @blacksmith, 0, 0, 1, 0, 0, -10),
+      create_item("Elvish Bow", @blacksmith, 0, 0, 3, 0, 0, -40),
+      create_item("Recurve Bow", @blacksmith, 0, 0, 2, 0, 0, -30),
+      create_item("Red Oak Staff", @blacksmith, 0, 2, 0, 0, 0, -20),
+      create_item("Sapphire Stone Staff", @blacksmith, 0, 3, 0, 0, 0, -40),
     ]
     @bree_inn.items = [
-      create_item("Water", @inn,  0, 0, 0, 0, 0, 2),
-      create_item("Bread", @inn, 0, 0, 0, 0, 0, 2),
-      create_item("Apple", @inn, 0, 0, 0, 0, 0, 3),
-      create_item("Cheese", @inn, 0, 0, 0, 0, 0, 5),
-      create_item("Milk", @inn, 0, 0, 0, 0, 0, 3),
-      create_item("Sausage", @inn, 0, 0, 0, 0, 0, 3),
-      create_item("Dried Beans", @inn, 0, 0, 0, 0, 0, 3),
-      create_item("Salted Beef", @inn, 0, 0, 0, 0, 0, 5),
+      create_item("Water", @inn,  0, 0, 0, 0, 0, -2),
+      create_item("Bread", @inn, 0, 0, 0, 0, 0, -2),
+      create_item("Apple", @inn, 0, 0, 0, 0, 0, -3),
+      create_item("Cheese", @inn, 0, 0, 0, 0, 0, -5),
+      create_item("Milk", @inn, 0, 0, 0, 0, 0, -3),
+      create_item("Sausage", @inn, 0, 0, 0, 0, 0, -3),
+      create_item("Dried Beans", @inn, 0, 0, 0, 0, 0, -3),
+      create_item("Salted Beef", @inn, 0, 0, 0, 0, 0, -5),
     ]
     @bree_apothecary.items = [
-      create_item("Health Potion", @apothecary, 0, 0, 0, 0, 0, 2),
-      create_item("Antidote", @apothecary, 0, 0, 0, 0, 0, 2),
-      create_item("Splint", @apothecary, 0, 0, 0, 0, 0, 3), #broken stuff
-      create_item("Bandage", @apothecary, 0, 0, 0, 0, 0, 5), #cut
-      create_item("Ginger Root", @apothecary, 0, 0, 0, 0, 0, 3), #heals from being sick
-      create_item("Comfrey", @apothecary, 0, 0, 0, 0, 0, 3), #heals cuts
-      create_item("Osha", @apothecary, 0, 0, 0, 0, 0, 1) #helps from being sick
+      create_item("Health Potion", @apothecary, 0, 0, 0, 0, 0, -2),
+      create_item("Antidote", @apothecary, 0, 0, 0, 0, 0, -2),
+      create_item("Splint", @apothecary, 0, 0, 0, 0, 0, -3), #broken stuff
+      create_item("Bandage", @apothecary, 0, 0, 0, 0, 0, -5), #cut
+      create_item("Ginger Root", @apothecary, 0, 0, 0, 0, 0, -3), #heals from being sick
+      create_item("Comfrey", @apothecary, 0, 0, 0, 0, 0, -3), #heals cuts
+      create_item("Osha", @apothecary, 0, 0, 0, 0, 0, -1) #helps from being sick
     ]
     @bree_armory.items = [
-      create_item("Light Armor", @armory, 1, 0, 0, 0, 1, 2),
-      create_item("Heavy Armor", @armory, 3, 0, 0, 0, -1, 2)
+      create_item("Light Armor", @armory, 1, 0, 0, 0, 1, -2),
+      create_item("Heavy Armor", @armory, 3, 0, 0, 0, -1, -2)
     ]
   end
 end
