@@ -13,11 +13,4 @@ class CategoryTest < ActiveSupport::TestCase
 
     assert category.invalid?
   end
-
-  test "an category type category can not be created without a unique name" do
-    Category.create(name: "Lard")
-    category2 = Category.new(name: "Lard")
-
-    assert category2.invalid?
-  end
 end

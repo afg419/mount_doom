@@ -57,7 +57,7 @@ function findBoughtTotal(){
 }
 
 function updateTotal(){
-  total = parseInt($('.sold_value').text()) - parseInt($('.bought_value').text())
+  total =  parseInt($('.sold_value').text()) - parseInt($('.bought_value').text())
   $( ".total_value" ).text( total );
 }
 

@@ -7,6 +7,7 @@ class TradesController < ApplicationController
 
     store.save
     current_character.save
+    
     redirect_to current_character
   end
 end

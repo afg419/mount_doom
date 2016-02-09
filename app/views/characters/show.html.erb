@@ -66,12 +66,12 @@
               <tr class="inventory-header">
                 <th>Name</th><th>Strength</th><th>Dexterity</th><th>Intelligence</th><th>Speed</th><th>Price</th><th>Health</th>
               </tr>
-              <% current_character.items.each do |item| %>
+              <% current_character.incidents.each do |incident| %>
                 </tr>
                   <td>
-                    <%= item.name %>
+                    <%= incident.name %>
                   </td>
-                  <% item.skill_set.attributes.each do |skill, value| %>
+                  <% incident.skill_set.attributes.each do |skill, value| %>
                     <td class="center"> <%= value %></td>
                   <% end %>
                 <tr>
