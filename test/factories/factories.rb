@@ -1,4 +1,4 @@
-FactoryGirl.define do
+ FactoryGirl.define do
   factory :user do
     username "Taylor"
     password "password"
@@ -38,12 +38,13 @@ FactoryGirl.define do
   factory :item do
     name
     skill_set
+    category
   end
 
   factory :store do
     name "Taylor Rules"
     location
-    category
+    category 
   end
 
   sequence :name do |n|
