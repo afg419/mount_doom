@@ -24,7 +24,7 @@ class ActiveSupport::TestCase
     apothecary = Category.create(name: "apothecary")
     inn = Category.create(name: "inn")
 
-    weapon_ss = SkillSet.create(strength: 1)
+    weapon_ss = SkillSet.create(strength: 1, money: -2)
     armor_ss = SkillSet.create(speed: -1)
     apothecary_ss = SkillSet.create(health: 1)
     inn_ss = SkillSet.create(intelligence: 1)

@@ -38,11 +38,15 @@ class Character < ActiveRecord::Base
   end
 
   def bank
-    current_skills["money"]
+    items.reduce(avatar.skill_set.money.to_i) do |acc, item|
+      acc + item.skill_set.money.to_i
+    end
   end
 
   def hp
-    current_skills["health"]
+    items.reduce(avatar.skill_set.health.to_i) do |acc, item|
+      acc + item.skill_set.health.to_i
+    end
   end
 
   def equip_armor(item)

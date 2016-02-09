@@ -6,17 +6,6 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
     create_character_with_many_items(@character)
     ApplicationController.any_instance.stubs(:in_game).returns(true)
 
-    # item_skill_set = SkillSet.create(strength: 1,
-    #                                 dexterity: 2,
-    #                              intelligence: 3,
-    #                                    health: 4,
-    #                                     money: -3,
-    #                                     speed: 6)
-    #
-    # item1 = Item.create(name: "dagger", skill_set: item_skill_set)
-    # item2 = Item.create(name: "bowling ball", skill_set: item_skill_set)
-    # @character.items << [item1, item2]
-
     @character.equip_weapon(@sword)
     @character.equip_armor(@armor)
 
@@ -28,7 +17,7 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
       assert page.has_content?("Intelligence: 11")
       assert page.has_content?("Speed: 9")
 
-      assert page.has_content?("Money: $10")
+      assert page.has_content?("Money: $6")
       assert page.has_content?("Health: 13")
       assert page.has_content?("Location: Bree")
     end
@@ -52,9 +41,4 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
       assert page.has_content?("Food1")
     end
   end
-
-  test "character show page allows equipping" do
-
-  end
-
 end
