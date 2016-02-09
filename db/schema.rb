@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207213352) do
+ActiveRecord::Schema.define(version: 20160208064133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20160207213352) do
   add_index "characters", ["avatar_id"], name: "index_characters_on_avatar_id", using: :btree
   add_index "characters", ["location_id"], name: "index_characters_on_location_id", using: :btree
   add_index "characters", ["user_id"], name: "index_characters_on_user_id", using: :btree
+
+  create_table "incidents", force: :cascade do |t|
+    t.integer  "skill_set_id"
+    t.integer  "character_id"
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "incidents", ["character_id"], name: "index_incidents_on_character_id", using: :btree
+  add_index "incidents", ["skill_set_id"], name: "index_incidents_on_skill_set_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -109,6 +120,8 @@ ActiveRecord::Schema.define(version: 20160207213352) do
   add_foreign_key "characters", "avatars"
   add_foreign_key "characters", "locations"
   add_foreign_key "characters", "users"
+  add_foreign_key "incidents", "characters"
+  add_foreign_key "incidents", "skill_sets"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "skill_sets"
   add_foreign_key "stores", "categories"
