@@ -15,10 +15,10 @@ class Location < ActiveRecord::Base
   end
 
   def blacksmith
-    @blacksmith ||= stores.stores.find{|store| store.category.name == "blacksmith"}
+    @blacksmith ||= stores.find{|store| store.category.name == "blacksmith"}
   end
 
   def apothecary
-    @apothecary ||= stores.stores.find{|store| store.category.name == "apothecary"}
+    @apothecary ||= stores.find{|store| store.category.name == "apothecary"}
   end
 end
