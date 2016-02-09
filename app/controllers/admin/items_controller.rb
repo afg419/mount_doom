@@ -26,9 +26,9 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
-  def show
-    @item = Item.find_by(slug: params[:id])
-  end
+  # def show
+  #   @item = Item.find_by(slug: params[:id])
+  # end
 
   def edit
     @item = Item.find(params[:id])

@@ -2,7 +2,7 @@
   <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
   <span class="title"><%= item.name  %></span>
   <p>Price: <span class="price" ><%= item.price %></span> <br>
-     <% item.skill_set.non_zero_attributes.each do |attribute, value| %>
+     <% item.skill_set.attributes.each do |attribute, value| %>
      <%= attribute %>: <%= value %>
      <% end %>
   </p>

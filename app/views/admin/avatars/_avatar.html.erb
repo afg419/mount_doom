@@ -1,11 +1,12 @@
-<li id="item-<%= avatar.id %>">
-  <img src="<%= image_url avatar.id %>" alt="" class="circle">
+<li id="avatar-<%= avatar.id %>">
+  <img src="<%= image_url avatar.image_url %>" alt="" class="circle">
   <span class="title"><%= avatar.name  %></span>
-  <p>Price: <span class="price" ><%= avatar.price %></span> <br>
-     <% avatar.skill_set.non_zero_attributes.each do |attribute, value| %>
+  <p>
+    <%=  %>
+     <% avatar.skill_set.attributes.each do |attribute, value| %>
      <%= attribute %>: <%= value %>
      <% end %>
   </p>
   <%= button_to "Edit", edit_admin_avatar_path(avatar), method: :get %>
-  <%= button_to "Delete", admin_avatar_path(avatar), method: :delete %>
+  <%= button_to "Retire", admin_avatar_path(avatar), method: :delete %>
 </li>

@@ -1,0 +1,21 @@
+<h4>Add New Avatar</h4>
+
+<%= form_for @avatar, url: admin_avatars_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name%>
+  <%= f.label :money %>
+  <%= f.number_field :money %>
+  <%= f.label :dexterity %>
+  <%= f.number_field :dexterity %>
+  <%= f.label :intelligence %>
+  <%= f.number_field :intelligence %>
+  <%= f.label :strength %>
+  <%= f.number_field :strength %>
+  <%= f.label :health %>
+  <%= f.number_field :health %>
+  <%= f.label :speed %>
+  <%= f.number_field :speed %>
+  <%#= f.label :image %>
+  <%#= f.file_field :image%><br><br>
+  <%= f.submit "Create Avatar", class: "btn" %>
+<% end %>
