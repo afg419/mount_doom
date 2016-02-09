@@ -9,8 +9,6 @@ class Character < ActiveRecord::Base
 
   def current_skills
     avatar_attributes = [avatar.skill_set.attributes]
-
-
     apothecary_attributes = items.category_attributes("apothecary")
     inn_item_attributes = items.category_attributes("inn")
 
