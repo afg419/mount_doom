@@ -1,4 +1,7 @@
 class Character < ActiveRecord::Base
+  extend Forwardable
+  def_delegator :skill_set, :attributes
+
   belongs_to :avatar
   belongs_to :user
   belongs_to :location
@@ -8,10 +11,10 @@ class Character < ActiveRecord::Base
   belongs_to :equipped_weapon, :class_name => "Item"
 
   def current_skills
-    avatar_attributes = [avatar.attributes]
+    avatar_attributes = [avatar.skill_set.attributes]
 
-    weapon_attributes = [equipped_weapon.attributes]
-    armor_attributes = [equipped_armor.attributes]
+    weapon_attributes = [equipped_weapon.skill_set.attributes]
+    armor_attributes = [equipped_armor.skill_set.attributes]
 
     apothecary_attributes = items.category_attributes("apothecary")
     inn_item_attributes = items.category_attributes("inn")
@@ -34,11 +37,13 @@ class Character < ActiveRecord::Base
   end
 
   def equip_armor(item)
-    equipped_armor = item
+    self.equipped_armor = item
+    self.save
   end
 
   def equip_weapon(item)
-    equipped_weapon = item
+    self.equipped_weapon = item
+    self.save
   end
 
 private
@@ -55,7 +60,7 @@ private
 
     attribute_array.reduce(total_skills) do |acc, skill_set|
       total_skills.keys.each do |attribute|
-        acc[attribute] += skill_set[attribute]
+        acc[attribute] += skill_set[attribute].to_i
       end
       acc
     end
