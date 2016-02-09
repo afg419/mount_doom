@@ -51,7 +51,7 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
     @character.equip_armor(@armor)
 
     visit character_path(@character)
-
+    
     within("#blacksmith-item-#{@sword.id}") do
       assert page.has_content?("Equipped")
     end
