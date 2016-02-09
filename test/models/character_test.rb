@@ -7,26 +7,33 @@ class CharacterTest < ActiveSupport::TestCase
   should have_many :items
 
   test "can compute total skills from items and avatar" do
-    char = create(:character)
-    avatar_skill_set = char.avatar.skill_set
+    character = create(:character)
+    create_character_with_many_items(character)
 
-    item_skill_set = SkillSet.create(strength: 1,
-                                    dexterity: 2,
-                                 intelligence: 3,
-                                       health: 4,
-                                        money: 0,
-                                        speed: 6)
+    character.equip_weapon(@sword)
+    character.equip_armor(@armor)
+    current_skills = character.current_skills
 
-    item1 = Item.create(name: "dagger", skill_set: item_skill_set)
-    item2 = Item.create(name: "bowling ball", skill_set: item_skill_set)
-    char.items << [item1, item2]
+    assert_equal 11, current_skills["strength"]
+    assert_equal 10, current_skills["dexterity"]
+    assert_equal 11, current_skills["intelligence"]
+    assert_equal 13, character.hp
+    assert_equal 6, character.bank
+    assert_equal 9, current_skills["speed"]
+  end
 
-    current_skills = char.current_skills
-    assert_equal 12, current_skills["strength"]
-    assert_equal 14, current_skills["dexterity"]
-    assert_equal 16, current_skills["intelligence"]
-    assert_equal 18, current_skills["health"]
-    assert_equal 10, current_skills["money"]
-    assert_equal 22, current_skills["speed"]
+  test "can compute total skills without equipped items" do
+    character = create(:character)
+    create_character_with_many_items(character)
+
+    character.equip_weapon(@sword)
+    current_skills = character.current_skills
+
+    assert_equal 11, current_skills["strength"]
+    assert_equal 10, current_skills["dexterity"]
+    assert_equal 11, current_skills["intelligence"]
+    assert_equal 13, character.hp
+    assert_equal 6, character.bank
+    assert_equal 10, current_skills["speed"]
   end
 end
