@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # post "twilio/voice" => "twilio#voice"
   root to: "pages#home"
 
-  resources :characters, only: [:new, :show]
+  resources :characters, only: [:new, :show, :update]
 
   post "/new_game", to: 'journey#create'
   delete "/end_game", to: 'journey#destroy'
