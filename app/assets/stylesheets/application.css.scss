@@ -223,15 +223,20 @@ main {
 
 .collection .collection-item {
   border-bottom: none;
+  display: block;
+  box-sizing: initial;
 }
 .title {
   font-size: 110% !important;
   font-weight: bold !important;
 }
 
-.collection .collection-item.avatar {
-  // position: inherit;
+.collection .collection-item.avatar .secondary-content {
+    top: 9px;
+    right: 2px;
+    position: absolute;
 }
+
 
 // .town_table{
 //   max-width: 800px !important;
