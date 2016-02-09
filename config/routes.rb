@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :edit, :update]
 
   namespace :admin do
-    resources :items, only: [:index] #, :show, :create, :new, :update, :edit, :destroy]
+    resources :items, only: [:index, :show, :create, :new, :update, :edit, :destroy]
     resources :dashboard, only: [:index]
     # resources :orders, only: [:index, :update]
   end

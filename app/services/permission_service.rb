@@ -26,6 +26,7 @@ private
 
   def platform_admin_permissions
     return [:ok, true] if controller == "admin/dashboard"
+    return [:ok, true] if controller == "admin/items"
     return [:ok, true] if controller == "sessions"
     return [:ok, true] if controller == "pages"
     [:login_path, false, "Not Accessible As Admin"]

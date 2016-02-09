@@ -3,11 +3,13 @@
 <div class="container">
   <div class="row">
     <div class="col m4">
-      <%= button_to admin_stores_index %>
       Edit Stores
     </div>
     <div class="col m4">
-      Edit Items
+      <%= button_to "Add New Item", new_admin_item_path, method: :get %>
+    </div>
+    <div class="col m4">
+      <%= button_to "Edit Items", admin_items_path, method: :get %>
     </div>
     <div class="col m4">
       Edit Avatars

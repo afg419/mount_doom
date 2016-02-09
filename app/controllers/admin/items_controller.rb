@@ -8,10 +8,13 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def create
+    @skill_set = SkillSet.create(skill_set_params)
     @item = Item.new(item_params)
     if @item.save
+      @item.skill_set = @skill_set
+      @item.save
       flash[:notice] = "Successfully created Item"
-      redirect_to admin_items_path
+      redirect_to admin_dashboard_index_path
     else
       flash.now[:error] = "A item must have a name"
       render :new
@@ -28,6 +31,7 @@ class Admin::ItemsController < Admin::BaseController
 
   def update
     @item = Item.find(params[:id])
+    @item.skill_set.update(skill_set_params)
     if @item.update(item_params)
       flash[:notice] = "Successfully Edited Item"
       redirect_to admin_items_path
@@ -45,6 +49,10 @@ class Admin::ItemsController < Admin::BaseController
 
   private
     def item_params
-      params.require(:item).permit(:name, :price, :description, :category_id, :image)
+      params.require(:item).permit(:name, :category_id)
+    end
+
+    def skill_set_params
+      params.require(:item).permit(:strength, :dexterity, :intelligence, :health, :speed, :money )
     end
 end
