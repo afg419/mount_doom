@@ -4,15 +4,25 @@ class Character < ActiveRecord::Base
   belongs_to :location
   has_many :items, :as => :itemable
   has_many :incidents
-  validates :equipped?, uniqueness: true, if: :equipped?
   belongs_to :equipped_armor, :class_name => "Item"
   belongs_to :equipped_weapon, :class_name => "Item"
 
   def current_skills
-    avatar_attributes = avatar.skill_set.attributes
-    item_attributes = items.map{ |item| item.skill_set.attributes }
-    character_attribute_array = item_attributes << avatar_attributes
-    sum_skills(character_attribute_array)
+    avatar_attributes = [avatar.attributes]
+
+    weapon_attributes = [equipped_weapon.attributes]
+    armor_attributes = [equipped_armor.attributes]
+
+    apothecary_attributes = items.category_attributes("apothecary")
+    inn_item_attributes = items.category_attributes("inn")
+
+    character_attributes = avatar_attributes +
+                           weapon_attributes +
+                           armor_attributes +
+                           apothecary_attributes +
+                           inn_item_attributes
+
+    sum_skills(character_attributes)
   end
 
   def bank
