@@ -12,13 +12,16 @@ class Location < ActiveRecord::Base
 
   def inn
     @inn ||= stores.find{|store| store.category.name == "inn"}
+    @inn ||= "#"
   end
 
   def blacksmith
     @blacksmith ||= stores.find{|store| store.category.name == "blacksmith"}
+    @blacksmith ||= "#"
   end
 
   def apothecary
     @apothecary ||= stores.find{|store| store.category.name == "apothecary"}
+    @apothecary ||= "#"
   end
 end
