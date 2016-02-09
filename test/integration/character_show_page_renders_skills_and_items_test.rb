@@ -41,4 +41,32 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
       assert page.has_content?("Food1")
     end
   end
+
+  test "player can equip and unequip items in character show page" do
+    create_start_of_game
+    create_character_with_many_items(@character)
+    ApplicationController.any_instance.stubs(:in_game).returns(true)
+
+    @character.equip_weapon(@sword)
+    @character.equip_armor(@armor)
+
+    visit character_path(@character)
+
+    within("#blacksmith-item-#{@sword.id}") do
+      assert page.has_content?("Equipped")
+    end
+
+    within("#blacksmith-item-#{@sword2.id}") do
+      refute page.has_content?("Equipped")
+      click_link "Equip Weapon"
+    end
+
+    within("#blacksmith-item-#{@sword2.id}") do
+      assert page.has_content?("Equipped")
+    end
+
+    within("#blacksmith-item-#{@sword.id}") do
+      refute page.has_content?("Equipped")
+    end
+  end
 end

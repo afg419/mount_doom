@@ -30,7 +30,7 @@ class ActiveSupport::TestCase
     inn_ss = SkillSet.create(intelligence: 1)
 
     @sword = character.items.create(name: "sword1", category: blacksmith, skill_set: weapon_ss)
-    character.items.create(name: "sword2", category: blacksmith, skill_set: weapon_ss )
+    @sword2 = character.items.create(name: "sword2", category: blacksmith, skill_set: weapon_ss )
     @armor = character.items.create(name: "armor1", category: armory, skill_set: armor_ss )
     character.items.create(name: "salve1", category: apothecary, skill_set: apothecary_ss )
     character.items.create(name: "salve2", category: apothecary, skill_set: apothecary_ss )
