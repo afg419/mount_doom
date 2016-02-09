@@ -2,6 +2,7 @@ class PermissionService
   extend Forwardable
 
   attr_reader :user, :controller, :action, :in_game
+  def_delegators :user, :platform_admin?
 
   def initialize(user)
     @user = user
@@ -13,14 +14,25 @@ class PermissionService
     @action = action
 
     case
-    when user && in_game then logged_in_in_game_permissions
-    when user && !in_game then logged_in_no_game_permissions
+    when user && platform_admin?        then platform_admin_permissions
+    when user && in_game        then logged_in_in_game_permissions
+    when user && !in_game       then logged_in_no_game_permissions
     else
       logged_out_no_game_permissions
     end
   end
 
 private
+
+  def platform_admin_permissions
+    return [:ok, true] if controller == "admin/dashboard"
+    return [:ok, true] if controller == "admin/items"
+    return [:ok, true] if controller == "admin/avatars"
+    return [:ok, true] if controller == "admin/stores"
+    return [:ok, true] if controller == "sessions"
+    return [:ok, true] if controller == "pages"
+    [:login_path, false, "Not Accessible As Admin"]
+  end
 
   def logged_out_no_game_permissions
     return [:ok, true] if controller == "sessions" && action.in?(%w{ new create })

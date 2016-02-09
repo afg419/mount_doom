@@ -85,15 +85,17 @@ class ActionDispatch::IntegrationTest
     User.create(username: name, password: password, role: 0)
   end
 
-  def create_admin
-    User.create(username: "admin", password: "password", role: 1)
-  end
 
   def create_cart_for_visitor
     visit items_path
     within("#slotaitems") do
       click_button "Add to Cart"
     end
+  end
+
+  def create_admin
+    @user = create(:user, username: "admin", role: 1)
+    ApplicationController.any_instance.stubs(:current_user).returns(@user)
   end
 
   def create_start_of_game
