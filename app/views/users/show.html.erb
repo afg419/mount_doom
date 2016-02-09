@@ -8,17 +8,24 @@ Dashboard for <%= current_user.username.capitalize %>
         <div class="card-image">
           <img src="<%= image_url(current_avatar.image_url)%>">
         </div>
-        <div class="card-content">
+        <div class="card-content center">
           <span class="card-title activator grey-text text-darken-4"><%=current_avatar.name%></span>
           <p>
-            Bank: <%= current_avatar.skill_set.money %>
+            Bank: <%= current_character.bank %>
           </p>
           <p>
-            Health: <%= current_avatar.skill_set.health %>
+            Health: <%= current_character.hp %>
           </p>
           <p>
-            Location: <%= "Bree" %>
+            Location: <%= current_character.location.name %>
           </p>
+          <p>
+            Item Count: <%= current_character.items.count %>
+          </p>
+          <p>
+            Injury Count: <%= current_character.incidents.count %>
+          </p>
+
         </div>
     </div>
   <% end %>
