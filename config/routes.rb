@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items, only: [:index, :show, :create, :new, :update, :edit, :destroy]
+    resources :avatars, only: [:index, :show, :create, :new, :update, :edit, :destroy]
     resources :dashboard, only: [:index]
     # resources :orders, only: [:index, :update]
   end

@@ -8,15 +8,20 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def create
-    @skill_set = SkillSet.create(skill_set_params)
-    @item = Item.new(item_params)
-    if @item.save
-      @item.skill_set = @skill_set
-      @item.save
-      flash[:notice] = "Successfully created Item"
-      redirect_to admin_dashboard_index_path
+    @skill_set = SkillSet.new(skill_set_params)
+    if @skill_set.save
+      @item = Item.new(item_params)
+      if @item.save
+        @item.skill_set = @skill_set
+        @item.save
+        flash[:notice] = "Successfully created Item"
+        redirect_to admin_dashboard_index_path
+      else
+        flash.now[:error] = "A item must have a name"
+        render :new
+      end
     else
-      flash.now[:error] = "A item must have a name"
+      flash.now[:error] = "Your attributes are off"
       render :new
     end
   end
@@ -31,12 +36,16 @@ class Admin::ItemsController < Admin::BaseController
 
   def update
     @item = Item.find(params[:id])
-    @item.skill_set.update(skill_set_params)
-    if @item.update(item_params)
-      flash[:notice] = "Successfully Edited Item"
-      redirect_to admin_items_path
+    if @item.skill_set.update(skill_set_params)
+      if @item.update(item_params)
+        flash[:notice] = "Successfully Edited Item"
+        redirect_to admin_items_path
+      else
+        flash.now[:error] = "A item must have a name"
+        render :edit
+      end
     else
-      flash.now[:error] = "A item must have a name"
+      flash.now[:error] = "Your attributes are off"
       render :edit
     end
   end
