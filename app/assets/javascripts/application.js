@@ -61,14 +61,13 @@ function updateTotal(){
   $( ".total_value" ).text( total );
 }
 
-function itemExchange(id){
+function itemExchange(id, char_id){
   var sold_items = $("ul.character_trades").find(".show")
   var bought_items = $("ul.store_trades").find(".show")
 
   item_classes = [[],[]]
 
   $.each(sold_items, function(index, sold_item){
-    console.log(this)
       item_classes[0].push(this.className)
   })
   $.each(bought_items, function(index, sold_item){
@@ -76,9 +75,11 @@ function itemExchange(id){
   })
   total = parseInt($('.total_value').text())
   data = {"classes": item_classes, "total": total, "store_id": id}
-  $.post("/trades", data)
-}
 
+  $.post("/trades", data).success(function(){
+     $(location).attr('href', '/characters/' + char_id);
+   })
+}
 
 function chooseCharacter(){
   var $avatars = $('.avatar');

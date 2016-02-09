@@ -39,10 +39,9 @@ class TradesControllerTest < ActionController::TestCase
             }
 
     post(:create, params)
-    assert_redirected_to character_path(@character)
 
-    @store.reload
     @character.reload
+    @store.reload
 
     assert_equal ["dagger", "bowling ball"], @store.items.map{|item| item.name}
     assert_equal ["basket"], @character.items.map{|item| item.name}
