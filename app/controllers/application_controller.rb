@@ -6,11 +6,22 @@ class ApplicationController < ActionController::Base
 
   helper_method :categories, :current_user, :current_admin?, :return_category_names,
                 :set_background, :in_game, :current_character, :current_avatar,
-                :user_logged_in?
+                :user_logged_in?, :render_item_name_or_button_to_equip
 
 
   def current_permission
     @current_permission ||= PermissionService.new(current_user)
+  end
+
+  def render_item_name_or_button_to_equip(item)
+    display = item.category.name
+
+    case item.category.name
+    when "blacksmith" then "link_to('Equip weapon: ' + display, root_path)"
+    when "armory" then "link_to('Equip armor: ' + display, root_path)"
+    else
+      display
+    end
   end
 
   def authorize!

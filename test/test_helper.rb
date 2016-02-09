@@ -18,6 +18,27 @@ class ActiveSupport::TestCase
     ApplicationController.any_instance.stubs(:current_user).returns(@user)
   end
 
+  def create_character_with_many_items(character)
+    blacksmith = Category.create(name: "blacksmith")
+    armory = Category.create(name: "armory")
+    apothecary = Category.create(name: "apothecary")
+    inn = Category.create(name: "inn")
+
+    weapon_ss = SkillSet.create(strength: 1, money: -2)
+    armor_ss = SkillSet.create(speed: -1)
+    apothecary_ss = SkillSet.create(health: 1)
+    inn_ss = SkillSet.create(intelligence: 1)
+
+    @sword = character.items.create(name: "sword1", category: blacksmith, skill_set: weapon_ss)
+    @sword2 = character.items.create(name: "sword2", category: blacksmith, skill_set: weapon_ss )
+    @armor = character.items.create(name: "armor1", category: armory, skill_set: armor_ss )
+    character.items.create(name: "salve1", category: apothecary, skill_set: apothecary_ss )
+    character.items.create(name: "salve2", category: apothecary, skill_set: apothecary_ss )
+    character.items.create(name: "salve3", category: apothecary, skill_set: apothecary_ss )
+    character.items.create(name: "food1", category: inn, skill_set: inn_ss )
+  end
+
+
   def create_user
     User.create(username: "John", password: "Password", role: 0)
   end

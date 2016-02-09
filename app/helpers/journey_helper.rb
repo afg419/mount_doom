@@ -45,7 +45,7 @@ module JourneyHelper
     s = SkillSet.create(strength: strength, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
-    Item.create(name: name, skill_set: s, category: category)
+    Item.find_or_create_by(name: name, skill_set: s, category: category)
   end
 
 end

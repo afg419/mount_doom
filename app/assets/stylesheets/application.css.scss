@@ -53,6 +53,26 @@ body {
   background-position: center center;
 }
 
+.application-body-blacksmith{
+  background-image: url('blacksmith.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.application-body-apothecary{
+  background-image: url('apothecary.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+.application-body-inn{
+  background-image: url('inn.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
 .application-body-start{
   background-image: url('start.jpg');
   background-size:     cover;
@@ -289,4 +309,8 @@ main {
 
 .inventory-header{
   border-bottom: 2px solid white;
+}
+
+.inventory{
+  display: block;
 }
