@@ -9,4 +9,8 @@ class Item < ActiveRecord::Base
   def price
     -1 * skill_set.money
   end
+
+  def self.of_category(category_name)
+    joins(:categories).where(category: {name: category_name})
+  end
 end

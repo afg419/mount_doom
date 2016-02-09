@@ -44,4 +44,8 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
     end
   end
 
+  test "character show page allows equipping" do
+
+  end
+
 end

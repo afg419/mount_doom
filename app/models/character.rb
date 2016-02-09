@@ -4,6 +4,9 @@ class Character < ActiveRecord::Base
   belongs_to :location
   has_many :items, :as => :itemable
   has_many :incidents
+  validates :equipped?, uniqueness: true, if: :equipped?
+  belongs_to :equipped_armor, :class_name => "Item"
+  belongs_to :equipped_weapon, :class_name => "Item"
 
   def current_skills
     avatar_attributes = avatar.skill_set.attributes
@@ -18,6 +21,14 @@ class Character < ActiveRecord::Base
 
   def hp
     current_skills["health"]
+  end
+
+  def equip_armor(item)
+    equipped_armor = item
+  end
+
+  def equip_weapon(item)
+    equipped_weapon = item
   end
 
 private
