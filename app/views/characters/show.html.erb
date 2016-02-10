@@ -45,7 +45,7 @@
 
             <table class="inventory scrolling">
               <tr class="inventory-header">
-                <th>Name</th><th>Str</th><th>Dex</th><th>Int</th><th>Spd</th><th>Price</th><th>Hp</th><th></th>
+                <th>Name</th><th>Str</th><th>Dex</th><th>Def</th><th>Int</th><th>Spd</th><th>Price</th><th>Hp</th><th></th>
               </tr>
               <% current_character.items.of_category("blacksmith").each do |item| %>
                 <tr id="blacksmith-item-<%= item.id %>">

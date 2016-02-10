@@ -91,7 +91,7 @@ class RouletteService
   end
 
 
-  def create_item(name, category, labell, strength, intelligence, dexterity, health, speed, money)
+  def create_item(name, category, label, strength, intelligence, dexterity, health, speed, money)
     s = SkillSet.new(strength: strength, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
@@ -99,11 +99,11 @@ class RouletteService
   end
 
 
-  def create_wound(name, category, labell, strength, intelligence, dexterity, health, speed, money)
+  def create_wound(name, category, label, strength, intelligence, dexterity, health, speed, money)
     s = SkillSet.new(strength: strength, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
-    Incident.new(name: name, skill_set: s, category: category, label: labell)
+    Incident.new(name: name, skill_set: s, category: category, label: label)
   end
 
   def heal_wounds
@@ -131,37 +131,37 @@ class RouletteService
 
   def item_list
     [
-      create_item("Bandage", @apothecary, "cut", 0, 0, 0, 0, 1, -2),
-      create_item("Bandage", @apothecary, "cut", 0, 0, 0, 0, 0, -5),
-      create_item("Comfrey", @apothecary, "cut", 0, 0, 0, 0, 0, -3),
-      create_item("Bread", @inn, "starvation", 0, 0, 0, 0, 1, -2),
-      create_item("Antidote", @apothecary, "poison", 0, 0, 0, 0, 1, -2),
-      create_item("Antidote", @apothecary, "poison", 0, 0, 0, 0, 0, -2),
-      create_item("Health Potion", @apothecary, "weakness", 0, 0, 0, 0, 0, -2),
-      create_item("Splint", @apothecary, "broken", 0, 0, 0, 0, 0, -3),
-      create_item("Ginger Root", @apothecary, "sickness", 0, 0, 0, 0, 0, -3),
-      create_item("Osha", @apothecary, "sickness", 0, 0, 0, 0, 0, -1)
+      create_item("Bandage", @apothecary, "cut", 0, 0, 0, 0, 0, 1, -2),
+      create_item("Bandage", @apothecary, "cut", 0, 0, 0, 0, 0, 0, -5),
+      create_item("Comfrey", @apothecary, "cut", 0, 0, 0, 0, 0, 0, -3),
+      create_item("Bread", @inn, "starvation", 0, 0, 0, 0, 0, 1, -2),
+      create_item("Antidote", @apothecary, "poison", 0, 0, 0, 0, 0, 1, -2),
+      create_item("Antidote", @apothecary, "poison", 0, 0, 0, 0, 0, 0, -2),
+      create_item("Health Potion", @apothecary, "weakness", 0, 0, 0, 0, 0, 0, -2),
+      create_item("Splint", @apothecary, "broken", 0, 0, 0, 0, 0, 0, -3),
+      create_item("Ginger Root", @apothecary, "sickness", 0, 0, 0, 0, 0, 0, -3),
+      create_item("Osha", @apothecary, "sickness", 0, 0, 0, 0, 0, 0, -1)
+      create_item("Alcohol", @apothecary, "infection", 0, 0, 0, 0, 0, 0, -5),
     ]
   end
 
   def wound_list
     [
-      create_wound("Cut", @apothecary,"cut",0,0,0,-2,0,10),
-      create_wound("Further Injury", @apothecary,"broken",0,0,0,-2,0,10),
-      create_wound("Flu", @apothecary, "sickness", 0,0,0,-2,0,10),
-      create_wound("Sickness", @apothecary, "sickness", 0,0,0,-2,0,10),
-      create_wound("Alcohol", @apothecary, "infection", 0, 0, 0, 0, 0, -5),
-      create_wound("Infection", @apothecary, "infection", 0,0,0,-2,0,10),
-      create_wound("Snake bite", @apothecary, "poison", 0,0,0,-2,0,10),
-      create_wound("Spider bite", @apothecary, "poison", 0,0,0,-2,0,10),
-      create_wound("Spider bite", @apothecary, "poison", 0,0,0,-2,0,10),
-      create_wound("Starvation", @inn, "starvation", 0,0,0,-2,0,10),
-      create_wound("Hunger",@inn, "starvation", 0,0,0,-2,0,10),
-      create_wound("Starvation",@inn, "starvation", 0,0,0,-2,0,10),
-      create_wound("Being Thirsty!",@inn, "dehydration", 0,0,0,-2,0,10),
-      create_wound("Dehydration",@inn, "dehydration", 0,0,0,-2,0,10),
-      create_wound("Freezing to Death",@inn, "cold", 0,0,0,-2,0,10),
-      create_wound("Exhaustion",@inn, "exhaustion", 0,0,0,-2,0,10)
+      create_wound("Cut", @apothecary,"cut", 0, 0, 0, 0, -2, 0, 10),
+      create_wound("Further Injury", @apothecary,"broken", 0, 0, 0, 0, -2, 0, 10),
+      create_wound("Flu", @apothecary, "sickness", 0, 0, 0, 0, -4, 0, 10),
+      create_wound("Sickness", @apothecary, "sickness", 0, 0, 0, 0, -5, 0, 10),
+      create_wound("Infection", @apothecary, "infection", 0, 0, 0, 0, -10, 0, 10),
+      create_wound("Snake bite", @apothecary, "poison", 0, 0, 0, -8, 0, 10),
+      create_wound("Spider bite", @apothecary, "poison", 0, 0, 0, -10, 0, 10),
+      create_wound("Spider bite", @apothecary, "poison", 0, 0, 0, 0, -10, 0, 10),
+      create_wound("Starvation", @inn, "starvation", 0, 0, 0, 0, -7, 0, 10),
+      create_wound("Hunger",@inn, "starvation", 0, 0, 0, 0, -2, 0, 10),
+      create_wound("Starvation",@inn, "starvation", 0, 0, 0, 0, -6, 0, 10),
+      create_wound("Being Thirsty!",@inn, "dehydration", 0, 0, 0, 0, -2, 0, 10),
+      create_wound("Dehydration",@inn, "dehydration", 0, 0, 0, 0, -10, 0, 10),
+      create_wound("Freezing to Death",@inn, "cold", 0, 0, 0, 0, -9, 0, 10),
+      create_wound("Exhaustion",@inn, "exhaustion", 0, 0, 0, 0, -2, 0, 10)
     ]
   end
 end
