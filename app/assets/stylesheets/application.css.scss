@@ -278,10 +278,16 @@ main {
     top: 9px;
     right: 2px;
     position: absolute;
-    border-radius: 5px;
     color: white;
+    border-radius: 30px;
     background-color: black;
     border: none;
+}
+.finalize {
+  color: white;
+  border-radius: 30px;
+  background-color: black;
+  border: none;
 }
 
 .avatar-selection{

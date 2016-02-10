@@ -8,5 +8,6 @@ class TradesController < ApplicationController
     current_character.save
 
     redirect_to current_character
+    render :new
   end
 end
