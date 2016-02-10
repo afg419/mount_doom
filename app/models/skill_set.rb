@@ -3,7 +3,7 @@ class SkillSet < ActiveRecord::Base
     {
      "strength" => strength.to_i,
     "dexterity" => dexterity.to_i,
-    "defence"   => defence.to_i,
+    "defense"   => defense.to_i,
  "intelligence" => intelligence.to_i,
         "speed" => speed.to_i,
         "money" => display_price * money.to_i,

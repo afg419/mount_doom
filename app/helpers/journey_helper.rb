@@ -41,8 +41,8 @@ module JourneyHelper
     end
   end
 
-  def create_item(name, category, label,  strength, defence, intelligence, dexterity, health, speed, money)
-    s = SkillSet.find_or_create_by(strength: strength, defence: defence, intelligence: intelligence,
+  def create_item(name, category, label,  strength, defense, intelligence, dexterity, health, speed, money)
+    s = SkillSet.find_or_create_by(strength: strength, defense: defense, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
     Item.find_or_create_by(name: name, skill_set: s, category: category, label: label)

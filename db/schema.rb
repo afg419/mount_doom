@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20160210171733) do
     t.datetime "updated_at",   null: false
     t.integer  "money"
     t.integer  "speed"
-    t.integer  "defence"
+    t.integer  "defense"
   end
 
   create_table "stores", force: :cascade do |t|

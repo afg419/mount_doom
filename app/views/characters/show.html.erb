@@ -8,7 +8,7 @@
           </div>
 
           <div class="row">
-            <ul style="padding-left:25px" class="col s6">
+            <ul style="padding-left:25px" class="col s6 character_card">
               <span class="card-title activator grey-text">Current Attributes</span>
               <% current_character.current_skills.each do |skill, value| %>
                 <% if skill != "health" && skill != "money" %>
@@ -17,7 +17,7 @@
               <% end %>
             </ul>
 
-            <ul class="col s6">
+            <ul class="col s6 character_card">
               <span class="card-title activator grey-text">Summary</span>
               <li>Money: $<%= current_character.bank %></li>
               <li>Health: <%= current_character.hp %></li>

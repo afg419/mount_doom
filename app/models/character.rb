@@ -11,7 +11,6 @@ class Character < ActiveRecord::Base
     avatar_attributes = [avatar.skill_set.attributes]
     apothecary_attributes = items.category_attributes("apothecary")
     inn_item_attributes = items.category_attributes("inn")
-
     character_attributes = avatar_attributes +
                            equipped_weapon_attributes +
                            equipped_armor_attributes +
@@ -64,6 +63,7 @@ private
   def empty_skills
     {
       "strength" => 0,
+      "defence" => 0,
       "dexterity" => 0,
       "intelligence" => 0,
       "speed" => 0,
@@ -76,10 +76,7 @@ private
     total_skills = empty_skills
 
     attribute_array.reduce(total_skills) do |acc, skill_set|
-      total_skills.keys.each do |attribute|
-        acc[attribute] += skill_set[attribute].to_i
-      end
-      acc
+      acc.merge(skill_set){|k, v1, v2| v1 + v2}
     end
   end
 end

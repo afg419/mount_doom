@@ -19,8 +19,8 @@ class Seed
     create_avatar("Pippen","pippen.jpg",8, 0, 7, 14, 30, 18, 80)
   end
 
-  def self.create_avatar(name, image_url, strength, defence, intelligence, dexterity, health, speed, money)
-    s = SkillSet.create(strength: strength, defence: defence,  intelligence: intelligence,
+  def self.create_avatar(name, image_url, strength, defense, intelligence, dexterity, health, speed, money)
+    s = SkillSet.create(strength: strength, defense: defense,  intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
     Avatar.create(name: name, image_url: image_url, skill_set: s)
@@ -54,8 +54,8 @@ class Seed
   @rivendell_blacksmith = Store.create(category: @blacksmith, location:@rivendell, name: "HANKS")
   end
 
-  def self.create_item(name, category, label,  strength, defence, intelligence, dexterity, health, speed, money)
-    s = SkillSet.create(strength: strength, defence: defence, intelligence: intelligence,
+  def self.create_item(name, category, label,  strength, defense, intelligence, dexterity, health, speed, money)
+    s = SkillSet.create(strength: strength, defense: defense, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
     Item.create(name: name, skill_set: s, category: category, label: label)

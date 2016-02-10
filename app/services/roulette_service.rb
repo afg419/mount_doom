@@ -91,16 +91,16 @@ class RouletteService
   end
 
 
-  def create_item(name, category, label, strength, defence, intelligence, dexterity, health, speed, money)
-    s = SkillSet.new(strength: strength, defence: defence, intelligence: intelligence,
+  def create_item(name, category, label, strength, defense, intelligence, dexterity, health, speed, money)
+    s = SkillSet.new(strength: strength, defense: defense, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
     Item.new(name: name, skill_set: s, category: category, label: label)
   end
 
 
-  def create_wound(name, category, label, strength, defence, intelligence, dexterity, health, speed, money)
-    s = SkillSet.new(strength: strength, defence: defence, intelligence: intelligence,
+  def create_wound(name, category, label, strength, defense, intelligence, dexterity, health, speed, money)
+    s = SkillSet.new(strength: strength, defense: defense, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
     Incident.new(name: name, skill_set: s, category: category, label: label)
