@@ -87,39 +87,41 @@ class RouletteService
   end
 
   def item_list
-    [create_item("Someshit", @blacksmith, "Sword" 0, 0, 0, 0, 1, -2), create_item("Bread", @blacksmith, "Spider Bite", 0, 0, 0, 0, 1, -2), create_item("Bossass", @blacksmith, "OW" 0, 0, 0, 0, 1, -2)]
+    [create_item("Bandage", @apothecary, "ow", 0, 0, 0, 0, 1, -2), create_item("Bread", @inn, "hunger", 0, 0, 0, 0, 1, -2), create_item("Antidote", @apothecary, "poison", 0, 0, 0, 0, 1, -2)]
   end
 
-  def create_item(name, category, label, strength, intelligence, dexterity, health, speed, money)
+  def create_item(name, category, labell, strength, intelligence, dexterity, health, speed, money)
     s = SkillSet.new(strength: strength, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
-    Item.new(name: name, skill_set: s, category: category, label: label)
+    Item.new(name: name, skill_set: s, category: category, label: labell)
   end
 
   def wound_list
-    [create_wound("OW",0,0,0,-2,0,10), create_wound("OW",0,0,0,-2,0,10), create_wound("OW",0,0,0,-2,0,10), create_wound("Spider Bite",0,0,0,-2,0,10)]
+    [create_wound("Cut", @apothecary,"ow",0,0,0,-2,0,10), create_wound("Starvation",@inn, "hunger", 0,0,0,-2,0,10), create_wound("Snake bite", @apothecary, "poison", 0,0,0,-2,0,10), create_wound("Spider bite", @inn, "poison", 0,0,0,-2,0,10)]
   end
 
-  def create_wound(name, category, label, strength, intelligence, dexterity, health, speed, money)
+  def create_wound(name, category, labell, strength, intelligence, dexterity, health, speed, money)
     s = SkillSet.new(strength: strength, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
-    Incident.new(name: name, skill_set: s, category: category, label: label)
+    Incident.new(name: name, skill_set: s, category: category, label: labell)
   end
 
   def heal_wounds
-    wounds = current_character.incidents
-    items = current_character.items.where(category: [@inn, @apothecary] )
+    wounds = character.incidents
+    items = character.items.where(category: [@inn, @apothecary] )
 
-    wounds.reduce([]) do |array, wound|
+    array = []
+    wounds.each do |wound|
       items.each do |item|
-        if item.label == wound.name
-          array << destroy_if_matching(array, wound)
+        if item.label == wound.label
+          array << destroy_if_matching(item, wound)
           break
         end
       end
     end
+    array
   end
 
   def destroy_if_matching(item, wound)
