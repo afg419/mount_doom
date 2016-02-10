@@ -63,17 +63,17 @@ class Seed
 
   def self.create_store_items
     @bree_blacksmith.items = [
-      create_item("Dagger", @blacksmith, "sword", 1, 0, 0, 0, 0, 0, -2),
-      create_item("Elvish Sword", @blacksmith, "sword", 3, 0, 0, 0, 0, 0, -30),
-      create_item("Short Sword", @blacksmith, "sword", 1, 0, 0, 0, 0, 1, -10),
-      create_item("Long Sword", @blacksmith, "sword", 2, 0, 0, 0, 0, -1, -20),
-      create_item("Heavy Axe", @blacksmith, "axe", 2, 0, 0, 0, 0, -1, -15),
-      create_item("Dwarves Axe", @blacksmith, "axe", 2, 0, 0, 0, 0, 0, -23),
+      create_item("Dagger", @blacksmith, "melee", 1, 0, 0, 0, 0, 0, -2),
+      create_item("Elvish Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 0, -30),
+      create_item("Short Sword", @blacksmith, "melee", 1, 0, 0, 0, 0, 1, -10),
+      create_item("Long Sword", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -20),
+      create_item("Heavy Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -15),
+      create_item("Dwarves Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, 0, -23),
       create_item("Long Bow", @blacksmith, "bow", 0, 0, 0, 1, 0, 0, -10),
       create_item("Elvish Bow", @blacksmith, "bow", 0, 0, 0, 3, 0, 0, -40),
       create_item("Recurve Bow", @blacksmith, "bow", 0, 0, 0, 2, 0, 0, -30),
-      create_item("Red Oak Staff", @blacksmith, "staff", 0, 0, 2, 0, 0, 0, -20),
-      create_item("Sapphire Stone Staff", @blacksmith, "staff", 0, 0, 3, 0, 0, 0, -40)
+      create_item("Red Oak Staff", @blacksmith, "magic", 0, 0, 2, 0, 0, 0, -20),
+      create_item("Sapphire Stone Staff", @blacksmith, "magic", 0, 0, 3, 0, 0, 0, -40)
     ]
 
     @bree_inn.items = [
@@ -105,17 +105,17 @@ class Seed
     ]
 
     @rivendell_blacksmith.items = [
-      create_item("Dagger", @blacksmith, "sword", 1, 0, 0, 0, 0, 0, -2),
-      create_item("Elvish Sword", @blacksmith, "sword", 3, 0, 0, 0, 0, 0, -30),
-      create_item("Short Sword", @blacksmith, "sword", 1, 0, 0, 0, 0, 1, -10),
-      create_item("Long Sword", @blacksmith, "sword", 2, 0, 0, 0, 0, -1, -20),
-      create_item("Heavy Axe", @blacksmith, "axe", 2, 0, 0, 0, 0, -1, -15),
-      create_item("Dwarves Axe", @blacksmith, "axe", 2, 0, 0, 0, 0, 0, -23),
+      create_item("Dagger", @blacksmith, "melee", 1, 0, 0, 0, 0, 0, -2),
+      create_item("Elvish Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 0, -30),
+      create_item("Short Sword", @blacksmith, "melee", 1, 0, 0, 0, 0, 1, -10),
+      create_item("Long Sword", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -20),
+      create_item("Heavy Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -15),
+      create_item("Dwarves Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, 0, -23),
       create_item("Long Bow", @blacksmith, "bow", 0, 0, 0, 1, 0, 0, -10),
       create_item("Elvish Bow", @blacksmith, "bow", 0, 0, 0, 3, 0, 0, -40),
       create_item("Recurve Bow", @blacksmith, "bow", 0, 0, 0, 2, 0, 0, -30),
-      create_item("Red Oak Staff", @blacksmith, "staff", 0, 0, 2, 0, 0, 0, -20),
-      create_item("Sapphire Stone Staff", @blacksmith, "staff", 0, 0, 3, 0, 0, 0, -40)
+      create_item("Red Oak Staff", @blacksmith, "magic", 0, 0, 2, 0, 0, 0, -20),
+      create_item("Sapphire Stone Staff", @blacksmith, "magic", 0, 0, 3, 0, 0, 0, -40)
     ]
     @rivendell_inn.items = [
       create_item("Water", @inn, "dehydration",  0, 0, 0, 0, 0, 0, -2),
