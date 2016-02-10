@@ -76,24 +76,45 @@ class RouletteService
   end
 
   def item_list
-    [create_item("Someshit", @blacksmith, 0, 0, 0, 0, 1, -2), create_item("Bread", @blacksmith, 0, 0, 0, 0, 1, -2),create_item("Bossass", @blacksmith, 0, 0, 0, 0, 1, -2)]
+    [create_item("Someshit", @blacksmith, "Sword" 0, 0, 0, 0, 1, -2), create_item("Bread", @blacksmith, "Spider Bite", 0, 0, 0, 0, 1, -2), create_item("Bossass", @blacksmith, "OW" 0, 0, 0, 0, 1, -2)]
   end
 
-  def create_item(name, category, strength, intelligence, dexterity, health, speed, money)
+  def create_item(name, category, label, strength, intelligence, dexterity, health, speed, money)
     s = SkillSet.new(strength: strength, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
-    Item.new(name: name, skill_set: s, category: category)
+    Item.new(name: name, skill_set: s, category: category, label: label)
   end
 
   def wound_list
     [create_wound("OW",0,0,0,-2,0,10), create_wound("OW",0,0,0,-2,0,10), create_wound("OW",0,0,0,-2,0,10), create_wound("Spider Bite",0,0,0,-2,0,10)]
   end
 
-  def create_wound(name, strength, intelligence, dexterity, health, speed, money)
+  def create_wound(name, category, label, strength, intelligence, dexterity, health, speed, money)
     s = SkillSet.new(strength: strength, intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
-    Incident.new(name: name, skill_set: s)
+    Incident.new(name: name, skill_set: s, category: category, label: label)
+  end
+
+  def heal_wounds
+    wounds = current_character.incidents
+    items = current_character.items.where(category: [@inn, @apothecary] )
+
+    wounds.reduce([]) do |array, wound|
+      items.each do |item|
+        if item.label == wound.name
+          array << destroy_if_matching(array, wound)
+          break
+        end
+      end
+    end
+  end
+
+  def destroy_if_matching(item, wound)
+      item_name, wound_name = item.name, wound.name
+      item.destroy
+      wound.destroy
+      "#{item_name} was used to prevent #{wound_name}"
   end
 end
