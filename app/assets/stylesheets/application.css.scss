@@ -32,6 +32,13 @@ body {
   background-position: center center;
 }
 
+.application-body-dead{
+  background-image: url('dead.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
 .application-body-dashboard{
   background-image: url('dashboard.jpg');
   background-size:     cover;
@@ -107,7 +114,8 @@ body {
   background-image: url('journal.png');
   background-size:     cover;
   background-repeat:   no-repeat;
-  background-position: center center;
+  background-position: center;
+  border-radius: 5px;
 }
 
 .collection {
@@ -191,6 +199,10 @@ button {
   font-family: 'Tangerine', cursive;
 }
 
+.avatar-cards {
+  left: -40px;
+}
+
 .card.large {
   height: 520px;
   width: 400px;
@@ -239,13 +251,23 @@ main {
   width: auto;
   height: 375px;
   overflow: scroll;
-
+  padding: 5px;
 }
 
 .collection .collection-item {
   border-bottom: none;
   display: block;
   box-sizing: initial;
+}
+
+.headers{
+  padding-bottom: 0px;
+  margin-bottom: 0;
+  margin-top: 3px;
+}
+
+.character_card {
+  margin: 0;
 }
 .title {
   font-size: 110% !important;
@@ -256,8 +278,24 @@ main {
     top: 9px;
     right: 2px;
     position: absolute;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    border: none;
 }
 
+.avatar-selection{
+font-size: 13px
+}
+// Summary page
+
+.item_name {
+  color: green;
+}
+
+.wound_name {
+  color: red;
+}
 
 // .town_table{
 //   max-width: 800px !important;

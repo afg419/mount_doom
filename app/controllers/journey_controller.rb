@@ -31,9 +31,9 @@ class JourneyController < ApplicationController
 
     case status
     when :dead
-      redirect_to root_path
+      render layout: 'wide',  :locals => {:background => 'dead'}
     when :success
-      render layout: 'wide',  :locals => {:background => 'bree'}
+      render layout: 'wide',  :locals => {:background => 'start'}
     end
   end
 

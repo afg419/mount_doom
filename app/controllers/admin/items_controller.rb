@@ -8,19 +8,27 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      flash[:notice] = "Successfully created Item"
-      redirect_to admin_items_path
+    @skill_set = SkillSet.new(skill_set_params)
+    if @skill_set.save
+      @item = Item.new(item_params)
+      if @item.save
+        @item.skill_set = @skill_set
+        @item.save
+        flash[:notice] = "Successfully created Item"
+        redirect_to admin_dashboard_index_path
+      else
+        flash.now[:error] = "A item must have a name"
+        render :new
+      end
     else
-      flash.now[:error] = "A item must have a name"
+      flash.now[:error] = "Your attributes are off"
       render :new
     end
   end
 
-  def show
-    @item = Item.find_by(slug: params[:id])
-  end
+  # def show
+  #   @item = Item.find_by(slug: params[:id])
+  # end
 
   def edit
     @item = Item.find(params[:id])
@@ -28,11 +36,16 @@ class Admin::ItemsController < Admin::BaseController
 
   def update
     @item = Item.find(params[:id])
-    if @item.update(item_params)
-      flash[:notice] = "Successfully Edited Item"
-      redirect_to admin_items_path
+    if @item.skill_set.update(skill_set_params)
+      if @item.update(item_params)
+        flash[:notice] = "Successfully Edited Item"
+        redirect_to admin_items_path
+      else
+        flash.now[:error] = "A item must have a name"
+        render :edit
+      end
     else
-      flash.now[:error] = "A item must have a name"
+      flash.now[:error] = "Your attributes are off"
       render :edit
     end
   end
@@ -45,6 +58,10 @@ class Admin::ItemsController < Admin::BaseController
 
   private
     def item_params
-      params.require(:item).permit(:name, :price, :description, :category_id, :image)
+      params.require(:item).permit(:name, :category_id)
+    end
+
+    def skill_set_params
+      params.require(:item).permit(:strength, :dexterity, :intelligence, :health, :speed, :money )
     end
 end

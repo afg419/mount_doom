@@ -1,8 +1,9 @@
-var Arrow = function(origin_x, origin_y, target_x, target_y){
+var Arrow = function(origin_x, origin_y, target_x, target_y, damage){
   this.origin_x = origin_x;
   this.origin_y = origin_y;
   this.target_x = target_x;
   this.target_y = target_y;
+  this.damage = damage;
   this.x = origin_x;
   this.y = origin_y;
   this.total_distance = Math.sqrt(Math.pow(target_x - origin_x,2) + Math.pow(target_y - origin_y,2))

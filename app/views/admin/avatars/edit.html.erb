@@ -1,6 +1,6 @@
-<h4>Edit <%= @item.name %></h4>
+<h4>Edit <%= @avatar.name %></h4>
 
-<%= form_for @item, url: admin_item_path do |f| %>
+<%= form_for @avatar, url: admin_avatar_path do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name%>
   <%= f.label :money %>
@@ -15,7 +15,10 @@
   <%= f.number_field :health %>
   <%= f.label :speed %>
   <%= f.number_field :speed %>
-  <%= f.label :category_id %>
-  <%= f.collection_select(:category_id, categories, :id, :name, { prompt: "Choose a category" }, class: "browser-default") %>
-  <%= f.submit 'Update Item' %>
+  <%# if @avatar.image_url %>
+      <%#= image_tag @avatar.image_url %><br/>
+  <%# end %>
+  <%#= f.label :image %>
+  <%#= f.file_field :image%><br><br>
+  <%= f.submit 'Update Avatar' %>
 <% end %>

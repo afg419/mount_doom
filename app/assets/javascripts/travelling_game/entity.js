@@ -1,4 +1,4 @@
-var Entity = function(hp,x,y,r,str,dex,int,spd,col,active){
+var Entity = function(hp,x,y,r,str,dex,int,spd,col,active,ac){
   this.hp = hp;
 
   this.x = x;
@@ -9,6 +9,8 @@ var Entity = function(hp,x,y,r,str,dex,int,spd,col,active){
   this.dex = dex;
   this.int = int;
   this.spd = spd;
+
+  this.ac = ac;
 
   this.active = active; //indicates what kind of attack
 

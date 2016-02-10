@@ -79,7 +79,7 @@ EnemyRanged.prototype.collision_rebound_from = function(colliding_entity){
 
 EnemyRanged.prototype.attack = function(enemy, timer, arrows){
   if (timer % 50 == 0) {
-    arrows.push(new Arrow(this.x, this.y, enemy.x, enemy.y));
+    arrows.push(new Arrow(this.x, this.y, enemy.x, enemy.y, this.dex));
   }
 }
 

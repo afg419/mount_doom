@@ -1,10 +1,11 @@
-var FireBall = function(origin_x, origin_y, target_x, target_y){
+var FireBall = function(origin_x, origin_y, target_x, target_y, damage){
   this.origin_x = origin_x;
   this.origin_y = origin_y;
   this.target_x = target_x;
   this.target_y = target_y;
   this.x = origin_x;
   this.y = origin_y;
+  this.damage = damage;
   this.total_distance = Math.sqrt(Math.pow(target_x - origin_x,2) + Math.pow(target_y - origin_y,2))
   this.v_x = 3*(target_x - origin_x)/this.total_distance
   this.v_y = 3*(target_y - origin_y)/this.total_distance
@@ -25,7 +26,7 @@ FireBall.prototype.explode = function(entity_array) {
   ellipse(this.x, this.y, 75, 75)
   for(j = 0; j < entity_array.length; j++){
     if (this.isWithinRadius(entity_array[j])){
-      entity_array[j].hp -= 2
+      entity_array[j].hp -= this.damage/4
     }
   }
 }

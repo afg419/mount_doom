@@ -63,7 +63,7 @@ EnemyMelee.prototype.attack = function(enemy, timer){
     stroke(255,0,0)
     strokeWeight(4);
     line(this.x, this.y, enemy.x, enemy.y);
-    enemy.hp -= this.str/5
+    enemy.hp -= this.str/(5+enemy.ac)
     stroke(0,0,0)
     strokeWeight(1);
   }

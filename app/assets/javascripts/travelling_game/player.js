@@ -1,5 +1,5 @@
-var Player = function(hp,x,y,r,str,dex,int,spd,col,active){
-  Entity.call(this,hp,x,y,r,str,dex,int,spd,col,active)
+var Player = function(hp,x,y,r,str,dex,int,spd,col,active,ac){
+  Entity.call(this,hp,x,y,r,str,dex,int,spd,col,active,ac)
 };
 
 Player.prototype = Object.create(Entity.prototype);
@@ -16,12 +16,12 @@ Player.prototype.attack = function(timer){
 
   if (this.active == "bow" && timer > 30){
     total_distance = point_distance(this.x, this.y, mouseX, mouseY)
-    player_arrows.push(new Arrow(35*(mouseX - this.x)/total_distance + this.x, 35*(mouseY - this.y)/total_distance + this.y, mouseX, mouseY));
+    player_arrows.push(new Arrow(35*(mouseX - this.x)/total_distance + this.x, 35*(mouseY - this.y)/total_distance + this.y, mouseX, mouseY, this.dex));
   }
 
   if (this.active == "magic"){
     total_distance = point_distance(this.x, this.y, mouseX, mouseY)
-    player_magic.push(new FireBall(35*(mouseX - this.x)/total_distance + this.x, 35*(mouseY - this.y)/total_distance + this.y, mouseX, mouseY));    
+    player_magic.push(new FireBall(35*(mouseX - this.x)/total_distance + this.x, 35*(mouseY - this.y)/total_distance + this.y, mouseX, mouseY, this.int));
   }
 }
 
