@@ -1,0 +1,24 @@
+<div class= "center">
+  <h1>Journey from <%= @location.name %> Summary</h1>
+<ul>
+  Items Acquired
+  <% @event_generator.found_items.each do |item| %>
+  <li><span class="item_name"><%= item.name %></span></li>
+  <% end %>
+</ul>
+<ul>
+  Items Used on Injuries
+  <% @event_generator.healed_wounds.each do |item, wound| %>
+  <li><span class="item_name"><%= item %></span> was used to prevent <span class="wound_name"><%= wound %></span> </li>
+  <% end %>
+</ul>
+New battle wound <span class="wound_name"><%= @event_generator.main_wound.name %>: <% @event_generator.main_wound.skill_set.health %> health</span>
+<ul>
+  Remaining Injuries
+  <% current_character.incidents.each do |incident| %>
+  <li class="wound_name"> <%= incident.name %> </li>
+  <% end %>
+</ul>
+
+<%= link_to "Continue", journey_path(@location.next_location) %>
+<div>

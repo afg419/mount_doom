@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209060010) do
+ActiveRecord::Schema.define(version: 20160210171733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,8 +52,11 @@ ActiveRecord::Schema.define(version: 20160209060010) do
     t.string   "name"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "label"
+    t.integer  "category_id"
   end
 
+  add_index "incidents", ["category_id"], name: "index_incidents_on_category_id", using: :btree
   add_index "incidents", ["character_id"], name: "index_incidents_on_character_id", using: :btree
   add_index "incidents", ["skill_set_id"], name: "index_incidents_on_skill_set_id", using: :btree
 
@@ -69,14 +72,16 @@ ActiveRecord::Schema.define(version: 20160209060010) do
     t.integer  "itemable_id"
     t.string   "itemable_type"
     t.integer  "skill_set_id"
+    t.string   "label"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id", using: :btree
   add_index "items", ["skill_set_id"], name: "index_items_on_skill_set_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
+    t.string  "name"
+    t.string  "slug"
+    t.integer "next_location_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -97,6 +102,7 @@ ActiveRecord::Schema.define(version: 20160209060010) do
     t.datetime "updated_at",   null: false
     t.integer  "money"
     t.integer  "speed"
+    t.integer  "defense"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -122,6 +128,7 @@ ActiveRecord::Schema.define(version: 20160209060010) do
   add_foreign_key "characters", "avatars"
   add_foreign_key "characters", "locations"
   add_foreign_key "characters", "users"
+  add_foreign_key "incidents", "categories"
   add_foreign_key "incidents", "characters"
   add_foreign_key "incidents", "skill_sets"
   add_foreign_key "items", "categories"

@@ -8,6 +8,7 @@ class Location < ActiveRecord::Base
 
   def armory
     @armory ||= stores.find{|store| store.category.name == "armory"}
+    @armory ||= "#"
   end
 
   def inn
@@ -23,5 +24,9 @@ class Location < ActiveRecord::Base
   def apothecary
     @apothecary ||= stores.find{|store| store.category.name == "apothecary"}
     @apothecary ||= "#"
+  end
+
+  def next_location
+    Location.find(next_location_id)
   end
 end
