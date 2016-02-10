@@ -153,7 +153,7 @@ td, th {
 }
 
 .btn:hover {
-  background-color: #00b8d4;
+  background-color: #ffab40;
 }
 .btn, .btn-large {
   background-color: black;
@@ -303,28 +303,6 @@ font-size: 13px
   color: red;
 }
 
-// .town_table{
-//   max-width: 800px !important;
-//   display: block;
-// }
-//
-// .town_table td{
-//   border: none;
-//   border-collapse: collapse;
-//   border-spacing: 0px;
-//   padding-bottom: 0px;
-// }
-//
-// .town_table img.responsive-img {
-//   max-width: inherit !important;
-//   // max-width: 90% !important;
-//   height: auto;
-//   width: auto;
-//   vertical-align: bottom;
-//   display: block;
-//   padding-right: 0px;
-//   margin-right: 0px;
-// }
 .town.row{
   max-width: 800px !important;
   display: block;
@@ -358,6 +336,41 @@ font-size: 13px
 
 .inventory{
   display: block;
+}
+
+.admin-dash{
+  font-family: 'Oswald', sans-serif;
+  h2{
+    color: #ffab40
+  }
+  a{
+    font-family: 'Oswald', sans-serif;
+    color: #ffab40
+  }
+  a.delete{
+    font-family: 'Oswald', sans-serif;
+    color: white
+  }
+  ul.collection {
+    background: white;
+  }
+  li {
+    padding-left: 15px;
+  }
+  .collection .collection-item.avatar {
+    padding-left: 150px;
+  }
+  .collection .collection-item.avatar .circle {
+    width: 100px;
+    height: 100px;
+  }
+  form#new_avatar, form.edit_avatar, form.edit_item, form#new_item{
+    background-color: white;
+    padding: 15px;
+  }
+  label {
+    font-size: 1.5rem;
+  }
 }
 
 canvas {

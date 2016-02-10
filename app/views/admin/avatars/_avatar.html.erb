@@ -1,12 +1,19 @@
-<li id="avatar-<%= avatar.id %>">
+<li class ="collection-item avatar" id="avatar-<%= avatar.id %>">
   <img src="<%= image_url avatar.image_url %>" alt="" class="circle">
   <span class="title"><%= avatar.name  %></span>
-  <p>
-    <%=  %>
-     <% avatar.skill_set.attributes.each do |attribute, value| %>
-     <%= attribute %>: <%= value %>
-     <% end %>
-  </p>
-  <%= button_to "Edit", edit_admin_avatar_path(avatar), method: :get %>
-  <%= button_to "Retire", admin_avatar_path(avatar), method: :delete %>
+  <div class="row">
+    <div class="col m6">
+      <p>
+        Status: <%= avatar.status.upcase %><br />
+        <% avatar.skill_set.attributes.each do |attribute, value| %>
+         <%= attribute %>: <%= value %> ||
+        <% end %>
+      </p>
+    </div>
+    <div class="col m6">
+      <%= button_to "Edit", edit_admin_avatar_path(avatar), method: :get, class: "waves-effect waves-light btn" %><br />
+      <%= button_to "Retire", admin_avatar_path(avatar), method: :delete, class: "waves-effect waves-light btn" %>
+    </div>
+  </div>
 </li>
+<hr>

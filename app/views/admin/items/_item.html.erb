@@ -1,11 +1,10 @@
-<li id="item-<%= item.id %>">
-  <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
+<li class ="collection-item avatar" id="item-<%= item.id %>">
   <span class="title"><%= item.name  %></span>
   <p>Price: <span class="price" ><%= item.price %></span> <br>
      <% item.skill_set.attributes.each do |attribute, value| %>
      <%= attribute %>: <%= value %>
      <% end %>
   </p>
-  <%= button_to "Edit", edit_admin_item_path(item), method: :get %>
+  <%= button_to "Edit", edit_admin_item_path(item), method: :get %><br />
   <%= button_to "Delete", admin_item_path(item), method: :delete %>
 </li>

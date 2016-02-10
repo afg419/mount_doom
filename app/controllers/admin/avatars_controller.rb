@@ -15,7 +15,7 @@ class Admin::AvatarsController < Admin::BaseController
         @avatar.skill_set = @skill_set
         @avatar.save
         flash[:notice] = "Successfully created Avatar"
-        redirect_to admin_dashboard_index_path
+        redirect_to admin_avatars_path
       else
         flash.now[:error] = "A avatar must have a name"
         render :new
@@ -52,7 +52,7 @@ class Admin::AvatarsController < Admin::BaseController
 
   def destroy
     @avatar = Avatar.find(params[:id])
-    @avatar.destroy
+    @avatar.update_attributes(status: "retired")
     redirect_to admin_avatars_path
   end
 

@@ -46,6 +46,10 @@ class Item < ActiveRecord::Base
     # of_category(category_name).map{ |item| item.non_zero_attributes }
   end
 
+  def new_category
+    Store.find(itemable_id).category.id
+  end
+
   def duplication_params
     {
       name: name,
@@ -53,5 +57,6 @@ class Item < ActiveRecord::Base
       label: label,
       skill_set_id: skill_set_id
     }
+
   end
 end

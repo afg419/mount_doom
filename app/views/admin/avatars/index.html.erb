@@ -1,8 +1,9 @@
-<div class="container">
+<div class="admin-dash container">
   <div class="row">
-    <div class="col m4 offset-4">
-      <h1>All Avatars</h1>
-      <ul>
+    <div class="col m12">
+      <h2>All Avatars</h2>
+      <%= button_to "Add New Avatar", new_admin_avatar_path, method: :get, class: "waves-effect waves-light btn" %>
+      <ul class="collection">
         <%= render @avatars %>
       </ul>
     </div>

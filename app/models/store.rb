@@ -3,6 +3,8 @@ class Store < ActiveRecord::Base
   belongs_to :category
   has_many :items, :as => :itemable
 
+  scope :admin_alpha, -> { order(name: :asc) }
+
   def to_param
     category.name
   end

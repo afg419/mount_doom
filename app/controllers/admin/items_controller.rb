@@ -5,17 +5,23 @@ class Admin::ItemsController < Admin::BaseController
 
   def new
     @item = Item.new
+    unless @item.itemable = Store.find_by(id: params[:store_id])
+      flash[:error] = "Please select a store's inventory to edit."
+      redirect_to admin_stores_path
+    end
   end
 
   def create
+    @store = Store.find_by(id: params[:store_id])
     @skill_set = SkillSet.new(skill_set_params)
-    if @skill_set.save
+    if @store && @skill_set.save
       @item = Item.new(item_params)
+      @item.skill_set = @skill_set
+      @item.itemable = @store
+      @item.category_id = params[:category_id]
       if @item.save
-        @item.skill_set = @skill_set
-        @item.save
         flash[:notice] = "Successfully created Item"
-        redirect_to admin_dashboard_index_path
+        redirect_to edit_admin_store_path(@store.id)
       else
         flash.now[:error] = "A item must have a name"
         render :new
@@ -26,10 +32,6 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
-  # def show
-  #   @item = Item.find_by(slug: params[:id])
-  # end
-
   def edit
     @item = Item.find(params[:id])
   end
@@ -39,7 +41,7 @@ class Admin::ItemsController < Admin::BaseController
     if @item.skill_set.update(skill_set_params)
       if @item.update(item_params)
         flash[:notice] = "Successfully Edited Item"
-        redirect_to admin_items_path
+        redirect_to edit_admin_store_path(id: params[:store_id])
       else
         flash.now[:error] = "A item must have a name"
         render :edit
@@ -53,12 +55,12 @@ class Admin::ItemsController < Admin::BaseController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to admin_items_path
+    redirect_to edit_admin_store_path(id: params[:store_id])
   end
 
   private
     def item_params
-      params.require(:item).permit(:name, :category_id)
+      params.require(:item).permit(:name)
     end
 
     def skill_set_params

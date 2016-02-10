@@ -7,7 +7,7 @@ class AdminAvatarsTest < ActionDispatch::IntegrationTest
     avatar2 = create(:avatar)
 
     visit admin_dashboard_index_path
-    click_button "Edit Avatars"
+    click_button "Add/Edit Avatars"
 
     assert_equal admin_avatars_path, current_path
     assert page.has_content?("All Avatars")
@@ -20,6 +20,7 @@ class AdminAvatarsTest < ActionDispatch::IntegrationTest
       assert page.has_content? "speed: 10"
       assert page.has_content? "health: 10"
       assert page.has_content? "money: 10"
+      assert page.has_content? "ACTIVE"
     end
 
     within("#avatar-#{avatar2.id}") do
@@ -30,6 +31,7 @@ class AdminAvatarsTest < ActionDispatch::IntegrationTest
       assert page.has_content? "speed: 10"
       assert page.has_content? "health: 10"
       assert page.has_content? "money: 10"
+      assert page.has_content? "ACTIVE"
     end
   end
 
@@ -88,7 +90,7 @@ class AdminAvatarsTest < ActionDispatch::IntegrationTest
   test "admin can add avatar" do
     create_admin
 
-    visit admin_dashboard_index_path
+    visit admin_avatars_path
 
     click_button "Add New Avatar"
 
@@ -101,14 +103,21 @@ class AdminAvatarsTest < ActionDispatch::IntegrationTest
     fill_in "Speed", with: 2
     click_button "Create Avatar"
 
-    assert admin_dashboard_index_path, current_path
+    assert admin_avatars_path, current_path
 
-    visit admin_avatars_path
-
-    assert page.has_content?("NewAvatar")
+    within("#avatar-#{Avatar.last.id}") do
+      assert page.has_content?("NewAvatar")
+      assert page.has_content? "strength: 2"
+      assert page.has_content? "dexterity: 2"
+      assert page.has_content? "intelligence: 2"
+      assert page.has_content? "speed: 2"
+      assert page.has_content? "health: 2"
+      assert page.has_content? "money: 2"
+      assert page.has_content? "ACTIVE"
+    end
   end
 
-  test "admin can delete avatar" do
+  test "admin can retire an avatar" do
     create_admin
     avatar1 = create(:avatar)
 
@@ -120,6 +129,9 @@ class AdminAvatarsTest < ActionDispatch::IntegrationTest
 
     assert admin_avatars_path, current_path
 
-    refute page.has_content?(avatar1.name)
+    within("#avatar-#{avatar1.id}") do
+      assert page.has_content? "RETIRED"
+      refute page.has_content? "ACTIVE"
+    end
   end
 end

@@ -1,21 +1,22 @@
-<h4>Edit <%= @item.name %></h4>
+<div class="container admin-dash">
+  <h2>Edit <%= @item.name %></h2>
 
-<%= form_for @item, url: admin_item_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name%>
-  <%= f.label :money %>
-  <%= f.number_field :money %>
-  <%= f.label :dexterity %>
-  <%= f.number_field :dexterity %>
-  <%= f.label :intelligence %>
-  <%= f.number_field :intelligence %>
-  <%= f.label :strength %>
-  <%= f.number_field :strength %>
-  <%= f.label :health %>
-  <%= f.number_field :health %>
-  <%= f.label :speed %>
-  <%= f.number_field :speed %>
-  <%= f.label :category_id %>
-  <%= f.collection_select(:category_id, categories, :id, :name, { prompt: "Choose a category" }, class: "browser-default") %>
-  <%= f.submit 'Update Item' %>
-<% end %>
+  <%= form_for @item, url: admin_item_path do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+    <%= f.label :money %>
+    <%= f.number_field :money %>
+    <%= f.label :dexterity %>
+    <%= f.number_field :dexterity %>
+    <%= f.label :intelligence %>
+    <%= f.number_field :intelligence %>
+    <%= f.label :strength %>
+    <%= f.number_field :strength %>
+    <%= f.label :health %>
+    <%= f.number_field :health %>
+    <%= f.label :speed %>
+    <%= f.number_field :speed %>
+    <%= hidden_field_tag(:store_id, @item.itemable_id) %>
+    <%= f.submit 'Update Item' %>
+  <% end %>
+</div>
