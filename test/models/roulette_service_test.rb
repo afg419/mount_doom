@@ -65,4 +65,19 @@ class RouletteServiceTest < ActiveSupport::TestCase
     assert_equal :dead, @r.generate_travel_event
   end
 
+  test "heal wounds does its work" do
+    5.times do |i|
+      @r.character.items.create(name: "item#{i}", label: "label#{i}")
+    end
+
+    5.times do |i|
+      @r.character.incidents.create(name: "incident#{i}", label: "label#{i+1}")
+    end
+
+    expected = ["item1 was used to prevent incident0",
+              "item2 was used to prevent incident1",
+              "item3 was used to prevent incident2",
+              "item4 was used to prevent incident3"]
+    assert_equal expected, @r.heal_wounds
+  end
 end
