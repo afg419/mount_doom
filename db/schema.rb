@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209060010) do
+ActiveRecord::Schema.define(version: 20160210002714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,9 @@ ActiveRecord::Schema.define(version: 20160209060010) do
   add_index "items", ["skill_set_id"], name: "index_items_on_skill_set_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
+    t.string  "name"
+    t.string  "slug"
+    t.integer "next_location_id"
   end
 
   create_table "orders", force: :cascade do |t|

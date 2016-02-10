@@ -28,8 +28,8 @@ class Seed
 
   def self.create_locations
     [
-      Location.create(name: "Bree", slug: "bree"),
-      Location.create(name: "Rivendell", slug: "rivendell")
+      Location.create(name: "Bree", slug: "bree", next_location_id: 2),
+      Location.create(name: "Rivendell", slug: "rivendell", next_location_id: 3)
     ]
   end
 

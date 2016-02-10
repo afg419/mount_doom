@@ -23,4 +23,16 @@ class JourneyController < ApplicationController
     session[:in_game] = nil
     redirect_to user_path(current_user)
   end
+
+  def summary
+    #params = {location_id: where we came from, health_after_game: 6}
+    @location = Location.find(params[:location_id])
+    status = RouletteService.new(params).generate_travel_event
+
+    case status
+    when :dead
+    when :success
+      render layout: 'wide',  :locals => {:background => 'bree'}
+    end
+  end
 end
