@@ -48,6 +48,7 @@ class Item < ActiveRecord::Base
 
   def new_category
     Store.find(itemable_id).category.id
+  end
 
   def duplication_params
     {
