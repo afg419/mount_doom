@@ -74,10 +74,10 @@ class RouletteServiceTest < ActiveSupport::TestCase
       @r.character.incidents.create(name: "incident#{i}", label: "label#{i+1}")
     end
 
-    expected = ["item1 was used to prevent incident0",
-              "item2 was used to prevent incident1",
-              "item3 was used to prevent incident2",
-              "item4 was used to prevent incident3"]
+    expected = [["item1", "incident0"],
+              ["item2", "incident1"],
+              ["item3", "incident2"],
+              ["item4", "incident3"]]
     assert_equal expected, @r.heal_wounds
   end
 end
