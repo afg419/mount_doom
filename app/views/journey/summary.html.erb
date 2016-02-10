@@ -12,7 +12,7 @@
   <li><span class="item_name"><%= item %></span> was used to prevent <span class="wound_name"><%= wound %></span> </li>
   <% end %>
 </ul>
-New battle wound <span class="wound_name"><%= @event_generator.main_wound.name %>: <% @event_generator.main_wound.skill_set.health %> health</span>
+New battle wound <span class="wound_name"><%= @event_generator.main_wound.name %>: <%= @event_generator.main_wound.skill_set.health %> health</span>
 <ul>
   Remaining Injuries
   <% current_character.incidents.each do |incident| %>
