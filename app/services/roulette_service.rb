@@ -1,6 +1,7 @@
 class RouletteService
-  attr_reader :origin_location, :target_location, :character
+  attr_reader :origin_location, :target_location, :character, :main_wound, :subsequent_wounds, :found_items, :healed_wounds
   attr_accessor :health_after_game
+
   def initialize(params, current_character = nil)
     @origin_location = Location.find(params[:location_id])
     @target_location = origin_location.next_location
@@ -13,10 +14,13 @@ class RouletteService
   def generate_travel_event
     return :dead if health_after_game <= 0
 
-    main_wound = generate_main_wound
-    character.items += generate_random_items
-    character.incidents += generate_random_wounds + [generate_main_wound]
-    # character.heals_wounds
+    @main_wound = generate_main_wound
+    @subsequent_wounds = generate_random_wounds
+    @found_items = generate_random_items
+
+    character.items += found_items
+    character.incidents += subsequent_wounds + [main_wound]
+    @healed_wounds = heal_wounds
     character.save
 
     return :dead if character.hp <= 0
@@ -125,9 +129,9 @@ class RouletteService
   end
 
   def destroy_if_matching(item, wound)
-      item_name, wound_name = item.name, wound.name
-      item.destroy
-      wound.destroy
-      "#{item_name} was used to prevent #{wound_name}"
+    item_name, wound_name = item.name, wound.name
+    item.destroy
+    wound.destroy
+    "#{item_name} was used to prevent #{wound_name}"
   end
 end

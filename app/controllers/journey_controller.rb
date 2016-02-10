@@ -27,7 +27,8 @@ class JourneyController < ApplicationController
   def summary
     #params = {location_id: where we came from, health_after_game: 6}
     @location = Location.find(params[:location_id])
-    status = RouletteService.new(params).generate_travel_event
+    @event_generator = RouletteService.new(params, current_character)
+    @event_generator.generate_travel_event
 
     case status
     when :dead

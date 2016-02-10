@@ -1,15 +1,22 @@
-<h1>Travel Summary</h1>
+<h1>Journey from <%= @location.name %> Summary</h1>
 <ul>
   Items Acquired
-  <li>Sword</li>
+  <% @event_generator.found_items.each do |item| %>
+  <li> <%= item.name %> </li>
+  <% end %>
 </ul>
 <ul>
-  Items Used
-  <li>Bread</li>
+  Items Used on Injuries
+  <% @event_generator.healed_wounds.each do |message| %>
+  <li> <%= message %> </li>
+  <% end %>
 </ul>
+<ul>New battle wound <%= "#{@event_generator.main_wound.name}: #{@event_generator.main_wound.skill_set.health}" %> health </ul>
 <ul>
-  New Injuries
-  <li>Sore Throat</li>
+  Remaining Injuries
+  <% current_character.incidents.each do |incident| %>
+  <li> <%= incident.name %> </li>
+  <% end %>
 </ul>
 
 <%= link_to "Continue", journey_path(@location.next_location) %>
