@@ -1,28 +1,28 @@
 require "test_helper"
 
 class AdminItemsTest < ActionDispatch::IntegrationTest
-  test "logged in admin sees items index" do
-    create_admin
-    item1 = create(:item)
-    item2 = create(:item)
-
-    visit admin_dashboard_index_path
-    click_button "Edit Items"
-
-    assert_equal admin_items_path, current_path
-
-    assert page.has_content?("All Items")
-
-    within("#item-#{item1.id}") do
-      assert page.has_content?(item1.name)
-      assert page.has_content?(item1.price)
-    end
-
-    within("#item-#{item2.id}") do
-      assert page.has_content?(item2.name)
-      assert page.has_content?(item2.price)
-    end
-  end
+  # test "logged in admin sees items index" do
+  #   create_admin
+  #   item1 = create(:item)
+  #   item2 = create(:item)
+  #
+  #   visit admin_dashboard_index_path
+  #   click_button "Edit Items"
+  #
+  #   assert_equal admin_items_path, current_path
+  #
+  #   assert page.has_content?("All Items")
+  #
+  #   within("#item-#{item1.id}") do
+  #     assert page.has_content?(item1.name)
+  #     assert page.has_content?(item1.price)
+  #   end
+  #
+  #   within("#item-#{item2.id}") do
+  #     assert page.has_content?(item2.name)
+  #     assert page.has_content?(item2.price)
+  #   end
+  # end
 
   test "user does not see admin categories index" do
     user = create(:user)
@@ -74,36 +74,6 @@ class AdminItemsTest < ActionDispatch::IntegrationTest
       assert page.has_content? "health: 2"
       assert page.has_content? "money: 2"
     end
-  end
-
-  test "admin can add item" do
-    create_admin
-
-    visit admin_dashboard_index_path
-
-    click_button "Add New Item"
-
-    fill_in "Name", with: "NewItem"
-    fill_in "Money", with: 20
-    fill_in "Strength", with: 2
-    fill_in "Dexterity", with: 2
-    fill_in "Intelligence", with: 2
-    fill_in "Health", with: 2
-    fill_in "Speed", with: 2
-    click_button "Create Item"
-
-    assert admin_dashboard_index_path, current_path
-
-    visit admin_items_path
-
-    assert page.has_content?("NewItem")
-    assert page.has_content? "strength: 2"
-    assert page.has_content? "dexterity: 2"
-    assert page.has_content? "intelligence: 2"
-    assert page.has_content? "speed: 2"
-    assert page.has_content? "health: 2"
-    assert page.has_content? "money: 2"
-    
   end
 
   test "admin can delete item" do

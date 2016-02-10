@@ -66,9 +66,9 @@ class AdminStoresTest < ActionDispatch::IntegrationTest
     fill_in "Speed", with: 2
     click_button "Create Item"
 
-    assert admin_dashboard_index_path, current_path
+    assert_equal edit_admin_store_path(store1.id), current_path
 
-    visit admin_items_path
+    visit edit_admin_store_path(store1.id)
 
     assert page.has_content?("NewItem")
     assert page.has_content? "strength: 2"
@@ -88,7 +88,7 @@ class AdminStoresTest < ActionDispatch::IntegrationTest
     store1.items << [item1, item2]
 
     visit edit_admin_store_path(store1.id)
-save_and_open_page
+
     within("#item-#{item1.id}") do
       assert page.has_content?(item1.name)
       assert page.has_content?(item1.price)

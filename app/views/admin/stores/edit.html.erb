@@ -2,16 +2,13 @@
   <h4>Edit Items In <%= @store.name %></h4>
   <div class="row">
     <div class="col m6">
-      <%= button_to "Add New Item", new_admin_item_path, method: :get %>
+      <%= button_to "Add New Item", new_admin_item_path(store_id: @store.id), method: :get %>
     </div>
     <div class="col m6">
       <ul>
         <% @store.items.each do |item| %>
-        <li id="item-<%= item.id %>"><%= item.name %> - Price:
-            <%= item.price %>
-          </li>
           <li id="item-<%= item.id %>">
-            <img src="http://game-icons.net/icons/lorc/originals/png/plain-dagger.png" alt="" class="circle">
+
             <span class="title"><%= item.name  %></span>
             <p>Price: <span class="price" ><%= item.price %></span> <br>
                <% item.skill_set.attributes.each do |attribute, value| %>
