@@ -25,6 +25,7 @@ $(document).ready(function() {
 function sellItem(id){
     $(id).toggleClass('hide');
     $(id).toggleClass('show');
+    $('.hide-sell').text('-');
     findSellTotal();
     updateTotal();
 }
@@ -32,6 +33,7 @@ function sellItem(id){
 function findSellTotal(){
   var sold_items = $("ul.character_trades").find(".show")
   items_total = [0]
+
   $.each(sold_items, function(index, sold_item){
       items_total.push(parseInt($(this).find('.price').text()))
   })
@@ -42,6 +44,7 @@ function findSellTotal(){
 function buyItem(id){
     $(id).toggleClass('hide');
     $(id).toggleClass('show');
+    $('.hide-buy').text('-');
     findBoughtTotal();
     updateTotal();
 }

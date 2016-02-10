@@ -6,7 +6,7 @@
      <% item.skill_set.non_zero_attributes.each do |attribute, value| %>
      <%= attribute %>: <%= value %>
      <% end %>
-     <button class="secondary-content" onclick="<%= type %>Item('.<%= holder %>-item-<%= item.id %>')"><%= type.capitalize %></button>
+     <button class="secondary-content <%= display %>-<%= type %>" onclick="<%= type %>Item('.<%= holder %>-item-<%= item.id %>')"><%= type.capitalize %></button>
   </p>
 </li>
 <% end %>
