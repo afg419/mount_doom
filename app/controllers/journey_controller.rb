@@ -41,6 +41,7 @@ class JourneyController < ApplicationController
 
   def game
     @location_id = params[:location_id]
-    @location_id = 1
+
+    render "journey/game#{@location_id}.html.erb"
   end
 end
