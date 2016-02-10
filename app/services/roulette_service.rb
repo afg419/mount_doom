@@ -1,11 +1,12 @@
 class RouletteService
-  attr_reader :origin_location, :target_location, :health_after_game, :current_character
-
+  attr_reader :origin_location, :target_location, :character
+  attr_accessor :health_after_game
   def initialize(params, current_character = nil)
     @origin_location = Location.find(params[:location_id])
     @target_location = origin_location.next_location
-    @health_after_game = params[:health].to_i
-    @current_character = current_character
+    @character = current_character
+    health = params[:health] ||= character.hp
+    @health_after_game = health.to_i
     @armory, @inn, @apothecary, @blacksmith = Category.all
   end
 
@@ -13,20 +14,20 @@ class RouletteService
     return :dead if health_after_game <= 0
 
     main_wound = generate_main_wound
-    current_character.items += generate_random_items
-    current_character.incidents += generate_random_wounds + generate_main_wound
-    current_character.heals_wounds
-    current_character.save
+    character.items += generate_random_items
+    character.incidents += generate_random_wounds + [generate_main_wound]
+    # character.heals_wounds
+    character.save
 
-    return :dead if current_character.hp <= 0
+    return :dead if character.hp <= 0
 
     :success
   end
 
   def generate_main_wound
-    damage = current_character.hp - health_after_game
+    damage = character.hp - health_after_game
     wound_ss = SkillSet.create(health: -1 * damage)
-    wound = Incident.create(name: wound_name, skill_set: wound_ss)
+    Incident.create(name: wound_name, skill_set: wound_ss)
   end
 
 
@@ -40,6 +41,8 @@ class RouletteService
       generate_items(2)
     elsif random > 50
       generate_items(1)
+    else
+      []
     end
   end
 
@@ -53,21 +56,29 @@ class RouletteService
       generate_wounds(2)
     elsif random > 50
       generate_wounds(1)
+    else
+      []
     end
   end
 
   def generate_items(n)
     gained_items = []
     n.times do |i|
-      gained_items << item_list.sample.save
+      item = item_list.sample
+      gained_items << item
+      item.save
     end
+    gained_items
   end
 
   def generate_wounds(n)
     new_wounds = []
     n.times do |i|
-      new_wounds << wound_list.sample.save
+      wound = wound_list.sample
+      new_wounds << wound
+      wound.save
     end
+    new_wounds
   end
 
   def wound_name
