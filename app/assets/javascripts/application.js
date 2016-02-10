@@ -15,16 +15,29 @@
 //= require jquery
 //= require lodash
 //= require materialize-sprockets
+//= require travelling_game/p5.js
+//= require travelling_game/p5.dom.js
+//= require travelling_game/entity.js
+//= require travelling_game/enemy_melee.js
+//= require travelling_game/arrow.js
+//= require travelling_game/enemy_ranged.js
+//= require travelling_game/fire_ball.js
+//= require travelling_game/player.js
+//= require travelling_game/obstacle.js
+//= require travelling_game/level1.js
+//= require travelling_game/collisions.js
+//= require travelling_game/attack.js
 //= require_tree .
+
 
 $(document).ready(function() {
   chooseCharacter();
-  // sellItem();
 });
 
 function sellItem(id){
     $(id).toggleClass('hide');
     $(id).toggleClass('show');
+    $('.hide-buy').children().removeClass('mdi-content-add').addClass('mdi-content-clear');
     findSellTotal();
     updateTotal();
 }
@@ -32,6 +45,7 @@ function sellItem(id){
 function findSellTotal(){
   var sold_items = $("ul.character_trades").find(".show")
   items_total = [0]
+
   $.each(sold_items, function(index, sold_item){
       items_total.push(parseInt($(this).find('.price').text()))
   })
@@ -42,6 +56,7 @@ function findSellTotal(){
 function buyItem(id){
     $(id).toggleClass('hide');
     $(id).toggleClass('show');
+    $('.hide-buy').children().removeClass('mdi-content-add').addClass('mdi-content-clear');
     findBoughtTotal();
     updateTotal();
 }
@@ -97,27 +112,3 @@ function chooseCharacter(){
     });
   });
 }
-//
-//
-// $('.side-'+index).on('click', function(){
-//   $('.profile-2').addClass('hide');
-//   $('.profile-1').removeClass('hide');
-//
-//
-// });
-//
-//
-// var $developers = $('.developer')
-//
-// $('#developer_filter_name').on('keyup', function () {
-//     var currentName = this.value.toUpperCase();
-//     $developers.each(function (index, developer) {
-//       var $developer = $(developer);
-//       if ($developer.data('name').indexOf(currentName) >= 0) {
-//         $developer.show();
-//       }
-//       else {
-//         $developer.hide();
-//       }
-//     });
-//   });

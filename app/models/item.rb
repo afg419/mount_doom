@@ -1,7 +1,4 @@
 class Item < ActiveRecord::Base
-  extend Forwardable
-  def_delegator :skill_set, :attributes, :non_zero_attributes
-
   validates :name, presence: true
   belongs_to :category
   belongs_to :itemable, :polymorphic => true
@@ -51,5 +48,14 @@ class Item < ActiveRecord::Base
 
   def new_category
     Store.find(itemable_id).category.id
+
+  def duplication_params
+    {
+      name: name,
+      category_id: category_id,
+      label: label,
+      skill_set_id: skill_set_id
+    }
+
   end
 end

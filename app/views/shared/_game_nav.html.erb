@@ -3,7 +3,7 @@
 
     <li class="brand-logo nav-links"> <%= link_to "Save and Quit", end_game_path, method: :delete %>   </li>
     <ul class="nav-links">
-      <%= link_to "Bree", journey_path("bree"), class: "brand-logo center", style: "font-size: 2.0em"%>
+      <%= link_to current_character.location.name, journey_path(current_character.location), class: "brand-logo center", style: "font-size: 2.0em"%>
     </ul>
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down nav-links" style = "padding-right: 10px">

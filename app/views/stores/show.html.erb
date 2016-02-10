@@ -1,4 +1,4 @@
-<h1 class="center">Welcome to the <%= @store.name %> <%= @store.category.name %></h1>
+<h1 class="center">Welcome to the <%= @store.name %> <%= @store.category.name.capitalize %></h1>
 
 <div class="container journal">
   <div class="row">
@@ -6,7 +6,7 @@
     <div class="character_selling">
       <!-- First Column/Charcter Inventory -->
       <div class="col m3" style="padding-right: 0">
-        Your Inventory
+        <p class="title center headers">Your Inventory</p>
         <ul class="scrolling collection">
           <%= render partial: "items", locals: { holder: "player",
                                                  display: "show",
@@ -17,7 +17,7 @@
 
       <!-- Column Two/Character Selling -->
       <div class="col m3" style="padding-left: 0">
-        You Are Selling
+        <p class="title center headers">You Are Selling</p>
         <ul class="scrolling collection character_trades">
           <%= render partial: "items", locals: { holder: "player",
                                                  display: "hide",
@@ -32,7 +32,7 @@
     <!-- Third Column/Store Trades -->
     <div class="store_trades store_selling">
       <div class="col m3" style="padding-right: 0">
-        You are buying
+        <p class="title center headers">You are buying</p>
         <ul class="scrolling collection store_trades">
           <%= render partial: "items", locals: { holder: "store",
                                                  display: "hide",
@@ -43,7 +43,7 @@
 
       <!-- Fourth Column/Store Inventory -->
       <div class="col m3" style="padding-left: 0">
-        Store Inventory
+        <p class="title center headers">Store Inventory</p>
         <ul class="scrolling collection store_inventory ">
           <%= render partial: "items", locals: { holder: "store",
                                                  display: "show",
@@ -72,7 +72,7 @@
       <div class="total_value">0
       </div>
     <!-- <button id="finalize-trade">Finalize Trade</button> -->
-    <button onclick="itemExchange( <%= @store.id %>, <%= current_character.id %> )">Finalize Trade</button>
+    <button class="finalize" onclick="itemExchange( <%= @store.id %>, <%= current_character.id %> )">Finalize Trade</button>
     </div>
   </div>
 </div>

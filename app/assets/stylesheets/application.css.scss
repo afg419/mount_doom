@@ -22,11 +22,18 @@ body {
 }
 
 .application-body{
-  background-image: url("http://i.imgur.com/9olXuLe.jpg");
+  // background-image: url("http://i.imgur.com/9olXuLe.jpg");
 }
 
 .application-body-doom{
   background-image: url('doom.jpeg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.application-body-dead{
+  background-image: url('dead.jpg');
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
@@ -107,7 +114,8 @@ body {
   background-image: url('journal.png');
   background-size:     cover;
   background-repeat:   no-repeat;
-  background-position: center center;
+  background-position: center;
+  border-radius: 5px;
 }
 
 .collection {
@@ -191,6 +199,10 @@ button {
   font-family: 'Tangerine', cursive;
 }
 
+.avatar-cards {
+  left: -40px;
+}
+
 .card.large {
   height: 520px;
   width: 400px;
@@ -237,14 +249,25 @@ main {
 
 .scrolling {
   width: auto;
-  height: 500px;
+  height: 375px;
   overflow: scroll;
+  padding: 5px;
 }
 
 .collection .collection-item {
   border-bottom: none;
   display: block;
   box-sizing: initial;
+}
+
+.headers{
+  padding-bottom: 0px;
+  margin-bottom: 0;
+  margin-top: 3px;
+}
+
+.character_card {
+  margin: 0;
 }
 .title {
   font-size: 110% !important;
@@ -255,6 +278,29 @@ main {
     top: 9px;
     right: 2px;
     position: absolute;
+    color: white;
+    border-radius: 30px;
+    background-color: black;
+    border: none;
+}
+.finalize {
+  color: white;
+  border-radius: 30px;
+  background-color: black;
+  border: none;
+}
+
+.avatar-selection{
+font-size: 13px
+}
+// Summary page
+
+.item_name {
+  color: green;
+}
+
+.wound_name {
+  color: red;
 }
 
 .town.row{
@@ -325,4 +371,10 @@ main {
   label {
     font-size: 1.5rem;
   }
+}
+
+canvas {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: 10%;
 }
