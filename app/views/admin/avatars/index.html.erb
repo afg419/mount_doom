@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col m4 offset-4">
       <h1>All Avatars</h1>
+      <%= button_to "Add New Avatar", new_admin_avatar_path, method: :get %>
       <ul>
         <%= render @avatars %>
       </ul>

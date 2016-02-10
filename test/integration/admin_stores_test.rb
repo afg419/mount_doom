@@ -6,7 +6,7 @@ class AdminStoresTest < ActionDispatch::IntegrationTest
 
     visit admin_dashboard_index_path
 
-    click_button "Edit Store Inventory/Add Items to Stores"
+    click_button "Edit Store Inventory/Add Items"
 
     assert_equal admin_stores_path, current_path
     assert page.has_content?("All Stores")

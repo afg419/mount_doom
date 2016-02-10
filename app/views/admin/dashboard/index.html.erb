@@ -1,13 +1,12 @@
 <h2>Admin Dashboard</h2>
 
-<div class="container">
+<div class="admin-dash container">
   <div class="row">
     <div class="col m4">
-      <%= button_to "Edit Store Inventory/Add Items to Stores", admin_stores_path, method: :get %>
+      <%= button_to "Edit Store Inventory/Add Items", admin_stores_path, method: :get %>
     </div>
     <div class="col m4">
-      <%= button_to "Add New Avatar", new_admin_avatar_path, method: :get %>
-      <%= button_to "Edit Avatars", admin_avatars_path, method: :get %>
+      <%= button_to "Add/Edit Avatars", admin_avatars_path, method: :get %>
     </div>
   </div>
 

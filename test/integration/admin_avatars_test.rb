@@ -7,7 +7,7 @@ class AdminAvatarsTest < ActionDispatch::IntegrationTest
     avatar2 = create(:avatar)
 
     visit admin_dashboard_index_path
-    click_button "Edit Avatars"
+    click_button "Add/Edit Avatars"
 
     assert_equal admin_avatars_path, current_path
     assert page.has_content?("All Avatars")
@@ -90,7 +90,7 @@ class AdminAvatarsTest < ActionDispatch::IntegrationTest
   test "admin can add avatar" do
     create_admin
 
-    visit admin_dashboard_index_path
+    visit admin_avatars_path
 
     click_button "Add New Avatar"
 
@@ -103,9 +103,7 @@ class AdminAvatarsTest < ActionDispatch::IntegrationTest
     fill_in "Speed", with: 2
     click_button "Create Avatar"
 
-    assert admin_dashboard_index_path, current_path
-
-    visit admin_avatars_path
+    assert admin_avatars_path, current_path
 
     within("#avatar-#{Avatar.last.id}") do
       assert page.has_content?("NewAvatar")
