@@ -50,6 +50,7 @@ class Item < ActiveRecord::Base
     {
       name: name,
       category_id: category_id,
+      label: label,
       skill_set_id: skill_set_id
     }
   end

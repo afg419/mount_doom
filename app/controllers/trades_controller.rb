@@ -5,7 +5,6 @@ class TradesController < ApplicationController
     trader.collect_items(params["classes"])
     trader.execute_transaction
     store.save
-    current_character.save
 
     redirect_to current_character
   end
