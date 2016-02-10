@@ -1,13 +1,11 @@
-<h2>Admin Dashboard</h2>
-
 <div class="admin-dash container">
+<h2>Admin Dashboard</h2>
   <div class="row">
     <div class="col m4">
-      <%= button_to "Edit Store Inventory/Add Items", admin_stores_path, method: :get %>
+      <%= button_to "Edit Store Inventory/Add Items", admin_stores_path, method: :get, class: "waves-effect waves-light btn" %>
     </div>
-    <div class="col m4">
-      <%= button_to "Add/Edit Avatars", admin_avatars_path, method: :get %>
+    <div class="col m4 offset-m2">
+      <%= button_to "Add/Edit Avatars", admin_avatars_path, method: :get, class: "waves-effect waves-light btn" %>
     </div>
   </div>
-
 </div>

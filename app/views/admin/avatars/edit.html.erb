@@ -1,24 +1,26 @@
-<h4>Edit <%= @avatar.name %></h4>
+<div class="admin-dash container">
+  <h2>Edit <%= @avatar.name %></h2>
 
-<%= form_for @avatar, url: admin_avatar_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name%>
-  <%= f.label :money %>
-  <%= f.number_field :money %>
-  <%= f.label :dexterity %>
-  <%= f.number_field :dexterity %>
-  <%= f.label :intelligence %>
-  <%= f.number_field :intelligence %>
-  <%= f.label :strength %>
-  <%= f.number_field :strength %>
-  <%= f.label :health %>
-  <%= f.number_field :health %>
-  <%= f.label :speed %>
-  <%= f.number_field :speed %>
-  <%# if @avatar.image_url %>
-      <%#= image_tag @avatar.image_url %><br/>
-  <%# end %>
-  <%#= f.label :image %>
-  <%#= f.file_field :image%><br><br>
-  <%= f.submit 'Update Avatar' %>
-<% end %>
+  <%= form_for @avatar, url: admin_avatar_path do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+    <%= f.label :money %>
+    <%= f.number_field :money %>
+    <%= f.label :dexterity %>
+    <%= f.number_field :dexterity %>
+    <%= f.label :intelligence %>
+    <%= f.number_field :intelligence %>
+    <%= f.label :strength %>
+    <%= f.number_field :strength %>
+    <%= f.label :health %>
+    <%= f.number_field :health %>
+    <%= f.label :speed %>
+    <%= f.number_field :speed %>
+    <%# if @avatar.image_url %>
+        <%#= image_tag @avatar.image_url %><br/>
+    <%# end %>
+    <%#= f.label :image %>
+    <%#= f.file_field :image%><br><br>
+    <%= f.submit 'Update Avatar' %>
+  <% end %>
+</div>

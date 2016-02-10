@@ -1,21 +1,23 @@
-<h4>Add New Item</h4>
+<div class="container admin-dash">
+  <h2>Add New Item</h2>
 
-<%= form_for @item, url: admin_items_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :money %>
-  <%= f.number_field :money %>
-  <%= f.label :dexterity %>
-  <%= f.number_field :dexterity %>
-  <%= f.label :intelligence %>
-  <%= f.number_field :intelligence %>
-  <%= f.label :strength %>
-  <%= f.number_field :strength %>
-  <%= f.label :health %>
-  <%= f.number_field :health %>
-  <%= f.label :speed %>
-  <%= f.number_field :speed %>
-  <%= hidden_field_tag(:store_id, @item.itemable_id) %>
-  <%= hidden_field_tag(:category_id, @item.new_category) %>
-  <%= f.submit "Create Item", class: "btn" %>
- <% end %>
+  <%= form_for @item, url: admin_items_path do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br />
+    <%= f.label :money %>
+    <%= f.number_field :money %><br />
+    <%= f.label :dexterity %>
+    <%= f.number_field :dexterity %><br />
+    <%= f.label :intelligence %>
+    <%= f.number_field :intelligence %><br />
+    <%= f.label :strength %>
+    <%= f.number_field :strength %><br />
+    <%= f.label :health %>
+    <%= f.number_field :health %><br />
+    <%= f.label :speed %>
+    <%= f.number_field :speed %><br />
+    <%= hidden_field_tag(:store_id, @item.itemable_id) %>
+    <%= hidden_field_tag(:category_id, @item.new_category) %>
+    <%= f.submit "Create Item", class: "btn" %>
+   <% end %>
+</div>
