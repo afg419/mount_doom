@@ -12,8 +12,16 @@ class AdminItemsTest < ActionDispatch::IntegrationTest
     assert_equal admin_items_path, current_path
 
     assert page.has_content?("All Items")
-    assert page.has_content?(item1.name)
-    assert page.has_content?(item2.name)
+
+    within("#item-#{item1.id}") do
+      assert page.has_content?(item1.name)
+      assert page.has_content?(item1.price)
+    end
+
+    within("#item-#{item2.id}") do
+      assert page.has_content?(item2.name)
+      assert page.has_content?(item2.price)
+    end
   end
 
   test "user does not see admin categories index" do
@@ -56,7 +64,16 @@ class AdminItemsTest < ActionDispatch::IntegrationTest
     click_button "Update Item"
 
     assert_equal admin_items_path, current_path
-    assert page.has_content? "EditedName"
+
+    within("#item-#{item1.id}") do
+      assert page.has_content?("EditedName")
+      assert page.has_content? "strength: 2"
+      assert page.has_content? "dexterity: 2"
+      assert page.has_content? "intelligence: 2"
+      assert page.has_content? "speed: 2"
+      assert page.has_content? "health: 2"
+      assert page.has_content? "money: 2"
+    end
   end
 
   test "admin can add item" do
@@ -80,6 +97,13 @@ class AdminItemsTest < ActionDispatch::IntegrationTest
     visit admin_items_path
 
     assert page.has_content?("NewItem")
+    assert page.has_content? "strength: 2"
+    assert page.has_content? "dexterity: 2"
+    assert page.has_content? "intelligence: 2"
+    assert page.has_content? "speed: 2"
+    assert page.has_content? "health: 2"
+    assert page.has_content? "money: 2"
+    
   end
 
   test "admin can delete item" do

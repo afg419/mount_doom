@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col m4">
-      Edit Stores
+      <%= button_to "Edit Store Inventory/Add Items to Stores", admin_stores_path, method: :get %>
     </div>
     <div class="col m4">
       <%= button_to "Add New Item", new_admin_item_path, method: :get %>

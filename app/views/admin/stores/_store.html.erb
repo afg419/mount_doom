@@ -1,0 +1,4 @@
+<li id="store-<%= store.id %>">
+  <span class="title"><%= store.name  %></span>
+  <%= button_to "Edit Inventory", edit_admin_store_path(store.id), method: :get %>
+</li>
