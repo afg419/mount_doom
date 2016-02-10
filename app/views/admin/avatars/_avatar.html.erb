@@ -2,10 +2,10 @@
   <img src="<%= image_url avatar.image_url %>" alt="" class="circle">
   <span class="title"><%= avatar.name  %></span>
   <p>
-    <%=  %>
-     <% avatar.skill_set.attributes.each do |attribute, value| %>
+    Status: <%= avatar.status.upcase %>
+    <% avatar.skill_set.attributes.each do |attribute, value| %>
      <%= attribute %>: <%= value %>
-     <% end %>
+    <% end %>
   </p>
   <%= button_to "Edit", edit_admin_avatar_path(avatar), method: :get %>
   <%= button_to "Retire", admin_avatar_path(avatar), method: :delete %>

@@ -52,7 +52,7 @@ class Admin::AvatarsController < Admin::BaseController
 
   def destroy
     @avatar = Avatar.find(params[:id])
-    @avatar.destroy
+    @avatar.update_attributes(status: "retired")
     redirect_to admin_avatars_path
   end
 
