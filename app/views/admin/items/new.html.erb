@@ -16,7 +16,6 @@
   <%= f.label :speed %>
   <%= f.number_field :speed %>
   <%= hidden_field_tag(:store_id, @item.itemable_id) %>
-  <%= f.label :category_id %>
-  <%= f.collection_select(:category_id, categories, :id, :name, { prompt: "Choose a category" }, class: "browser-default") %>
+  <%= hidden_field_tag(:category_id, @item.new_category) %>
   <%= f.submit "Create Item", class: "btn" %>
  <% end %>

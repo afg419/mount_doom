@@ -106,6 +106,17 @@ class ActionDispatch::IntegrationTest
     ApplicationController.any_instance.stubs(:current_user).returns(@user)
   end
 
+  def create_admin_and_stores_with_inventory
+    create_admin
+    @item1 = create(:item, name: "Item1")
+    @item2 = create(:item, name: "Item2")
+    @item3 = create(:item, name: "Item3")
+    @store1 = create(:store)
+    @store2 = create(:store)
+    @store1.items << [@item1, @item2]
+    @store2.items << [@item3]
+  end
+
   def login_user(name = "John", password = "Password")
     visit login_path
 
