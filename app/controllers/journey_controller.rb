@@ -3,6 +3,8 @@ class JourneyController < ApplicationController
 
   def show
     @location = Location.where(slug: params[:slug]).includes(:stores)[0]
+    current_character.location = @location
+    current_character.save
     render layout: 'wide',  :locals => {:background => params[:slug]}
   end
 
