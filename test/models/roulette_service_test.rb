@@ -61,7 +61,7 @@ class RouletteServiceTest < ActiveSupport::TestCase
   end
 
   test "generates_travel_event_and_kills_if_dead" do
-    @r.health_after_game = 0
+    @r.health_after_game = -1
     assert_equal :dead, @r.generate_travel_event
   end
 

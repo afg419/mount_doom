@@ -7,6 +7,20 @@ class Character < ActiveRecord::Base
   belongs_to :equipped_armor, :class_name => "Item"
   belongs_to :equipped_weapon, :class_name => "Item"
 
+  def bank
+    items.reduce(avatar.skill_set.money.to_i) do |acc, item|
+      acc + item.skill_set.money.to_i
+    end
+  end
+
+  def hp
+    items.reduce(avatar.skill_set.health.to_i) do |acc, item|
+      acc + item.skill_set.health.to_i
+    end
+  end
+
+  
+
   def current_skills
     avatar_attributes = [avatar.skill_set.attributes]
     apothecary_attributes = items.category_attributes("apothecary")
@@ -19,6 +33,19 @@ class Character < ActiveRecord::Base
 
     sum_skills(character_attributes)
   end
+
+
+  def equip_armor(item)
+    self.equipped_armor = item
+    self.save
+  end
+
+  def equip_weapon(item)
+    self.equipped_weapon = item
+    self.save
+  end
+
+private
 
   def equipped_weapon_attributes
     if equipped_weapon
@@ -35,30 +62,6 @@ class Character < ActiveRecord::Base
       [empty_skills]
     end
   end
-
-  def bank
-    items.reduce(avatar.skill_set.money.to_i) do |acc, item|
-      acc + item.skill_set.money.to_i
-    end
-  end
-
-  def hp
-    items.reduce(avatar.skill_set.health.to_i) do |acc, item|
-      acc + item.skill_set.health.to_i
-    end
-  end
-
-  def equip_armor(item)
-    self.equipped_armor = item
-    self.save
-  end
-
-  def equip_weapon(item)
-    self.equipped_weapon = item
-    self.save
-  end
-
-private
 
   def empty_skills
     {

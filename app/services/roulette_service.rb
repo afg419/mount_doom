@@ -12,18 +12,20 @@ class RouletteService
   end
 
   def generate_travel_event
-    return :dead if health_after_game <= 0
-
     @main_wound = generate_main_wound
     @subsequent_wounds = generate_random_wounds
     @found_items = generate_random_items
 
     character.items += found_items
     character.incidents += subsequent_wounds + [main_wound]
-    @healed_wounds = heal_wounds
+    if health_after_game > 0
+      @healed_wounds = heal_wounds
+    else
+      @healed_wounds = []
+    end
     character.save
 
-    return :dead if character.hp <= 0
+    return :dead if health_after_game <= 0
 
     :success
   end
