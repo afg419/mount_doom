@@ -25,7 +25,7 @@ $(document).ready(function() {
 function sellItem(id){
     $(id).toggleClass('hide');
     $(id).toggleClass('show');
-    $('.hide-sell').text('Remove');
+    $('.hide-sell').text('-');
     findSellTotal();
     updateTotal();
 }
@@ -44,7 +44,7 @@ function findSellTotal(){
 function buyItem(id){
     $(id).toggleClass('hide');
     $(id).toggleClass('show');
-    $('.hide-buy').text('Remove');
+    $('.hide-buy').text('-');
     findBoughtTotal();
     updateTotal();
 }

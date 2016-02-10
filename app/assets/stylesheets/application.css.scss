@@ -199,6 +199,10 @@ button {
   font-family: 'Tangerine', cursive;
 }
 
+.avatar-cards {
+  left: -40px;
+}
+
 .card.large {
   height: 520px;
   width: 400px;
@@ -258,6 +262,8 @@ main {
 
 .headers{
   padding-bottom: 0px;
+  margin-bottom: 0;
+  margin-top: 3px;
 }
 .title {
   font-size: 110% !important;
@@ -274,6 +280,9 @@ main {
     border: none;
 }
 
+.avatar-selection{
+font-size: 13px
+}
 // Summary page
 
 .item_name {
