@@ -23,6 +23,7 @@
   factory :location do
     name "Bree"
     slug "bree"
+    next_location_id 134
   end
 
   factory :character do

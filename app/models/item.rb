@@ -1,7 +1,4 @@
 class Item < ActiveRecord::Base
-  extend Forwardable
-  def_delegator :skill_set, :attributes, :non_zero_attributes
-
   validates :name, presence: true
   belongs_to :category
   belongs_to :itemable, :polymorphic => true
@@ -21,5 +18,13 @@ class Item < ActiveRecord::Base
   def self.category_attributes(category_name)
     of_category(category_name).map{ |item| item.skill_set.non_zero_attributes }
     # of_category(category_name).map{ |item| item.non_zero_attributes }
+  end
+
+  def duplication_params
+    {
+      name: name,
+      category_id: category_id,
+      skill_set_id: skill_set_id
+    }
   end
 end

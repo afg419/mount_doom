@@ -1,3 +1,4 @@
 <div class="town container">
 	<%= render partial: @location.slug %>
+	<%= link_to "Travel to Next Location",  travel_summary_path(location_id: (@location.id)), class: "travel_button" %>
 </div>

@@ -43,8 +43,9 @@ class TradesControllerTest < ActionController::TestCase
     @character.reload
     @store.reload
 
-    assert_equal ["dagger", "bowling ball"], @store.items.map{|item| item.name}
+    assert_equal ["basket"], @store.items.map{|item| item.name}
     assert_equal ["basket"], @character.items.map{|item| item.name}
+    refute Item.find_by(name: "dagger")
   end
 
   test "create method should update database entries when only buying or selling" do
@@ -82,7 +83,7 @@ class TradesControllerTest < ActionController::TestCase
     @character.reload
     @store.reload
 
-    assert_equal ["basket", "dagger", "bowling ball"], @store.items.map{|item| item.name}
+    assert_equal ["basket"], @store.items.map{|item| item.name}
     assert_equal [], @character.items.map{|item| item.name}
   end
 
