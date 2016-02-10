@@ -25,7 +25,7 @@ class RouletteService
     end
     character.save
 
-    return :dead if character.hp <= 0
+    return :dead if health_after_game <= 0
 
     :success
   end
