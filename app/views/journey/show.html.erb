@@ -1,4 +1,6 @@
 <div class="town container">
 	<%= render partial: @location.slug %>
-	<%= link_to "Travel to Next Location",  travel_game_path(location_id: (@location.id)), class: "travel_button" %>
+	<% if @location.slug != "mordor" %>
+		<%= link_to "Travel to Next Location",  travel_game_path(location_id: (@location.id)), class: "travel_button" %>
+	<% end %>
 </div>
