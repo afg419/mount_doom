@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   # post "notifications/notify" => "notifications#notify"
   # post "twilio/voice" => "twilio#voice"
   root to: "pages#home"
-
   resources :characters, only: [:new, :show, :update]
 
   post "/new_game", to: 'journey#create'
@@ -28,6 +27,8 @@ Rails.application.routes.draw do
     # resources :orders, only: [:index, :update]
   end
 
+  get '/:slug/map', to: 'journey#map'
+  # get '/map', to: 'journey#map'
   resources :stores, only: [:show], path: ":location_slug", param: :slug
   resource :journey, only: [:show], path: ":slug", controller: 'journey' #needs to be last
 

@@ -6,11 +6,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :categories, :current_user, :current_admin?, :return_category_names,
                 :set_background, :in_game, :current_character, :current_avatar,
-                :user_logged_in?, :render_item_name_or_button_to_equip
+                :user_logged_in?, :render_item_name_or_button_to_equip,
+                :journey_map_path
 
 
   def current_permission
     @current_permission ||= PermissionService.new(current_user)
+  end
+
+  def journey_map_path(location)
+    "/#{location.slug}/map"
   end
 
   def render_item_name_or_button_to_equip(item)

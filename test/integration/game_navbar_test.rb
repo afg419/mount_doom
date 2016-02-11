@@ -28,4 +28,18 @@ class GameNavbarTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Legolas")
     assert page.has_content?("$6")
   end
+
+  test "navbar updates location to that of character" do
+    create_start_of_game
+    ApplicationController.any_instance.stubs(:in_game).returns("true")
+
+    location1 = Location.create(name: "Bree", slug: "bree")
+    location2 = Location.create(name: "Rivendell", slug: "rivendell")
+
+    visit journey_path(location1)
+    assert page.has_content?("Bree")
+
+    visit journey_path(location2)
+    assert page.has_content?("Rivendell")
+  end
 end
