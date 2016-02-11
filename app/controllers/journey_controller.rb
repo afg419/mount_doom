@@ -13,6 +13,7 @@ class JourneyController < ApplicationController
   end
 
   def show
+    session[:summarizing] = nil
     @location = Location.where(slug: params[:slug]).includes(:stores)[0]
 
     render layout: 'wide',  :locals => {:background => params[:slug]}
@@ -37,13 +38,19 @@ class JourneyController < ApplicationController
   end
 
   def summary
-    @location = Location.find(params[:location_id])
-    current_character.location_id = @location.next_location_id
-    current_character.save
+    session[:gaming] = nil
 
-    @event_generator = RouletteService.new(params, current_character)
-    status = @event_generator.generate_travel_event
-    render layout: 'wide',  :locals => {:background => 'start', status: status}
+    if session[:summarizing]
+      dont_cheat(:summarizing)
+    else
+      session[:summarizing] = true
+
+      progress_to_next_location
+
+      @event_generator = RouletteService.new(params, current_character)
+      status = @event_generator.generate_travel_event
+      render layout: 'wide',  :locals => {:background => 'start', status: status}
+    end
   end
 
   def map
@@ -51,8 +58,13 @@ class JourneyController < ApplicationController
   end
 
   def game
-    @location_id = params[:location_id]
-    render "journey/game#{@location_id}.html.erb"
+    if session[:gaming]
+      dont_cheat(:gaming)
+    else
+      session[:gaming] = true
+      @location_id = params[:location_id]
+      render "journey/game#{@location_id}.html.erb"
+    end
   end
 
   def restart
@@ -61,6 +73,21 @@ class JourneyController < ApplicationController
     current_character.user_id = nil
     current_character.save
     render layout: 'wide',  :locals => {:background => "restart-#{session[:alive]}"}
+  end
+
+private
+
+  def progress_to_next_location
+    @location = Location.find(params[:location_id])
+    current_character.location_id = @location.next_location_id
+    current_character.save
+  end
+
+  def dont_cheat(page_key)
+    session[page_key] = nil
+    session[:alive] = nil
+    flash[:error] = "Don't Cheat!"
+    redirect_to restart_game_path
   end
 
   def still_alive?
