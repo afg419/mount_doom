@@ -12,4 +12,8 @@ class Store < ActiveRecord::Base
   def self.type(category_name)
     Store.joins(:categories).where(category: {name: category_name})
   end
+
+  def apothecary_or_inn?
+    category.name == "inn" || category.name == "apothecary"
+  end
 end

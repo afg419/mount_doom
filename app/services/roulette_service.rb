@@ -41,7 +41,7 @@ class RouletteService
 
   def generate_main_wound
     damage = character.hp - health_after_game
-    wound_ss = SkillSet.create(health: -1 * damage)
+    wound_ss = SkillSet.create(health: -1 * damage, money: (damage + 4))
     Incident.create(name: wound_name, skill_set: wound_ss)
   end
 
