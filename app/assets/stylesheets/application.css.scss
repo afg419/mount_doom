@@ -495,3 +495,10 @@ a.left-quit-link{
 ul.right.hide-on-med-and-down.nav-links {
   margin-right: 20px;
 }
+
+/* BUTTON STRUGGLE */
+.collection .collection-item.avatar .secondary-content {
+    top: 60px; 
+    left: 10px; /* bjm */
+    right: inherit; /* bjm */
+  }
