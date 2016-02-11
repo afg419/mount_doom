@@ -15,18 +15,18 @@
 //= require jquery
 //= require lodash
 //= require materialize-sprockets
-//= require travelling_game/p5.js
-//= require travelling_game/p5.dom.js
-//= require travelling_game/entity.js
-//= require travelling_game/enemy_melee.js
-//= require travelling_game/arrow.js
-//= require travelling_game/enemy_ranged.js
-//= require travelling_game/fire_ball.js
-//= require travelling_game/player.js
-//= require travelling_game/obstacle.js
-//= require travelling_game/level1.js
-//= require travelling_game/collisions.js
-//= require travelling_game/attack.js
+//= require travelling_game/p5
+//= require travelling_game/p5.dom
+//= require travelling_game/entity
+//= require travelling_game/enemy_melee
+//= require travelling_game/arrow
+//= require travelling_game/enemy_ranged
+//= require travelling_game/fire_ball
+//= require travelling_game/player
+//= require travelling_game/obstacle
+//= require travelling_game/level1
+//= require travelling_game/collisions
+//= require travelling_game/attack
 //= require_tree .
 
 
