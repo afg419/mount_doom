@@ -12,7 +12,11 @@
     </div>
     <div class="col m6">
       <%= button_to "Edit", edit_admin_avatar_path(avatar), method: :get, class: "waves-effect waves-light btn" %><br />
-      <%= button_to "Retire", admin_avatar_path(avatar), method: :delete, class: "waves-effect waves-light btn" %>
+      <% if  avatar.status == "active" %>
+        <%= button_to "Retire", admin_avatar_path(avatar), method: :delete, class: "waves-effect waves-light btn" %>
+      <% else %>
+        <%= link_to "Activate", admin_activate_avatar_path(id: avatar.id), method: :get, class: "waves-effect waves-light btn delete" %>
+      <% end %>
     </div>
   </div>
 </li>

@@ -5,7 +5,7 @@ class CharactersController < ApplicationController
 
   def new
     @character = Character.new
-    @avatars = Avatar.all
+    @avatars = Avatar.active
     render layout: 'wide',  :locals => {:background => "shire"}
   end
 

@@ -2,6 +2,7 @@ class Avatar < ActiveRecord::Base
   belongs_to :skill_set
 
   scope :admin_alpha, -> { order(name: :asc) }
+  scope :active, -> { where(status: "active") }
 
   def money
     skill_set.money if skill_set
