@@ -198,6 +198,18 @@ body {
   background-color: transparent;
 }
 
+.card_position{
+  position: absolute;
+  left: 85px;
+  bottom: 24px;
+}
+
+.start_button {
+  position: absolute;
+  left: 695px;
+  bottom: 300px;
+}
+
 td, th {
     padding: 0px 0px;
     display: table-cell;
