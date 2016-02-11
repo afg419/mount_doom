@@ -1,6 +1,6 @@
 class JourneyController < ApplicationController
   include JourneyHelper
-  before_action :still_alive?, except: [:restart]
+  before_action :still_alive?, except: [:create, :restart]
 
   def show
     @location = Location.where(slug: params[:slug]).includes(:stores)[0]
@@ -45,13 +45,10 @@ class JourneyController < ApplicationController
 
   def restart
     @status = status
-    if @status
-      session[:in_game] = nil
-      current_character.user_id = nil
-      render layout: 'wide',  :locals => {:background => "restart-#{session[:alive]}"}
-    else
-      redirect_to root_path
-    end
+    session[:in_game] = nil
+    current_character.user_id = nil
+    current_character.save
+    render layout: 'wide',  :locals => {:background => "restart-#{session[:alive]}"}
   end
 
   def still_alive?
@@ -59,10 +56,10 @@ class JourneyController < ApplicationController
       session[:alive] = true
     else
       session[:alive] = false
-      redirect_to restart_game
+      redirect_to restart_game_path
     end
   end
-  
+
   def help
     render layout: 'wide',  :locals => {:background => "granite"}
   end
