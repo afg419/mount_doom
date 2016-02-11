@@ -31,7 +31,7 @@ class Seed
     create_avatar("Sam","samwise.jpg", 10, 0, 8, 11, 30, 15, 100, "active")
     create_avatar("Merry","merry.jpeg", 5, 0, 10, 14, 30, 17, 120, "active")
     create_avatar("Pippen","pippen.jpg",8, 0, 7, 14, 30, 18, 80, "active")
-    create_avatar("Batman","batman.jpg",8, 0, 7, 14, 30, 18, 2000, "retired")
+    create_avatar("Batman","batman.jpg",100, 100, 100, 100, 2000, 20, 2000, "retired")
   end
 
   def self.create_avatar(name, image_url, strength, defense, intelligence, dexterity, health, speed, money, status)

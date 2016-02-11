@@ -141,9 +141,9 @@
     text("Player health: " + player.hp,850,20)
     text("Sauron health: " + sauron.hp,850,40)
 
-    if ( sauron.hp <= 0) {
+    if ( player.hp <= 0 || sauron.hp <= 0) {
       var LocationId = <%= @location_id %>;
-      var url = "/travel_summary?location_id=" + LocationId + "&health=" + player.hp;
+      var url = "/restart_game";
       window.location.href = url;
       player.hp = 5
       player_enemies.push(1).push(1)
