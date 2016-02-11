@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/travel_game', to: 'journey#game'
   get '/restart_game', to: 'journey#restart', as: 'restart_game'
   get '/help', to: 'journey#help'
+  get 'admin/activate_avatar', to: 'admin/avatars#activate'
 
   resources :trades, only: [:create]
   resources :categories, only: [:index, :show]
