@@ -8,25 +8,25 @@ class Character < ActiveRecord::Base
   belongs_to :equipped_weapon, :class_name => "Item"
 
   def hp
-    items.reduce(avatar.skill_set.health.to_i) do |acc, item|
-      acc + item.skill_set.health.to_i
+    (items + incidents).reduce(avatar.skill_set.health.to_i) do |acc, item_incident|
+      acc + item_incident.skill_set.health.to_i
     end
   end
-
 
   def current_skills
     avatar_attributes = [avatar.skill_set.attributes]
     apothecary_attributes = items.category_attributes("apothecary")
     inn_item_attributes = items.category_attributes("inn")
+    injury_attributes = incidents.total_injury_attributes
     character_attributes = avatar_attributes +
                            equipped_weapon_attributes +
                            equipped_armor_attributes +
                            apothecary_attributes +
-                           inn_item_attributes
+                           inn_item_attributes +
+                           injury_attributes
 
     sum_skills(character_attributes)
   end
-
 
   def equip_armor(item)
     self.equipped_armor = item
