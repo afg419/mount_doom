@@ -1,5 +1,6 @@
 class JourneyController < ApplicationController
   include JourneyHelper
+  before_action :still_alive?, except: [:create, :restart]
 
   def show
     @location = Location.where(slug: params[:slug]).includes(:stores)[0]
@@ -30,13 +31,7 @@ class JourneyController < ApplicationController
     @location = Location.find(params[:location_id])
     @event_generator = RouletteService.new(params, current_character)
     status = @event_generator.generate_travel_event
-
-    case status
-    when :dead
-      render layout: 'wide',  :locals => {:background => 'dead'}
-    when :success
-      render layout: 'wide',  :locals => {:background => 'start'}
-    end
+    render layout: 'wide',  :locals => {:background => 'start', status: status}
   end
 
   def map
@@ -46,5 +41,26 @@ class JourneyController < ApplicationController
   def game
     @location_id = params[:location_id]
     render "journey/game#{@location_id}.html.erb"
+  end
+
+  def restart
+    @status = status
+    session[:in_game] = nil
+    current_character.user_id = nil
+    current_character.save
+    render layout: 'wide',  :locals => {:background => "restart-#{session[:alive]}"}
+  end
+
+  def still_alive?
+    if current_character.hp > 0
+      session[:alive] = true
+    else
+      session[:alive] = false
+      redirect_to restart_game_path
+    end
+  end
+
+  def help
+    render layout: 'wide',  :locals => {:background => "granite"}
   end
 end

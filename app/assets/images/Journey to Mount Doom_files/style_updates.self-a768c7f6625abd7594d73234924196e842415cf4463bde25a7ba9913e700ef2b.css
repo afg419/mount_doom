@@ -1,0 +1,114 @@
+/* line 1, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+html {
+  font-family: 'Tangerine', cursive;
+}
+
+/* line 5, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+#cart {
+  font-size: 2rem;
+}
+
+/* line 9, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.btn-floating {
+  border-radius: 0;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  margin: -15px 8px 0px 5px;
+}
+
+/* line 17, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+#checkout {
+  border: 1px solid black;
+}
+
+/* line 21, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.checkout_header {
+  font-size: 2rem;
+}
+
+/* line 25, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.item img {
+  float: left;
+  margin: 0 8px 0 -12px;
+  height: auto;
+  width: 100%;
+  border-radius: 50%;
+}
+
+/* line 33, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.item {
+  display: inline-block;
+  height: 32px;
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: white;
+}
+
+/* line 45, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.about {
+  font-family: 'Tangerine', cursive;
+  color: #ffc107;
+}
+/* line 48, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.about .container {
+  font-size: 30px;
+}
+
+/* line 54, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.entire {
+  font-family: 'Tangerine', cursive;
+  background: url("scroll.png") center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50px;
+  left: 0px;
+}
+/* line 64, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.entire .container {
+  padding-left: 28vw;
+  padding-top: 10vw;
+}
+/* line 67, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.entire .container .form {
+  max-width: 200px;
+}
+/* line 69, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.entire .container .form .label {
+  font-size: 35px;
+  color: #000000;
+}
+
+/* line 77, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+.item b,
+strong {
+  font-weight: normal;
+}
+
+/* line 82, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+#nav-search {
+  background-color: white;
+}
+
+/* line 86, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+#grayscale {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
+  /* Firefox 3.5+ */
+  filter: gray;
+  /* IE6-9 */
+  -webkit-filter: grayscale(30%);
+  /* Chrome 19+ & Safari 6+ */
+}
+
+/* line 92, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/style_updates.css.scss */
+#grayscale:hover {
+  filter: none;
+  -webkit-filter: grayscale(0%);
+}
