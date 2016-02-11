@@ -13,7 +13,6 @@ class Character < ActiveRecord::Base
     end
   end
 
-
   def current_skills
     avatar_attributes = [avatar.skill_set.attributes]
     apothecary_attributes = items.category_attributes("apothecary")
@@ -38,7 +37,32 @@ class Character < ActiveRecord::Base
     self.save
   end
 
+  def heal_wounds
+    character = self
+    armory, inn, apothecary, blacksmith = Category.all
+    wounds = character.incidents
+    items = character.items.where(category: [inn, apothecary] )
+
+    array = []
+    wounds.each do |wound|
+      items.each do |item|
+        if item.label == wound.label
+          array << destroy_if_matching(item, wound)
+          break
+        end
+      end
+    end
+    array
+  end
+
 private
+
+def destroy_if_matching(item, wound)
+  item_name, wound_name = item.name, wound.name
+  item.destroy
+  wound.destroy
+  [item_name, wound_name]
+end
 
   def equipped_weapon_attributes
     if equipped_weapon
