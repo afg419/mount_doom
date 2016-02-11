@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   get '/travel_summary', to: 'journey#summary'
   get '/travel_game', to: 'journey#game'
+  get '/help', to: 'journey#help'
 
   resources :trades, only: [:create]
   resources :categories, only: [:index, :show]

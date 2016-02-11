@@ -1,15 +1,13 @@
 <div class="container game-play">
   <script type="text/javascript" id="game-play1">
 
-
-
   function setup(){
     height = 1000;
     width = 600;
     cnv = createCanvas(height , width);
   }
 
-  type = "<%= "#{current_character.equipped_weapon.label}" %>"
+  type = "<%= "#{current_character.equipped_weapon.label}" if current_character.equipped_weapon %>"
   hp = <%= current_character.hp %>
   str = <%= current_character.current_skills["strength"] %>
   dex = <%= current_character.current_skills["dexterity"] %>
@@ -18,21 +16,15 @@
   spd = 3*<%= current_character.current_skills["speed"] %>/4
   int = <%= current_character.current_skills["intelligence"] %>
 
+  u = 0;
   s = 0;
   t = 0;
   player = new Player(hp,10,10,25,str,dex,int,spd,[81,150,12],type,ac);
-  enemy1 = new EnemyMelee(5,700,10,25,18,10,10,1.5,[74,9,9],"melee");
-  enemy2 = new EnemyMelee(5,650,550,25,18,10,10,1.5,[74,9,9],"melee");
-  enemy3 = new EnemyMelee(5,750,550,25,10,10,10,2.5,[74,9,9],"melee");
-  enemy4 = new EnemyMelee(5,750,150,25,25,10,10,1.0,[74,9,9],"melee");
-  rock1 = new Obstacle(5,200,400,70,10,10,10,3,[100,100,100],"melee")
-  rock2 = new Obstacle(5,600,600,80,10,10,10,3,[100,100,100],"melee")
-  rock3 = new Obstacle(5,400,80,50,10,10,10,3,[100,100,100],"melee")
+  sauron = new EnemyMelee(100,300,300,55,125,18,10,1.0,   [0,0,0],"melee", 20, 35);
 
-  player_enemies = [player, enemy1, enemy2, enemy3, enemy4];
+  player_enemies = [player, sauron];
   enemies = player_enemies.slice(1,player_enemies.length)
-  obstacles = [rock1, rock2, rock3]
-
+  obstacles = [];
   arrows = [];
   player_arrows = [];
   player_magic = [];
@@ -65,7 +57,12 @@
   }
 
   var draw = function(){
-    background(255,255,255);
+    fill(0,0,0)
+    rect(950,225,50,50)
+    rect(950,275,50,50)
+    rect(950,325,50,50)
+
+    background(108,98,95);
     player.sketch();
 
     if (mouseIsPressed){
@@ -125,7 +122,7 @@
         hit[1].hp -= player.dex/8;
       }
     }
-
+    //
     for(i = 0; i < player_magic.length; i++){
       player_magic[i].fly();
       player_magic[i].sketch();
@@ -142,12 +139,9 @@
     }
 
     text("Player health: " + player.hp,850,20)
-    text("Enemy1 health: " + enemy1.hp,850,40)
-    text("Enemy2 health: " + enemy2.hp,850,60)
-    text("Enemy3 health: " + enemy3.hp,850,80)
-    text("Enemy4 health: " + enemy4.hp,850,100)
+    text("Sauron health: " + sauron.hp,850,40)
 
-    if (player.hp <= 0 || player_enemies.length == 1) {
+    if ( sauron.hp <= 0) {
       var LocationId = <%= @location_id %>;
       var url = "/travel_summary?location_id=" + LocationId + "&health=" + player.hp;
       window.location.href = url;
@@ -155,10 +149,39 @@
       player_enemies.push(1).push(1)
     }
 
+    if (t >= 450 && player_enemies.length <= 6){
+      enemy = new EnemyMelee(10,950,300,25,12, 10, 10,1.5,   [74,9,9],"melee",0,0);
+      player_enemies.push(enemy)
+      t = 0;
+      fill(0,0,0)
+
+    }
+
+    if (s >= 650 && player_enemies.length <= 6){
+      enemy = new EnemyRanged(10,950,250,25,25,15,10,1.2,   [150,150,40],"melee");
+      player_enemies.push(enemy)
+      s = 0;
+      fill(0,0,0)
+    }
+
+    if (u >= 850 && player_enemies.length <= 6){
+      enemy = new EnemyMelee(8,950,350,20,12,10,10,2.5,  [201,67,10],"melee",10,0);
+      player_enemies.push(enemy)
+      u = 0;
+      fill(0,0,0)
+    }
+
+    if(s+t+u >= 2000){
+      s = 0;
+      t = 0;
+      u = 0;
+    }
+
     rect(0,-5,1000,10);
     rect(0,590,1000,10);
     t++;
     s++;
+    u++;
   }
   </script>
 </div>

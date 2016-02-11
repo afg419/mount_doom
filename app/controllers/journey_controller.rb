@@ -30,13 +30,8 @@ class JourneyController < ApplicationController
     @location = Location.find(params[:location_id])
     @event_generator = RouletteService.new(params, current_character)
     status = @event_generator.generate_travel_event
-
-    case status
-    when :dead
-      render layout: 'wide',  :locals => {:background => 'dead'}
-    when :success
-      render layout: 'wide',  :locals => {:background => 'start'}
-    end
+    
+    render layout: 'wide',  :locals => {:background => 'start'}
   end
 
   def map
@@ -46,5 +41,9 @@ class JourneyController < ApplicationController
   def game
     @location_id = params[:location_id]
     render "journey/game#{@location_id}.html.erb"
+  end
+
+  def help
+    render layout: 'wide',  :locals => {:background => "granite"}
   end
 end
