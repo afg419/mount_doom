@@ -45,7 +45,7 @@ private
     return [:ok, true] if controller == "pages"
     return [:ok, true] if controller == "characters" && action.in?(%w{ new })
     return [:ok, true] if controller == "users" && action.in?(%w{ show })
-    return [:ok, true] if controller == "journey" && action.in?(%w{ create continue })
+    return [:ok, true] if controller == "journey" && action.in?(%w{ create continue restart})
     [:current_user, false, "Please Start a Game"]
   end
 
@@ -57,7 +57,8 @@ private
                                                                     destroy
                                                                     summary
                                                                     game
-                                                                    map })
+                                                                    map
+                                                                    restart})
     [:current_character, false, "Please Save and Quit"]
   end
 end

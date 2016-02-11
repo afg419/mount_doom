@@ -1,0 +1,6 @@
+<% if @status == "true" %>
+  <h2>You Won!</h2>
+<% else %>
+  <h2>You Died. You Suck.</h2>
+<% end %>
+<%= button_to "Play Again", dashboard_path, method: :get %>

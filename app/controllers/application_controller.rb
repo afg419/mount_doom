@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :categories, :current_user, :current_admin?, :return_category_names,
                 :set_background, :in_game, :current_character, :current_avatar,
                 :user_logged_in?, :render_item_name_or_button_to_equip,
-                :journey_map_path
+                :journey_map_path, :status
 
 
   def current_permission
@@ -50,6 +50,10 @@ class ApplicationController < ActionController::Base
 
   def in_game
     session[:in_game]
+  end
+
+  def status
+    session[:alive]
   end
 
   def current_character
