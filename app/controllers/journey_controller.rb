@@ -31,7 +31,6 @@ class JourneyController < ApplicationController
     @location = Location.find(params[:location_id])
     @event_generator = RouletteService.new(params, current_character)
     status = @event_generator.generate_travel_event
-
     render layout: 'wide',  :locals => {:background => 'start', status: status}
   end
 
@@ -62,5 +61,9 @@ class JourneyController < ApplicationController
       session[:alive] = false
       redirect_to restart_game
     end
+  end
+  
+  def help
+    render layout: 'wide',  :locals => {:background => "granite"}
   end
 end

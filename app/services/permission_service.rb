@@ -58,7 +58,8 @@ private
                                                                     summary
                                                                     game
                                                                     map
-                                                                    restart})
+                                                                    restart
+                                                                    help })
     [:current_character, false, "Please Save and Quit"]
   end
 end

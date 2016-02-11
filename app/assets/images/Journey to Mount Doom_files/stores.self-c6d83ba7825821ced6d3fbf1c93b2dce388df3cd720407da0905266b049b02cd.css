@@ -1,0 +1,5 @@
+/* line 18, /Users/aarongreenspan/turing/3module/1week/slota-shop/app/assets/stylesheets/stores.css.scss */
+table, td, th {
+  border: 1px solid #000;
+  border-collapse: collapse;
+}

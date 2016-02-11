@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :require_current_user, only: [:edit, :update]
-  before_action :user_logged_in?, only: [:show, :edit]
 
   def new
     @user = User.new
