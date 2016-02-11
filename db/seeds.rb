@@ -31,7 +31,7 @@ class Seed
     create_avatar("Sam","samwise.jpg", 10, 0, 8, 11, 30, 15, 100, "active")
     create_avatar("Merry","merry.jpeg", 5, 0, 10, 14, 30, 17, 120, "active")
     create_avatar("Pippen","pippen.jpg",8, 0, 7, 14, 30, 18, 80, "active")
-    create_avatar("Batman","batman.jpg",8, 0, 7, 14, 30, 18, 2000, "retired")
+    create_avatar("Batman","batman.jpg",100, 100, 100, 100, 2000, 20, 2000, "retired")
   end
 
   def self.create_avatar(name, image_url, strength, defense, intelligence, dexterity, health, speed, money, status)
@@ -61,27 +61,27 @@ class Seed
   end
 
   def self.create_stores
-  @bree_armory = Store.create(category: @armory, location: @bree, name: "HANKS")
-  @bree_inn = Store.create(category: @inn, location: @bree, name: "Prancing Pony")
-  @bree_apothecary = Store.create(category: @apothecary, location: @bree, name: "Aaron's Drugs")
-  @bree_blacksmith = Store.create(category: @blacksmith, location: @bree, name: "Rakes on rakes")
+    @bree_armory = Store.create(category: @armory, location: @bree, name: "HANKS")
+    @bree_inn = Store.create(category: @inn, location: @bree, name: "Prancing Pony")
+    @bree_apothecary = Store.create(category: @apothecary, location: @bree, name: "Aaron's Drugs")
+    @bree_blacksmith = Store.create(category: @blacksmith, location: @bree, name: "Rakes on rakes")
 
-  @rivendell_armory = Store.create(category: @armory, location:@rivendell, name: "Protect Ur Neck")
-  @rivendell_inn = Store.create(category: @inn, location:@rivendell, name: "Bed Buggs")
-  @rivendell_apothecary = Store.create(category: @apothecary, location:@rivendell, name: "Aaron's Drugs")
-  @rivendell_blacksmith = Store.create(category: @blacksmith, location:@rivendell, name: "2 Chaimz")
+    @rivendell_armory = Store.create(category: @armory, location:@rivendell, name: "Protect Ur Neck")
+    @rivendell_inn = Store.create(category: @inn, location:@rivendell, name: "Bed Buggs")
+    @rivendell_apothecary = Store.create(category: @apothecary, location:@rivendell, name: "Aaron's Drugs")
+    @rivendell_blacksmith = Store.create(category: @blacksmith, location:@rivendell, name: "2 Chaimz")
 
-  @edoras_armory = Store.create(category: @armory, location:@edoras, name: "Family Jewels")
-  @edoras_inn = Store.create(category: @inn, location:@edoras, name: "Sleeping Place")
-  @edoras_apothecary = Store.create(category: @apothecary, location:@edoras, name: "Rite Aid")
-  @edoras_blacksmith = Store.create(category: @blacksmith, location:@edoras, name: "Axes & Stuff")
+    @edoras_armory = Store.create(category: @armory, location:@edoras, name: "Family Jewels")
+    @edoras_inn = Store.create(category: @inn, location:@edoras, name: "Sleeping Place")
+    @edoras_apothecary = Store.create(category: @apothecary, location:@edoras, name: "Rite Aid")
+    @edoras_blacksmith = Store.create(category: @blacksmith, location:@edoras, name: "Axes & Stuff")
 
-  @minastirith_armory = Store.create(category: @armory, location:@minastirith, name: "D-Fence")
-  @minastirith_inn = Store.create(category: @inn, location:@minastirith, name: "Hyatt")
-  @minastirith_apothecary = Store.create(category: @apothecary, location:@minastirith, name: "Mary Jane's")
-  @minastirith_blacksmith = Store.create(category: @blacksmith, location:@minastirith, name: "Kill Em All")
+    @minastirith_armory = Store.create(category: @armory, location:@minastirith, name: "D-Fence")
+    @minastirith_inn = Store.create(category: @inn, location:@minastirith, name: "Hyatt")
+    @minastirith_apothecary = Store.create(category: @apothecary, location:@minastirith, name: "Mary Jane's")
+    @minastirith_blacksmith = Store.create(category: @blacksmith, location:@minastirith, name: "Kill Em All")
 
-  @mordor_blacksmith = Store.create(category: @blacksmith, location:@mordor, name: "Last Chance")
+    @mordor_blacksmith = Store.create(category: @blacksmith, location:@mordor, name: "Last Chance")
   end
 
   def self.create_item(name, category, label,  strength, defense, intelligence, dexterity, health, speed, money)
@@ -94,10 +94,10 @@ class Seed
   def self.create_store_items
     @bree_blacksmith.items = [
       create_item("Dagger", @blacksmith, "melee", 1, 0, 0, 0, 0, 0, -2),
-      create_item("Elvish Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 0, -30),
+      create_item("Elvish Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 1, -30),
       create_item("Short Sword", @blacksmith, "melee", 1, 0, 0, 0, 0, 1, -10),
-      create_item("Long Sword", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -20),
-      create_item("Heavy Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -15),
+      create_item("Long Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, -1, -20),
+      create_item("Heavy Axe", @blacksmith, "melee", 4, 0, 0, 0, 0, -1, -15),
       create_item("Dwarves Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, 0, -23),
       create_item("Long Bow", @blacksmith, "bow", 0, 0, 0, 1, 0, 0, -10),
       create_item("Elvish Bow", @blacksmith, "bow", 0, 0, 0, 3, 0, 0, -40),
@@ -130,16 +130,19 @@ class Seed
     ]
 
     @bree_armory.items = [
-      create_item("Light Armor", @armory, "shield", 0, 2, 0, 0, 0, 1, -2),
-      create_item("Heavy Armor", @armory, "shield", 0, 4, 0, 0, 0, -1, -10)
+      create_item("Light Armor", @armory, "shield", 0, 2, 0, 0, 0, 1, -15),
+      create_item("Heavy Armor", @armory, "shield", 0, 4, 0, 0, 0, -1, -10),
+      create_item("Leather Armor", @armory, "shield", 0, 2, 0, 0, 0, 2, -10),
+      create_item("Studded Leather Armor", @armory, "shield", 0, 3, 0, 0, 0, 0, -10),
+      create_item("Furs", @armory, "shield", 0, 1, 0, 0, 0, 1, -8),
     ]
 
     @rivendell_blacksmith.items = [
       create_item("Dagger", @blacksmith, "melee", 1, 0, 0, 0, 0, 0, -2),
-      create_item("Elvish Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 0, -30),
+      create_item("Elvish Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 1, -30),
       create_item("Short Sword", @blacksmith, "melee", 1, 0, 0, 0, 0, 1, -10),
-      create_item("Long Sword", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -20),
-      create_item("Heavy Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -15),
+      create_item("Long Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, -1, -20),
+      create_item("Heavy Axe", @blacksmith, "melee", 4, 0, 0, 0, 0, -1, -15),
       create_item("Dwarves Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, 0, -23),
       create_item("Long Bow", @blacksmith, "bow", 0, 0, 0, 1, 0, 0, -10),
       create_item("Elvish Bow", @blacksmith, "bow", 0, 0, 0, 3, 0, 0, -40),
@@ -169,21 +172,31 @@ class Seed
       create_item("Alcohol", @apothecary, "infection", 0, 0, 0, 0, 0, 0, -5)
     ]
     @rivendell_armory.items = [
-      create_item("Light Armor", @armory, "shield", 1, 0, 0, 0, 0, 1, -2),
-      create_item("Heavy Armor", @armory, "shield", 3, 0, 0, 0, 0, -1, -2)
+      create_item("Light Armor", @armory, "shield", 0, 4, 0, 0, 0, 1, -35),
+      create_item("Heavy Armor", @armory, "shield", 0, 10, 0, 0, 5, -4, -40),
+      create_item("Plate Armor", @armory, "shield", 0, 18, 0, 0, 5, -9, -90),
+      create_item("Chain Mail", @armory, "shield", 0, 14, 0, 0, 0, -6, -90),
+      create_item("Leather Armor", @armory, "shield", 0, 6, 0, 0, 0, 4, -40),
+      create_item("Studded Leather Armor", @armory, "shield", 0, 7, 0, 0, 0, 0, -40),
+      create_item("Furs", @armory, "shield", 0, 3, 0, 0, 0, 1, -35),
+      create_item("Fox Furs", @armory, "shield", 0, 2, 0, 0, 0, 7, -75),
     ]
 
     @edoras_blacksmith.items = [
-      create_item("Dagger", @blacksmith, "melee", 1, 0, 0, 0, 0, 0, -2),
-      create_item("Elvish Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 0, -30),
-      create_item("Short Sword", @blacksmith, "melee", 1, 0, 0, 0, 0, 1, -10),
-      create_item("Long Sword", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -20),
+      create_item("Dagger", @blacksmith, "melee", 3, 0, 0, 0, 0, 0, -2),
+      create_item("Elvish Sword", @blacksmith, "melee", 6, 0, 0, 0, 0, 1, -45),
+      create_item("Elvish Rapier", @blacksmith, "melee", 8, 0, 0, 0, 0, 4, -60),
+      create_item("Short Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 1, -35),
+      create_item("Long Sword", @blacksmith, "melee", 7, 0, 0, 0, 0, -2, -20),
       create_item("Heavy Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -15),
-      create_item("Dwarves Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, 0, -23),
-      create_item("Long Bow", @blacksmith, "bow", 0, 0, 0, 1, 0, 0, -10),
-      create_item("Elvish Bow", @blacksmith, "bow", 0, 0, 0, 3, 0, 0, -40),
-      create_item("Recurve Bow", @blacksmith, "bow", 0, 0, 0, 2, 0, 0, -30),
-      create_item("Red Oak Staff", @blacksmith, "magic", 0, 0, 2, 0, 0, 0, -20),
+      create_item("Steel blade Axe", @blacksmith, "melee", 15, 0, 0, 0, 0, -5, -100),
+      create_item("Dwarves Axe", @blacksmith, "melee", 8, 0, 0, 0, 0, 0, -50),
+      create_item("Long Bow", @blacksmith, "bow", 0, 0, 0, 6, 0, 0, -20),
+      create_item("Elvish Bow", @blacksmith, "bow", 0, 0, 0, 8, 0, 0, -50),
+      create_item("Recurve Bow", @blacksmith, "bow", 0, 0, 0, 4, 0, 0, -30),
+      create_item("Cross Bow", @blacksmith, "bow", 0, 0, 0, 13, 0, -4, -90),
+      create_item("Red Oak Staff", @blacksmith, "magic", 0, 0, 8, 0, 0, 0, -40),
+      create_item("Black Oak Staff", @blacksmith, "magic", 0, 0, 10, 0, 0, 0, -90),
       create_item("Sapphire Stone Staff", @blacksmith, "magic", 0, 0, 3, 0, 0, 0, -40)
     ]
     @edoras_inn.items = [
@@ -207,23 +220,37 @@ class Seed
       create_item("Comfrey", @apothecary, "infection", 0, 0, 0, 0, 0, 0, -3),
       create_item("Alcohol", @apothecary, "infection", 0, 0, 0, 0, 0, 0, -5)
     ]
+
     @edoras_armory.items = [
-      create_item("Light Armor", @armory, "shield", 1, 0, 0, 0, 0, 1, -2),
-      create_item("Heavy Armor", @armory, "shield", 3, 0, 0, 0, 0, -1, -2)
+      create_item("Light Armor", @armory, "shield", 0, 4, 0, 0, 0, 1, -35),
+      create_item("Heavy Armor", @armory, "shield", 0, 10, 0, 0, 5, -4, -40),
+      create_item("Plate Armor", @armory, "shield", 0, 18, 0, 0, 5, -9, -90),
+      create_item("Chain Mail", @armory, "shield", 0, 14, 0, 0, 0, -6, -90),
+      create_item("Leather Armor", @armory, "shield", 0, 6, 0, 0, 0, 4, -40),
+      create_item("Studded Leather Armor", @armory, "shield", 0, 7, 0, 0, 0, 0, -40),
+      create_item("Furs", @armory, "shield", 0, 3, 0, 0, 0, 1, -35),
+      create_item("Fox Furs", @armory, "shield", 0, 2, 0, 0, 0, 7, -75),
     ]
 
     @minastirith_blacksmith.items = [
-      create_item("Dagger", @blacksmith, "melee", 1, 0, 0, 0, 0, 0, -2),
-      create_item("Elvish Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 0, -30),
-      create_item("Short Sword", @blacksmith, "melee", 1, 0, 0, 0, 0, 1, -10),
-      create_item("Long Sword", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -20),
+      create_item("Dagger", @blacksmith, "melee", 3, 0, 0, 0, 0, 0, -2),
+      create_item("Elvish Sword", @blacksmith, "melee", 6, 0, 0, 0, 0, 1, -45),
+      create_item("Elvish Rapier", @blacksmith, "melee", 8, 0, 0, 0, 0, 4, -60),
+      create_item("Short Sword", @blacksmith, "melee", 3, 0, 0, 0, 0, 1, -35),
+      create_item("Long Sword", @blacksmith, "melee", 7, 0, 0, 0, 0, -2, -20),
       create_item("Heavy Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, -1, -15),
-      create_item("Dwarves Axe", @blacksmith, "melee", 2, 0, 0, 0, 0, 0, -23),
-      create_item("Long Bow", @blacksmith, "bow", 0, 0, 0, 1, 0, 0, -10),
-      create_item("Elvish Bow", @blacksmith, "bow", 0, 0, 0, 3, 0, 0, -40),
-      create_item("Recurve Bow", @blacksmith, "bow", 0, 0, 0, 2, 0, 0, -30),
-      create_item("Red Oak Staff", @blacksmith, "magic", 0, 0, 2, 0, 0, 0, -20),
-      create_item("Sapphire Stone Staff", @blacksmith, "magic", 0, 0, 3, 0, 0, 0, -40)
+      create_item("Steel blade Axe", @blacksmith, "melee", 15, 0, 0, 0, 0, -5, -100),
+      create_item("Hammer of the Earth", @blacksmith, "melee", 35, 10, 0, 0, 0, -15, -250),
+      create_item("Dwarves Axe", @blacksmith, "melee", 8, 0, 0, 0, 0, 0, -50),
+      create_item("Long Bow", @blacksmith, "bow", 0, 0, 0, 6, 0, 0, -20),
+      create_item("Elvish Bow", @blacksmith, "bow", 0, 0, 0, 8, 0, 0, -50),
+      create_item("Recurve Bow", @blacksmith, "bow", 0, 0, 0, 4, 0, 0, -30),
+      create_item("Bow of the Sky", @blacksmith, "bow", 0, -5, 0, 20, 0, 5, -150),
+      create_item("Cross Bow", @blacksmith, "bow", 0, 0, 0, 13, 0, -4, -90),
+      create_item("Red Oak Staff", @blacksmith, "magic", 0, 0, 8, 0, 0, 0, -40),
+      create_item("Black Oak Staff", @blacksmith, "magic", 0, 0, 10, 0, 0, 0, -90),
+      create_item("Sapphire Stone Staff", @blacksmith, "magic", 0, 0, 3, 0, 0, 0, -40),
+      create_item("Istari Magi Staff", @blacksmith, "magic", 0, 25, -5, 0, 0, 0, -40)
     ]
     @minastirith_inn.items = [
       create_item("Water", @inn, "dehydration",  0, 0, 0, 0, 0, 0, -2),
@@ -246,14 +273,25 @@ class Seed
       create_item("Comfrey", @apothecary, "infection", 0, 0, 0, 0, 0, 0, -3),
       create_item("Alcohol", @apothecary, "infection", 0, 0, 0, 0, 0, 0, -5)
     ]
+
     @minastirith_armory.items = [
-      create_item("Light Armor", @armory, "shield", 1, 0, 0, 0, 0, 1, -2),
-      create_item("Heavy Armor", @armory, "shield", 3, 0, 0, 0, 0, -1, -2)
+      create_item("Light Armor", @armory, "shield", 0, 4, 0, 0, 0, 1, -35),
+      create_item("Heavy Armor", @armory, "shield", 0, 10, 0, 0, 5, -4, -40),
+      create_item("Plate Armor", @armory, "shield", 0, 18, 0, 0, 5, -9, -90),
+      create_item("Chain Mail", @armory, "shield", 0, 14, 0, 0, 0, -6, -90),
+      create_item("Glimmering Full Player", @armory, "shield", 0, 25, 0, 0, 15, -8, -150),
+      create_item("Leather Armor", @armory, "shield", 0, 6, 0, 0, 0, 4, -40),
+      create_item("Assassin's Leathers", @armory, "shield", 0, 10, 0, 0, -15, 10, -180),
+      create_item("Studded Leather Armor", @armory, "shield", 0, 7, 0, 0, 0, 0, -40),
+      create_item("Furs", @armory, "shield", 0, 3, 0, 0, 0, 1, -35),
+      create_item("Fox Furs", @armory, "shield", 0, 2, 0, 0, 0, 7, -75),
+      create_item("Force Field", @armory, "shield", 0, 15, 10, 0, 0, 7, -150),
     ]
 
     @mordor_blacksmith.items = [
-      create_item("Light Armor", @armory, "shield", 1, 0, 0, 0, 0, 1, -2),
-      create_item("Heavy Armor", @armory, "shield", 3, 0, 0, 0, 0, -1, -2)
+      create_item("Twisted Metal Cleaver", @blacksmith, "melee", 35, 0, 0, 0, -10, 3, -150),
+      create_item("Smouldering Black Bow", @blacksmith, "melee", 0, 0, 0, 25, -10, 3, -150),
+      create_item("Eye of Balrog", @blacksmith, "melee", 0, 0, 40, 0, -25, 3, -250),
     ]
   end
 end

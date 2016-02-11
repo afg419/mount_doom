@@ -122,6 +122,7 @@ class RouletteService
       create_item("Bandage", @apothecary, "cut", 0, 0, 0, 0, 0, 1, -2),
       create_item("Bandage", @apothecary, "cut", 0, 0, 0, 0, 0, 0, -5),
       create_item("Comfrey", @apothecary, "cut", 0, 0, 0, 0, 0, 0, -3),
+      create_item("Comfrey", @apothecary, "cut", 0, 0, 0, 0, 0, 0, -3),
       create_item("Bread", @inn, "starvation", 0, 0, 0, 0, 0, 1, -2),
       create_item("Antidote", @apothecary, "poison", 0, 0, 0, 0, 0, 1, -2),
       create_item("Antidote", @apothecary, "poison", 0, 0, 0, 0, 0, 0, -2),
@@ -129,7 +130,28 @@ class RouletteService
       create_item("Splint", @apothecary, "broken", 0, 0, 0, 0, 0, 0, -3),
       create_item("Ginger Root", @apothecary, "sickness", 0, 0, 0, 0, 0, 0, -3),
       create_item("Osha", @apothecary, "sickness", 0, 0, 0, 0, 0, 0, -1),
-      create_item("Alcohol", @apothecary, "infection", 0, 0, 0, 0, 0, 0, -5)
+      create_item("Alcohol", @apothecary, "infection", 2, -5, 0, 0, 0, 0, -5),
+      create_item("Eye of Balrog", @blacksmith, "melee", 0, 0, 40, 0, -25, 3, -150),
+      create_item("Shimmering Amulet", @apothecary, "fixed", 0, 0, 0, 0, 25, 0, -100),
+      create_item("Sun Amulet", @apothecary, "fixed", 5, 0, 5, 5, 5, 0, -80),
+      create_item("Moon Amulet", @apothecary, "fixed", 0, 5, 0, 0, 0, 5, -80),
+      create_item("Old Panacea", @apothecary, "fixed", 0, 0, 0, 0, 15, 0, -100),
+      create_item("Old Panacea", @apothecary, "fixed", 0, 0, 0, 0, 15, 0, -100),
+      create_item("Old Panacea", @apothecary, "fixed", 0, 0, 0, 0, 15, 0, -100),
+      create_item("Old Panacea", @apothecary, "fixed", 0, 0, 0, 0, 15, 0, -100),
+      create_item("Ancient Panacea", @apothecary, "fixed", 0, 0, 5, 0, 30, 0, -150),
+      create_item("Steel blade Axe", @blacksmith, "melee", 12, 0, 0, 0, 0, -6, -100),
+      create_item("Narya of the Red Stone", @apothecary, "melee", 20, 0, 0, 0, 0, 0, -200),
+      create_item("Nenya of the White Stone", @apothecary, "melee", 8, 0, 0, 0, 0, 4, -60),
+      create_item("Vilya of the Blue Stone", @apothecary, "melee", 8, 0, 0, 0, 0, 4, -60),
+      create_item("Glimmering Full Player", @armory, "shield", 0, 25, 0, 0, 15, -8, -150),
+      create_item("Leather Armor", @armory, "shield", 0, 6, 0, 0, 0, 4, -40),
+      create_item("Assassin's Leathers", @armory, "shield", 0, 10, 0, 0, -15, 10, -180),
+      create_item("Studded Leather Armor", @armory, "shield", 0, 7, 0, 0, 0, 0, -40),
+      create_item("Fox Furs", @armory, "shield", 0, 2, 0, 0, 0, 7, -75),
+      create_item("Force Field", @armory, "shield", 0, 15, 10, 0, 0, 2, -150),
+      create_item("Bow of the Sky", @blacksmith, "bow", 0, -5, 0, 20, 0, 5, -150),
+
     ]
   end
 

@@ -1,6 +1,10 @@
 <div class="town container">
 	<%= render partial: @location.slug %>
 	<div class="center">
-		<%= link_to "Travel to Next Location",  travel_game_path(location_id: (@location.id)), class: "travel_button" %>
+		<% if @location.slug == "mordor" %>
+			<%= link_to "Destroy the Ring!",  travel_game_path(location_id: (@location.id)), class: "travel_button" %>
+		<% else %>
+			<%= link_to "Travel to Next Location",  travel_game_path(location_id: (@location.id)), class: "travel_button" %>
+		<% end %>
 	</div>
 </div>
