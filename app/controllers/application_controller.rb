@@ -3,9 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_action :authorize!
 
-  helper_method :categories, :current_user, :current_admin?, :return_category_names,
-                :set_background, :in_game, :current_character, :current_avatar,
-                :user_logged_in?, :render_item_name_or_button_to_equip,
+  helper_method :categories, :current_user, :current_admin?,
+                :in_game, :current_character, :current_avatar,
                 :journey_map_path
 
 
@@ -15,17 +14,6 @@ class ApplicationController < ActionController::Base
 
   def journey_map_path(location)
     "/#{location.slug}/map"
-  end
-
-  def render_item_name_or_button_to_equip(item)
-    display = item.category.name
-
-    case item.category.name
-    when "blacksmith" then "link_to('Equip weapon: ' + display, root_path)"
-    when "armory" then "link_to('Equip armor: ' + display, root_path)"
-    else
-      display
-    end
   end
 
   def authorize!
@@ -38,13 +26,6 @@ class ApplicationController < ActionController::Base
 
   def authorize?
     current_permission.allow?(params[:controller], params[:action],in_game)
-  end
-
-  def user_logged_in?
-    unless current_user
-      redirect_to login_path
-      flash[:error] = "Please log in"
-    end
   end
 
   def in_game
