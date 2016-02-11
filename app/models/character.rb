@@ -39,13 +39,8 @@ class Character < ActiveRecord::Base
   end
 
   def heal_wounds
-    character = self
-    armory, inn, apothecary, blacksmith = Category.all
-    wounds = character.incidents
-    items = character.items.where(category: [inn, apothecary] )
-
     array = []
-    wounds.each do |wound|
+    incidents.each do |wound|
       items.each do |item|
         if item.label == wound.label
           array << destroy_if_matching(item, wound)

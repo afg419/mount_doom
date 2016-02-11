@@ -267,11 +267,22 @@ button {
   width: 400px;
 }
 
-.card_totals {
+.card_other_column {
   float: right;
   position: relative;
-  left: -31px;
-  top: 17px;
+  left: 10px;
+  top: -36px;
+}
+
+.card_totals {
+  position: relative;
+  top: -7px;
+}
+.link_text {
+  color: #ffab40;
+  &:hover {
+    color: #FDD8A8;
+  }
 }
 
 .nav-links{
@@ -510,7 +521,7 @@ ul.right.hide-on-med-and-down.nav-links {
 
 /* BUTTON STRUGGLE */
 .collection .collection-item.avatar .secondary-content {
-    top: 60px; 
+    top: 60px;
     left: 10px; /* bjm */
     right: inherit; /* bjm */
   }

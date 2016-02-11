@@ -33,10 +33,12 @@
           <div>
             <span class="card-title  activator grey-text">Base Attributes</span>
           </div>
-            <div class="card_totals">
-              <span>Total Items: <%= current_character.items.count  %> <br>
+            <div class="card_other_column">
+                <span class="card-title"> <%= link_to "Use Items to Cure Injuries", characters_path, method: :post, class: "link_text" %></span>
+                <span class="card_totals">
+                <br><br>
+                Total Items: <%= current_character.items.count  %> <br>
                 Total Incidents: <%= current_character.incidents.count %> <br>
-                <%= link_to "Use Items to Cure Injuries", characters_path, method: :post  %>
               </span>
             </div>
           <div>
