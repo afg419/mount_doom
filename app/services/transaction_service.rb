@@ -15,7 +15,7 @@ class TransactionService
   end
 
   def collect_items(trade_params)
-    @sold = trade_param_to_item(trade_params["0"])
+    @sold = trade_param_to_item(trade_params["0"]) + trade_param_to_incident(trade_params["0"])
     saves_money
     @bought = trade_param_to_item(trade_params["1"]).map do |item|
       duplicate_item(item)
@@ -36,8 +36,26 @@ class TransactionService
 
 private
 
+  def break_apart_items_from_array(trade_array)
+    trade_array.to_a.select do |trade|
+      trade.split[3].starts_with?("player") || trade.split[3].starts_with?("store")
+    end
+  end
+
+  def break_apart_incidents_from_array(trade_array)
+    trade_array.to_a.select do |trade|
+      trade.split[3].starts_with?("incident")
+    end
+  end
+
+  def trade_param_to_incident(trade_array)
+    break_apart_incidents_from_array(trade_array).map do |trade|
+      Incident.find(trade.split("-item-").last.split(" show")[0].to_i)
+    end
+  end
+
   def trade_param_to_item(trade_array)
-    trade_array.to_a.map do |trade|
+    break_apart_items_from_array(trade_array).map do |trade|
       Item.find(trade.split("-item-").last.split(" show")[0].to_i)
     end
   end

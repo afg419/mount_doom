@@ -35,4 +35,29 @@ class CharacterCanGetRidOfIncidentsTest < ActionDispatch::IntegrationTest
       assert page.has_content?("Health: 10")
     end
   end
+
+  test "character can see incidents in apothocary or inn" do
+    create_start_of_game
+    ApplicationController.any_instance.stubs(:in_game).returns(true)
+    item = create(:item)
+    c1, c2 = create_list(:category, 2)
+    c1.update_attributes(name: "inn")
+    c1.save
+    skill_set = SkillSet.create(strength: 0, defense: 0, intelligence: 0,
+                                dexterity: 0, health: -4,
+                                speed: 0, money: 0)
+    incident = Incident.create(name: "Snake bite", label: "poison", skill_set: skill_set)
+    @character.items << item
+    @character.incidents << incident
+    @character.save
+
+    visit store_path(@location, @store)
+
+    refute page.has_content?("Snake bite")
+    @store.update_attributes(category: c1)
+    @store.save
+
+    visit store_path(@location, @store)
+    assert page.has_content?("Snake bite")
+  end
 end

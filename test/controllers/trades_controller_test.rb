@@ -22,7 +22,7 @@ class TradesControllerTest < ActionController::TestCase
     item3 = Item.create(name: "basket", skill_set: item_skill_set)
     @character.items << [item1, item2]
     @store.items << item3
-    # binding.pry
+
     params = {
               "classes"=>
                 {
@@ -87,4 +87,44 @@ class TradesControllerTest < ActionController::TestCase
     assert_equal [], @character.items.map{|item| item.name}
   end
 
+  test "create method should update incidents " do
+    create_start_of_game
+    ApplicationController.any_instance.stubs(:in_game).returns(true)
+
+    item_skill_set = SkillSet.create(strength: 1,
+                                    dexterity: 2,
+                                 intelligence: 3,
+                                       health: 4,
+                                        money: -3,
+                                        speed: 6)
+
+    item1 = Item.create(name: "dagger", skill_set: item_skill_set)
+    incident = Incident.create(name: "spider bite", skill_set: item_skill_set)
+    item3 = Item.create(name: "basket", skill_set: item_skill_set)
+    @character.items << item1
+    @character.incidents << incident
+    @store.items << item3
+
+    params = {
+              "classes"=>
+                {
+                  "0"=>
+                    ["collection-item avatar item player-item-#{item1.id} show",
+                     "collection-item avatar item incident-item-#{incident.id} show"]
+                },
+              "store_id"=>"#{@store.id}",
+              "total"=>"0",
+              "controller"=>"trades",
+              "action"=>"create"
+            }
+
+    post(:create, params)
+
+    @character.reload
+    @store.reload
+    assert_equal 10, @character.money
+    assert_equal ["basket"], @store.items.map{|item| item.name}
+    assert_equal [], @character.incidents.map{|incident| incident.name}
+    assert_equal [], @character.items.map{|item| item.name}
+  end
 end
