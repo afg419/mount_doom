@@ -1,7 +1,7 @@
 class Seed
   def self.start
     create_avatars
-    @bree, @rivendell = create_locations
+    @bree, @rivendell, @edoras, @minastirith, @mordor = create_locations
     @armory, @inn, @apothecary, @blacksmith = create_categories
     create_stores
     create_store_items
@@ -29,7 +29,10 @@ class Seed
   def self.create_locations
     [
       Location.create(name: "Bree", slug: "bree", next_location_id: 2),
-      Location.create(name: "Rivendell", slug: "rivendell", next_location_id: 3)
+      Location.create(name: "Rivendell", slug: "rivendell", next_location_id: 3),
+      Location.create(name: "Edoras", slug: "edoras", next_location_id: 4),
+      Location.create(name: "Minas Tirith", slug: "minas_tirith", next_location_id: 5),
+      Location.create(name: "Mordor", slug: "mordor", next_location_id: 6)
     ]
   end
 
