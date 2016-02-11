@@ -1,7 +1,15 @@
 <h2 class="center dashboard-cursive">
 Dashboard for <%= current_user.username.capitalize %>
 </h2>
-<div class="container">
+<div class="start_button">
+  <% if current_character %>
+  <%= link_to "Start New Game", new_character_path, class: "btn waves-effect waves-green", :data => { :confirm => "This will delete your current game!!"}%> <br> <br>
+  <% else %>
+  <%= link_to "Start New Game", new_character_path, class: "btn waves-effect waves-green"%> <br> <br>
+  <% end %>
+  <%= link_to("Continue Game", continue_game_path, class: "btn waves-effect waves-green", method: :post) if current_character%>
+</div>
+<div class="container card_position">
   <% if current_character %>
   <h4 class="dashboard-cursive">Current Character</h4>
     <div class="card avatar profile-<%= current_avatar.id %> large">
@@ -29,8 +37,6 @@ Dashboard for <%= current_user.username.capitalize %>
         </div>
     </div>
   <% end %>
-  <%= link_to "Start New Game", new_character_path, class: "btn waves-effect waves-green" %>
-  <%= link_to("Continue Game", continue_game_path, class: "btn waves-effect waves-green", method: :post) if current_character%>
 </div>
 
 
