@@ -42,7 +42,7 @@ class CharacterTest < ActiveSupport::TestCase
     create_character_with_many_items(character)
 
     injury_ss = create(:skill_set, health: -10, dexterity: -2,
-                                                strength: 0,
+                                              strength: 0,
                                                 intelligence: 0,
                                                 speed: 0,
                                                 money: 10)
