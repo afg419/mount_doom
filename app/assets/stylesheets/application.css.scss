@@ -449,3 +449,68 @@ canvas {
     vertical-align: baseline;
     margin-left: 10%;
 }
+
+input#user_username {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+input#session_username {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+input.btn {
+  font-size: large;
+  background-color: maroon;
+  &:hover{
+    background-color: black;
+  }
+}
+
+input[type=text]:focus:not([readonly]){
+  border-bottom: 1px solid #800000;
+  box-shadow: 0 1px 0 0 #800000;
+}
+
+input[type=text]{
+  border-bottom: 1px solid black;
+}
+
+input[type=password]:focus:not([readonly]){
+  border-bottom: 1px solid #800000;
+  box-shadow: 0 1px 0 0 #800000;
+}
+
+input[type=password]{
+  border-bottom: 1px solid black;
+}
+
+a.left-quit-link{
+  margin-left: 20px;
+  color: #ffab40;
+  font-size: x-large;
+  &:hover{
+    color: #FDD8A8;
+  }
+}
+
+.sign-up{
+  color: maroon;
+  font-size: medium;
+  font-weight: bold;
+  &:hover{
+    color: black;
+  }
+}
+
+ul.right.hide-on-med-and-down.nav-links {
+  margin-right: 20px;
+}
+
+/* BUTTON STRUGGLE */
+.collection .collection-item.avatar .secondary-content {
+    top: 60px; 
+    left: 10px; /* bjm */
+    right: inherit; /* bjm */
+  }

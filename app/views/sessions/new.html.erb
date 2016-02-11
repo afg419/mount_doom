@@ -8,10 +8,11 @@
         <br>
         <%= f.label :password, class: "label" %>
         <%= f.password_field :password %>
-        <%= f.submit "Login" %>
+        <%= f.submit "Login", class: 'btn' %>
       <% end %>
-      <p>
-        Don't have an account yet? <%= link_to "Sign up!", new_user_path%>
+      <br><br>
+      <p style="font-size: medium, font-weight:bold" >
+        Don't have an account yet? <br> <%= link_to "Sign up!", new_user_path, class:"sign-up"%>
       </p>
     </div>
   </div>

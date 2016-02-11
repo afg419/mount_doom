@@ -1,7 +1,7 @@
 <nav class="black">
   <div class="nav-wrapper">
 
-    <li class="brand-logo nav-links"> <%= link_to "Save and Quit", end_game_path, method: :delete %>   </li>
+    <li class="brand-logo"> <%= link_to "Save and Quit", end_game_path, method: :delete, class: "left-quit-link" %>   </li>
     <ul class="nav-links">
       <%= link_to current_character.location.name, journey_path(current_character.location), class: "brand-logo center", style: "font-size: 2.0em"%>
     </ul>
