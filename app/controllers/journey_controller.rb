@@ -39,6 +39,10 @@ class JourneyController < ApplicationController
     end
   end
 
+  def map
+    render layout: 'wide', :locals => {:background => "map_#{params[:slug]}"}
+  end
+
   def game
     @location_id = params[:location_id]
     render "journey/game#{@location_id}.html.erb"
