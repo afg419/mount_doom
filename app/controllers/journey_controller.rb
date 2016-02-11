@@ -1,16 +1,8 @@
 class JourneyController < ApplicationController
   include JourneyHelper
 
-  before_action :current_location_is_slug_location?, only: [ :show, :map ]
+  before_action :current_location_is_slug_location?, only: [:show, :map]
   before_action :still_alive?, except: [:create, :restart]
-
-  def current_location_is_slug_location?
-    unless current_character.location.slug == params[:slug]
-      session[:alive] = false
-      flash[:error] = "Don't Cheat!"
-      redirect_to restart_game_path
-    end
-  end
 
   def show
     session[:summarizing] = nil
@@ -44,9 +36,7 @@ class JourneyController < ApplicationController
       dont_cheat(:summarizing)
     else
       session[:summarizing] = true
-
       progress_to_next_location
-
       @event_generator = RouletteService.new(params, current_character)
       status = @event_generator.generate_travel_event
       render layout: 'wide',  :locals => {:background => 'start', status: status}

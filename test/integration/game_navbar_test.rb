@@ -31,15 +31,17 @@ class GameNavbarTest < ActionDispatch::IntegrationTest
 
   test "navbar updates location to that of character" do
     create_start_of_game
-    ApplicationController.any_instance.stubs(:in_game).returns("true")
+    ApplicationController.any_instance.stubs(:in_game).returns(true)
 
-    location1 = Location.create(name: "Bree", slug: "bree")
-    location2 = Location.create(name: "Rivendell", slug: "rivendell")
+    riv = create(:location, name: "Rivendell", slug: "rivendell")
+    @user.character.location = create(:location, next_location_id: riv.id)
+    location = @user.character.location
 
-    visit journey_path(location1)
+    visit "/bree"
     assert page.has_content?("Bree")
-
-    visit journey_path(location2)
+    visit "travel_game?location_id=1"
+    visit "travel_summary?location_id=#{location.id}&health=12"
+    visit '/rivendell'
     assert page.has_content?("Rivendell")
   end
 end

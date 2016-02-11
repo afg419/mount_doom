@@ -63,4 +63,13 @@ class ApplicationController < ActionController::Base
   def categories
     Category.all
   end
+
+  def current_location_is_slug_location?
+    unless current_character.location.slug == params[:slug]
+      session[:alive] = false
+      flash[:error] = "Don't Cheat!"
+      redirect_to restart_game_path
+    end
+  end
+
 end
