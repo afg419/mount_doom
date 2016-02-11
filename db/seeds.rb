@@ -22,22 +22,23 @@ class Seed
   end
 
   def self.create_avatars
-    create_avatar("Gandalf","gandalf.jpg", 8, 0, 19, 7, 20, 7, 200)
-    create_avatar("Aragorn","aragorn.png", 15, 0, 11, 15, 20, 12, 50)
-    create_avatar("Gimli","gimli.jpeg", 18, 0, 7, 13, 20, 10, 150)
-    create_avatar("Legolas","legolas.jpg", 10, 0, 12, 19, 20, 17, 150)
-    create_avatar("Boromir","boromir.jpg", 16, 0, 9, 14, 20, 12, 100)
-    create_avatar("Frodo","frodo.jpg", 7, 0, 9, 12, 30, 16, 250)
-    create_avatar("Sam","samwise.jpg", 10, 0, 8, 11, 30, 15, 100)
-    create_avatar("Merry","merry.jpeg", 5, 0, 10, 14, 30, 17, 120)
-    create_avatar("Pippen","pippen.jpg",8, 0, 7, 14, 30, 18, 80)
+    create_avatar("Gandalf","gandalf.jpg", 8, 0, 19, 7, 20, 7, 200, "active")
+    create_avatar("Aragorn","aragorn.png", 15, 0, 11, 15, 20, 12, 50, "active")
+    create_avatar("Gimli","gimli.jpeg", 18, 0, 7, 13, 20, 10, 150, "active")
+    create_avatar("Legolas","legolas.jpg", 10, 0, 12, 19, 20, 17, 150, "active")
+    create_avatar("Boromir","boromir.jpg", 16, 0, 9, 14, 20, 12, 100, "active")
+    create_avatar("Frodo","frodo.jpg", 7, 0, 9, 12, 30, 16, 250, "active")
+    create_avatar("Sam","samwise.jpg", 10, 0, 8, 11, 30, 15, 100, "active")
+    create_avatar("Merry","merry.jpeg", 5, 0, 10, 14, 30, 17, 120, "active")
+    create_avatar("Pippen","pippen.jpg",8, 0, 7, 14, 30, 18, 80, "active")
+    create_avatar("Batman","batman.jpg",8, 0, 7, 14, 30, 18, 2000, "retired")
   end
 
-  def self.create_avatar(name, image_url, strength, defense, intelligence, dexterity, health, speed, money)
+  def self.create_avatar(name, image_url, strength, defense, intelligence, dexterity, health, speed, money, status)
     s = SkillSet.create(strength: strength, defense: defense,  intelligence: intelligence,
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
-    Avatar.create(name: name, image_url: image_url, skill_set: s)
+    Avatar.create(name: name, image_url: image_url, skill_set: s, status: status)
   end
 
   def self.create_locations
