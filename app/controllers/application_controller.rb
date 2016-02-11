@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :set_cart
   before_action :authorize!
 
   helper_method :categories, :current_user, :current_admin?, :return_category_names,
@@ -60,13 +59,6 @@ class ApplicationController < ActionController::Base
     current_character.avatar
   end
 
-  # def return_category_names
-  #   category_names = Category.all.map do |category|
-  #     category.name
-  #   end
-  #   category_names
-  # end
-
   def current_user
     User.find(session[:user_id]) if session[:user_id]
   end
@@ -74,13 +66,9 @@ class ApplicationController < ActionController::Base
   def require_current_user
     render file: "/public/404" unless current_user
   end
-  #
+
   def current_admin?
     current_user && current_user.platform_admin?
-  end
-
-  def set_cart
-    @cart = Cart.new(session[:cart])
   end
 
   def categories
