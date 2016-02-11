@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     @current_permission ||= PermissionService.new(current_user)
   end
 
+  def authorize?
+    current_permission.allow?(params[:controller], params[:action],in_game)
+  end
+
   def journey_map_path(location)
     "/#{location.slug}/map"
   end
@@ -22,10 +26,6 @@ class ApplicationController < ActionController::Base
       flash[:error] = permitted[2]
       redirect_to send(permitted[0])
     end
-  end
-
-  def authorize?
-    current_permission.allow?(params[:controller], params[:action],in_game)
   end
 
   def in_game

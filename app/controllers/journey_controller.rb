@@ -1,6 +1,17 @@
 class JourneyController < ApplicationController
   include JourneyHelper
 
+  before_action :journey_authorize!
+
+  def location_permission
+    @location_permission ||= LocationService.new(current_user)
+  end
+
+  def authorize?
+    location_permission.allow?(params[:controller], params[:action], last_visited)
+  end
+
+
   def show
     @location = Location.where(slug: params[:slug]).includes(:stores)[0]
     current_character.location = @location
@@ -30,7 +41,7 @@ class JourneyController < ApplicationController
     @location = Location.find(params[:location_id])
     @event_generator = RouletteService.new(params, current_character)
     status = @event_generator.generate_travel_event
-    
+
     render layout: 'wide',  :locals => {:background => 'start'}
   end
 
