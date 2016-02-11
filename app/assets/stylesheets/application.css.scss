@@ -455,3 +455,16 @@ input.btn {
 a.btn {
   font-size: small;
 }
+
+a.left-quit-link{
+  margin-left: 20px;
+  color: #ffab40;
+  font-size: x-large;
+  &:hover{
+    color: #FDD8A8;
+  }
+}
+
+ul.right.hide-on-med-and-down.nav-links {
+  margin-right: 20px;
+}
