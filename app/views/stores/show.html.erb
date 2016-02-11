@@ -6,7 +6,7 @@
     <div class="character_selling">
       <!-- First Column/Charcter Inventory -->
       <div class="col m3" style="padding-right: 0">
-        <p class="title center headers">Your Inventory</p>
+        <p class="title center headers">Your <%= @store.category.name.capitalize %> Inventory</p>
         <ul class="scrolling collection">
           <%= render partial: "items", locals: { holder: "player",
                                                  display: "show",
@@ -43,7 +43,7 @@
 
       <!-- Fourth Column/Store Inventory -->
       <div class="col m3" style="padding-left: 0">
-        <p class="title center headers">Store Inventory</p>
+        <p class="title center headers"> <%= @store.category.name.capitalize %> Inventory</p>
         <ul class="scrolling collection store_inventory ">
           <%= render partial: "items", locals: { holder: "store",
                                                  display: "show",

@@ -148,10 +148,9 @@
     }
 
     text("Player health: " + player.hp,850,20)
-    text("Enemy1 health: " + enemy1.hp,850,40)
-    text("Enemy2 health: " + enemy2.hp,850,60)
-    text("Enemy3 health: " + enemy3.hp,850,80)
-    text("Enemy4 health: " + enemy4.hp,850,100)
+    for(i=0; i<enemies.length; i++){
+      text("Enemy"+i+" health:" + enemies[i].hp,850, 20 + 20*(i+1))
+    }
 
     if (player.hp <= 0 || player_enemies.length == 1) {
       var LocationId = <%= @location_id %>;

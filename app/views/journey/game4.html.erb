@@ -19,17 +19,17 @@
   s = 0;
   t = 0;
   player = new Player(hp,10,300,25,str,dex,int,spd,[81,150,12],type,ac);
-  enemy1 = new EnemyMelee(10,400,60,25,12, 10, 10,1.5,  [74,9,9],"melee",0,0);
-  enemy2 = new EnemyMelee(10,400,300,25,12,10,10,1.5,   [74,9,9],"melee",0,0);
-  enemy3 = new EnemyMelee(10,400,540,25,18,10,10,1.0,  [74,9,9],"melee", 10,0);
-  enemy4 = new EnemyMelee(10,500,300,25,18,10,10,2.0,  [74,9,9],"melee", 10,0);
-  enemy5 = new EnemyMelee(10,500,540,25,18,10,10,2.0,  [74,9,9],"melee", 10,0);
+  enemy1 = new EnemyMelee(10,400,60,25,12, 10, 10,1.5,   [74,9,9],"melee",0,0);
+  enemy2 = new EnemyMelee( 10,400,300,25,12,10,10,1.5,   [74,9,9],"melee",0,0);
+  enemy3 = new EnemyMelee( 10,400,540,25,18,10,10,1.0,   [74,9,9],"melee", 10,0);
+  enemy4 = new EnemyMelee( 12,110,270,20,12,10,10,2.5,   [201,67,10],"melee",10,0);
+  enemy5 = new EnemyMelee( 12,520,510,20,12,10,10,2.5,   [201,67,10],"melee",10,0);
   enemy6 = new EnemyRanged(10,775,225,25,25,15,10,1.2,   [150,150,40],"melee");
   enemy7 = new EnemyRanged(10,775,275,25,25,15,10,1.2,   [150,150,40],"melee");
   enemy8 = new EnemyRanged(10,775,325,25,25,15,10,1.2,   [150,150,40],"melee");
   enemy9 = new EnemyRanged(10,775,375,25,25,15,10,1.2,   [150,150,40],"melee");
-  enemy10 = new EnemyMelee(25,750,20,50,25,18,10,1.0,    [75,75,75],"melee", 20,15);
-  enemy11 = new EnemyMelee(25,750,580,50,25,12,10,1.0,   [75,75,75],"melee", 20,15);
+  enemy10 = new EnemyMelee( 25,750,20,50,45,18,10,1.0,   [75,75,75],"melee", 20,15);
+  enemy11 = new EnemyMelee(25,750,580,50,45,12,10,1.0,   [75,75,75],"melee", 20,15);
 
   rock1 = new Obstacle(5,750,200,30,10,10,10,3,[100,100,100],"melee")
   rock2 = new Obstacle(5,750,400,30,10,10,10,3,[100,100,100],"melee")
@@ -168,10 +168,9 @@
     }
 
     text("Player health: " + player.hp,850,20)
-    text("Enemy1 health: " + enemy1.hp,850,40)
-    text("Enemy2 health: " + enemy2.hp,850,60)
-    text("Enemy3 health: " + enemy3.hp,850,80)
-    text("Enemy4 health: " + enemy4.hp,850,100)
+    for(i=0; i<enemies.length; i++){
+      text("Enemy_"+i+":" + enemies[i].hp,910, 20 + 20*(i+1))
+    }
 
     if (player.hp <= 0 || player_enemies.length == 1) {
       var LocationId = <%= @location_id %>;
