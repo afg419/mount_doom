@@ -437,3 +437,21 @@ canvas {
     vertical-align: baseline;
     margin-left: 10%;
 }
+
+input#user_username {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+input#session_username {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+input.btn {
+  font-size: x-large;
+}
+
+a.btn {
+  font-size: small;
+}
