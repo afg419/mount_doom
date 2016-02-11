@@ -56,6 +56,12 @@ class Admin::AvatarsController < Admin::BaseController
     redirect_to admin_avatars_path
   end
 
+  def activate
+    @avatar = Avatar.find(params[:id])
+    @avatar.update_attributes(status: "active")
+    redirect_to admin_avatars_path
+  end
+
   private
     def avatar_params
       params.require(:avatar).permit(:name, :image_url)
