@@ -6,8 +6,7 @@
      <% item.skill_set.non_zero_attributes.each do |attribute, value| %>
      <%= attribute %>: <%= value %>
      <% end %>
-     <button class="secondary-content <%= display %>-<%= type %>" onclick="<%= type %>Item('.<%= holder %>-item-<%= item.id %>')"><i class="mdi-content-add
-"></i></button>
+     <button class="secondary-content <%= display %>-<%= type %>" onclick="<%= type %>Item('.<%= holder %>-item-<%= item.id %>')"><i class="mdi-content-add"></i></button>
   </p>
 </li>
 <% end %>

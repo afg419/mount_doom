@@ -12,6 +12,12 @@
                                                  display: "show",
                                                  owner: @character_items,
                                                  type: "sell" } %>
+          <% if @store.apothecary_or_inn? %>
+            <%= render partial: "items", locals: { holder: "incident",
+                                                  display: "show",
+                                                  owner: current_character.incidents,
+                                                  type: "sell" } %>
+          <% end %>
         </ul>
       </div>
 
@@ -23,6 +29,12 @@
                                                  display: "hide",
                                                  owner: @character_items,
                                                  type: "sell" } %>
+          <% if @store.apothecary_or_inn? %>
+            <%= render partial: "items", locals: { holder: "incident",
+                                                 display: "hide",
+                                                 owner: current_character.incidents,
+                                                 type: "sell" } %>
+          <% end %>
         </ul>
       </div>
 

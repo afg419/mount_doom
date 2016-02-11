@@ -6,4 +6,9 @@ class Incident < ActiveRecord::Base
   def self.total_injury_attributes
     all.map{|incident| incident.skill_set.attributes}
   end
+
+  def price
+    -1 * skill_set.money if skill_set
+  end
+
 end
