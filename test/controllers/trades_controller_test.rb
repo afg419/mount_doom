@@ -22,7 +22,7 @@ class TradesControllerTest < ActionController::TestCase
     item3 = Item.create(name: "basket", skill_set: item_skill_set)
     @character.items << [item1, item2]
     @store.items << item3
-
+    # binding.pry
     params = {
               "classes"=>
                 {
@@ -33,7 +33,7 @@ class TradesControllerTest < ActionController::TestCase
                     ["collection-item avatar item store-item-#{item3.id} show"]
                 },
               "store_id"=>"#{@store.id}",
-              "total"=>"15",
+              "total"=>"3",
               "controller"=>"trades",
               "action"=>"create"
             }
@@ -42,7 +42,7 @@ class TradesControllerTest < ActionController::TestCase
 
     @character.reload
     @store.reload
-
+    assert_equal 13, @character.money
     assert_equal ["basket"], @store.items.map{|item| item.name}
     assert_equal ["basket"], @character.items.map{|item| item.name}
     refute Item.find_by(name: "dagger")
@@ -73,7 +73,7 @@ class TradesControllerTest < ActionController::TestCase
                      "collection-item avatar item player-item-#{item2.id} show"]
                 },
               "store_id"=>"#{@store.id}",
-              "total"=>"15",
+              "total"=>"6",
               "controller"=>"trades",
               "action"=>"create"
             }
@@ -82,7 +82,7 @@ class TradesControllerTest < ActionController::TestCase
 
     @character.reload
     @store.reload
-
+    assert_equal 16, @character.money
     assert_equal ["basket"], @store.items.map{|item| item.name}
     assert_equal [], @character.items.map{|item| item.name}
   end

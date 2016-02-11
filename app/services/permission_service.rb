@@ -50,14 +50,15 @@ private
   end
 
   def logged_in_in_game_permissions
-    return [:ok, true] if controller == "characters" && action.in?(%w{ show update })
+    return [:ok, true] if controller == "characters" && action.in?(%w{ show update create })
     return [:ok, true] if controller == "stores"
     return [:ok, true] if controller == "trades" && action.in?(%w{ create })
     return [:ok, true] if controller == "journey" && action.in?(%w{ show
                                                                     destroy
                                                                     summary
                                                                     game
-                                                                    map })
+                                                                    map
+                                                                    })
     [:current_character, false, "Please Save and Quit"]
   end
 end

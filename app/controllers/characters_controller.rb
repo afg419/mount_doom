@@ -17,4 +17,9 @@ class CharactersController < ApplicationController
     end
     redirect_to current_character
   end
+
+  def create
+    current_character.heal_wounds
+    redirect_to current_character
+  end
 end

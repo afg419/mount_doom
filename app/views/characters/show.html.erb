@@ -29,22 +29,34 @@
       <div class="col s1">
         <br>
       </div>
-      <div  class="card avatar-show scrolling col s7 profile-<%= current_avatar.id %> large">
-          <div >
+      <div  class="card avatar-show character-scrolling col s7 profile-<%= current_avatar.id %> large">
+          <div>
             <span class="card-title  activator grey-text">Base Attributes</span>
+          </div>
+            <div class="card_other_column">
+                <span class="card-title"> <%= link_to "Use Items to Cure Injuries", characters_path, method: :post, class: "link_text" %></span>
+                <span class="card_totals">
+                <br><br>
+                Total Items: <%= current_character.items.count  %> <br>
+                Total Incidents: <%= current_character.incidents.count %> <br>
+              </span>
+            </div>
+          <div>
             <div class="avatar-stats">
               <ul>
               <% current_avatar.skill_set.attributes.each do |skill, value| %>
                 <li><%= skill.capitalize %>: <%= value %></li>
               <% end %>
               </ul>
+
             </div>
+
 
             <span class="card-title activator grey-text ">Inventory</span>
 
-            <table class="inventory scrolling">
+            <table class="inventory">
               <tr class="inventory-header">
-                <th>Name</th><th>Str</th><th>Dex</th><th>Def</th><th>Int</th><th>Spd</th><th>Price</th><th>Hp</th><th></th>
+                <th>Name</th><th>Strength</th><th>Dexterity</th><th>Defense</th><th>Intelligence</th><th>Speed</th><th>Price</th><th>Health</th><th></th>
               </tr>
               <% current_character.items.of_category("blacksmith").each do |item| %>
                 <tr id="blacksmith-item-<%= item.id %>">
@@ -103,7 +115,7 @@
             <span class="card-title activator grey-text">Injuries</span>
             <table class="incidents">
               <tr class="inventory-header">
-                <th>Name</th><th>Strength</th><th>Dexterity</th><th>Intelligence</th><th>Speed</th><th>Price</th><th>Health</th>
+                <th>Name</th><th>Strength</th><th>Dexterity</th><th>Defense</th><th>Intelligence</th><th>Speed</th><th>Price</th><th>Health</th>
               </tr>
               <% current_character.incidents.each do |incident| %>
                 </tr>
