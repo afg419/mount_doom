@@ -449,11 +449,29 @@ input#session_username {
 }
 
 input.btn {
-  font-size: x-large;
+  font-size: large;
+  background-color: maroon;
+  &:hover{
+    background-color: black;
+  }
 }
 
-a.btn {
-  font-size: small;
+input[type=text]:focus:not([readonly]){
+  border-bottom: 1px solid #800000;
+  box-shadow: 0 1px 0 0 #800000;
+}
+
+input[type=text]{
+  border-bottom: 1px solid black;
+}
+
+input[type=password]:focus:not([readonly]){
+  border-bottom: 1px solid #800000;
+  box-shadow: 0 1px 0 0 #800000;
+}
+
+input[type=password]{
+  border-bottom: 1px solid black;
 }
 
 a.left-quit-link{
@@ -462,6 +480,15 @@ a.left-quit-link{
   font-size: x-large;
   &:hover{
     color: #FDD8A8;
+  }
+}
+
+.sign-up{
+  color: maroon;
+  font-size: medium;
+  font-weight: bold;
+  &:hover{
+    color: black;
   }
 }
 
