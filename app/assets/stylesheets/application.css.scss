@@ -198,6 +198,18 @@ body {
   background-color: transparent;
 }
 
+.card_position{
+  position: absolute;
+  left: 85px;
+  bottom: 24px;
+}
+
+.start_button {
+  position: absolute;
+  left: 695px;
+  bottom: 300px;
+}
+
 td, th {
     padding: 0px 0px;
     display: table-cell;
@@ -225,6 +237,16 @@ td, th {
   color: green;
 }
 
+.summary_words {
+  font-size: 23px;
+}
+.travel_button {
+  color: white;
+  border-radius: 10px;
+  background-color: black;
+  border: none;
+  padding: 5px;
+}
 .btn:hover {
   background-color: #ffab40;
 }

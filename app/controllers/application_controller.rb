@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     @current_permission ||= PermissionService.new(current_user)
   end
 
+  def authorize?
+    current_permission.allow?(params[:controller], params[:action],in_game)
+  end
+
   def journey_map_path(location)
     "/#{location.slug}/map"
   end
@@ -24,8 +28,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authorize?
-    current_permission.allow?(params[:controller], params[:action],in_game)
+  def last_visited
+    session[:last_visited]
   end
 
   def in_game
@@ -59,4 +63,13 @@ class ApplicationController < ActionController::Base
   def categories
     Category.all
   end
+
+  def current_location_is_slug_location?
+    unless current_character.location.slug == params[:slug]
+      session[:alive] = false
+      flash[:error] = "Don't Cheat!"
+      redirect_to restart_game_path
+    end
+  end
+
 end

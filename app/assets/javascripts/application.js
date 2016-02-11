@@ -24,9 +24,6 @@
 //= require travelling_game/fire_ball.js
 //= require travelling_game/player.js
 //= require travelling_game/obstacle.js
-//= require travelling_game/level1.js
-//= require travelling_game/collisions.js
-//= require travelling_game/attack.js
 //= require_tree .
 
 
