@@ -1,6 +1,8 @@
+<div class="container center restart_page">
 <% if @status == "true" %>
-  <h2>You Won!</h2>
+  <h1>You Won!</h1>
 <% else %>
-  <h2>You Died. You Suck.</h2>
+  <h1>You Died. You Suck.</h1>
 <% end %>
-<%= button_to "Play Again", dashboard_path, method: :get %>
+<%= button_to "Play Again", dashboard_path, method: :get, class: "finalize" %>
+</div>
