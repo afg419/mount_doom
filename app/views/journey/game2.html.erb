@@ -7,7 +7,7 @@
     cnv = createCanvas(height , width);
   }
 
-  type = "<%= "#{current_character.equipped_weapon.label}" %>"
+  type = "<%= "#{current_character.equipped_weapon.label}" if current_character.equipped_weapon %>"
   hp = <%= current_character.hp %>
   str = <%= current_character.current_skills["strength"] %>
   dex = <%= current_character.current_skills["dexterity"] %>
@@ -19,14 +19,14 @@
   s = 0;
   t = 0;
 
-      player = new Player(hp,10,10,25,str,dex,int,spd,150,type,ac);
-  enemy1 = new EnemyMelee(10,400,60,25,12, 10, 10,1.5,  0,"melee");
-  enemy2 = new EnemyMelee(10,400,300,25,12,10,10,1.5,   0,"melee");
-  enemy3 = new EnemyMelee(10,400,540,25,18,10,10,1.0,  50,"melee", 10);
-  enemy4 = new EnemyRanged(4,600,200,25,25,15,10,1.0,   0,"melee");
-  enemy5 = new EnemyRanged(4,600,400,25,25,15,10,1.0,   0,"melee");
-  enemy6 = new EnemyMelee(5,750,20,25,25,18,10,1.0,    50,"melee", 10);
-  enemy7 = new EnemyMelee(5,750,580,25,25,12,10,1.0,    0,"melee");
+      player = new Player(hp,10,10,25,str,dex,int,spd,[81,150,12],type,ac);
+  enemy1 = new EnemyMelee(10,400,60,25,12, 10, 10,1.5,  [74,9,9],"melee",0,0);
+  enemy2 = new EnemyMelee(10,400,300,25,12,10,10,1.5,   [74,9,9],"melee",0,0);
+  enemy3 = new EnemyMelee(10,400,540,25,18,10,10,1.0,  [74,9,9],"melee",10,0);
+  enemy4 = new EnemyRanged(4,600,200,25,25,15,10,1.0,   [150,150,40],"melee",0,0);
+  enemy5 = new EnemyRanged(4,600,400,25,25,15,10,1.0,   [150,150,40],"melee",0,0);
+  enemy6 = new EnemyMelee(5,750,20,25,25,18,10,1.0,    [74,9,9],"melee", 10,0);
+  enemy7 = new EnemyMelee(5,750,580,25,25,12,10,1.0,    [74,9,9],"melee",0,0);
 
 
 
@@ -71,7 +71,7 @@
   }
 
   var draw = function(){
-    background(255,255,255);
+    background(173,186,160);
     player.sketch();
 
     if (mouseIsPressed){

@@ -9,7 +9,7 @@
     cnv = createCanvas(height , width);
   }
 
-  type = "<%= "#{current_character.equipped_weapon.label}" %>"
+  type = "<%= "#{current_character.equipped_weapon.label}" if current_character.equipped_weapon %>"
   hp = <%= current_character.hp %>
   str = <%= current_character.current_skills["strength"] %>
   dex = <%= current_character.current_skills["dexterity"] %>

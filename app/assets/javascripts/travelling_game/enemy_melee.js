@@ -1,5 +1,6 @@
-var EnemyMelee = function(hp,x,y,r,str,dex,int,spd,col,active){
-  Entity.call(this,hp,x,y,r,str,dex,int,spd,col,active)
+var EnemyMelee = function(hp,x,y,r,str,dex,int,spd,col,active,ac,range){
+  Entity.call(this,hp,x,y,r,str,dex,int,spd,col,active,ac)
+  this.range = range;
 };
 
 EnemyMelee.prototype = Object.create(Entity.prototype);
@@ -59,7 +60,7 @@ EnemyMelee.prototype.collision_rebound_from = function(colliding_entity){
 
 EnemyMelee.prototype.attack = function(enemy, timer){
   rand = Math.floor((Math.random() * 24) + 1)
-  if (timer % 25 == rand && this.distance(enemy) < 45) {
+  if (timer % 25 == rand && this.distance(enemy) < 45 + this.range) {
     stroke(255,0,0)
     strokeWeight(4);
     line(this.x, this.y, enemy.x, enemy.y);

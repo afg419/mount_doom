@@ -7,7 +7,7 @@
     cnv = createCanvas(height , width);
   }
 
-  type = "<%= "#{current_character.equipped_weapon.label}" %>"
+  type = "<%= "#{current_character.equipped_weapon.label}" if current_character.equipped_weapon %>"
   hp = <%= current_character.hp %>
   str = <%= current_character.current_skills["strength"] %>
   dex = <%= current_character.current_skills["dexterity"] %>
@@ -18,18 +18,44 @@
 
   s = 0;
   t = 0;
-  player = new Player(hp,10,10,25,str,dex,int,spd,[81,150,12],type,ac);
-  enemy1 = new EnemyMelee(5,700,10,25,18,10,10,1.5,[74,9,9],"melee");
-  enemy2 = new EnemyMelee(5,650,550,25,18,10,10,1.5,[74,9,9],"melee");
-  enemy3 = new EnemyMelee(5,750,550,25,10,10,10,2.5,[74,9,9],"melee");
-  enemy4 = new EnemyMelee(5,750,150,25,25,10,10,1.0,[74,9,9],"melee");
-  rock1 = new Obstacle(5,200,400,70,10,10,10,3,[100,100,100],"melee")
-  rock2 = new Obstacle(5,600,600,80,10,10,10,3,[100,100,100],"melee")
-  rock3 = new Obstacle(5,400,80,50,10,10,10,3,[100,100,100],"melee")
+  player = new Player(hp,10,300,25,str,dex,int,spd,[81,150,12],type,ac);
+  enemy1 = new EnemyMelee(10,400,60,25,12, 10, 10,1.5,  [74,9,9],"melee",0,0);
+  enemy2 = new EnemyMelee(10,400,300,25,12,10,10,1.5,   [74,9,9],"melee",0,0);
+  enemy3 = new EnemyMelee(10,400,540,25,18,10,10,1.0,  [74,9,9],"melee", 10,0);
+  enemy4 = new EnemyMelee(10,500,300,25,18,10,10,2.0,  [74,9,9],"melee", 10,0);
+  enemy5 = new EnemyMelee(10,500,540,25,18,10,10,2.0,  [74,9,9],"melee", 10,0);
+  enemy6 = new EnemyRanged(10,775,225,25,25,15,10,1.2,   [150,150,40],"melee");
+  enemy7 = new EnemyRanged(10,775,275,25,25,15,10,1.2,   [150,150,40],"melee");
+  enemy8 = new EnemyRanged(10,775,325,25,25,15,10,1.2,   [150,150,40],"melee");
+  enemy9 = new EnemyRanged(10,775,375,25,25,15,10,1.2,   [150,150,40],"melee");
+  enemy10 = new EnemyMelee(25,750,20,50,25,18,10,1.0,    [75,75,75],"melee", 20,15);
+  enemy11 = new EnemyMelee(25,750,580,50,25,12,10,1.0,   [75,75,75],"melee", 20,15);
 
-  player_enemies = [player, enemy1, enemy2, enemy3, enemy4];
+  rock1 = new Obstacle(5,750,200,30,10,10,10,3,[100,100,100],"melee")
+  rock2 = new Obstacle(5,750,400,30,10,10,10,3,[100,100,100],"melee")
+  rock3 = new Obstacle(5,750,300,30,10,10,10,3,[100,100,100],"melee")
+  rock4 = new Obstacle(5,750,250,30,10,10,10,3,[100,100,100],"melee")
+  rock5 = new Obstacle(5,750,350,30,10,10,10,3,[100,100,100],"melee")
+
+
+
+
+  // rock3 = new Obstacle(5,400,80,50,10,10,10,3,[100,100,100],"melee")
+  // rock1 = new Obstacle(5,200,400,70,10,10,10,3,[100,100,100],"melee")
+  // rock2 = new Obstacle(5,600,600,80,10,10,10,3,[100,100,100],"melee")
+  // rock3 = new Obstacle(5,400,80,50,10,10,10,3,[100,100,100],"melee")
+
+  // rect(750,200,150,200)
+
+
+
+  player_enemies = [player, enemy1, enemy2, enemy3, enemy4, enemy5,
+                                                            enemy6,
+                                                          enemy7,
+                                                        enemy8, enemy9,
+                                                      enemy10, enemy11];
   enemies = player_enemies.slice(1,player_enemies.length)
-  obstacles = [rock1, rock2, rock3]
+  obstacles = [rock1, rock2, rock3, rock4, rock5]
 
   arrows = [];
   player_arrows = [];
@@ -53,7 +79,7 @@
       player.y -= player.spd;
     }
 
-    if (key === "D" && player.x < 1000   ) {
+    if (key === "D" && player.x < 1000  ) {
       player.x += player.spd;
     }
 
@@ -64,6 +90,8 @@
 
   var draw = function(){
     background(255,255,255);
+    fill(110,75,52)
+    rect(750,200,150,200)
     player.sketch();
 
     if (mouseIsPressed){
