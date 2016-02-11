@@ -1,4 +1,4 @@
-class PermissionService
+class LocationService
   extend Forwardable
 
   attr_reader :user, :controller, :action, :location, :previous_location
@@ -7,7 +7,7 @@ class PermissionService
   def initialize(user)
     @user = user
     @location = user.character.location
-    @previous_location = Location.find_by(next_location_id: @location.id)
+    @previous_location = Location.find_by(next_location_id: @location.id) || Location.find_by(slug: "bree")
   end
 
   def allow?(controller, action, last_visited)
@@ -16,8 +16,8 @@ class PermissionService
     @action = action
 
     case last_visited
-    when location.name then within_town_permissions
-    when previous_location.name then arriving_to_town_permissions
+    when location.slug then within_town_permissions
+    when previous_location.slug then arriving_to_town_permissions
     else
       travelling_permissions
     end
@@ -28,7 +28,7 @@ private
   def within_town_permissions
     return true if controller == "journey" && action.in?(%w{ map show continue
                                                              create destroy
-                                                             game help })
+                                                             game help summary })
     return true if controller == "stores" && action.in?(%w{ show })
     return true if controller == "trades" && action.in?(%w{ create })
   end

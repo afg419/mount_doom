@@ -1,22 +1,40 @@
 class JourneyController < ApplicationController
   include JourneyHelper
-  before_action :still_alive?, except: [:restart]
 
-  before_action :journey_authorize!
+  before_action :current_location_is_slug_location?, only: [ :show, :map ]
 
-  def location_permission
-    @location_permission ||= LocationService.new(current_user)
+  # before_action :still_alive?, except: [:restart]
+  # before_action :journey_authorize!
+  #
+  # def location_permission
+  #   @location_permission ||= LocationService.new(current_user)
+  # end
+  #
+  # def journey_authorize?
+  #   location_permission.allow?(params[:controller], params[:action], last_visited)
+  # end
+  #
+  # def journey_authorize!
+  #   permitted = journey_authorize?
+  #   unless permitted
+  #     flash[:error] = "Don't Cheat!"
+  #     redirect_to restart_game_path
+  #   end
+  # end
+
+  def current_location_is_slug_location?
+    unless current_character.location.slug == params[:slug]
+      session[:alive] = false
+      redirect_to restart_game_path
+    end
   end
-
-  def authorize?
-    location_permission.allow?(params[:controller], params[:action], last_visited)
-  end
-
 
   def show
     @location = Location.where(slug: params[:slug]).includes(:stores)[0]
+
     current_character.location = @location
     current_character.save
+
     render layout: 'wide',  :locals => {:background => params[:slug]}
   end
 

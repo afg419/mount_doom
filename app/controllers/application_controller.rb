@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def last_visited
+    session[:last_visited]
+  end
+
   def in_game
     session[:in_game]
   end
