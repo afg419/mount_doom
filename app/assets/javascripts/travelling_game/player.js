@@ -28,3 +28,14 @@ Player.prototype.attack = function(timer){
 Player.prototype.melee_hit = function(enemy,x,y){
   return point_distance(35*(x - this.x)/total_distance + this.x, 35*(y - this.y)/total_distance + this.y, enemy.x, enemy.y) < enemy.r
 }
+
+// Player.prototype.would_collide_with = function(entity_array, direction_num){
+//   x = this.x
+//   y = this.y
+//   s = this.spd
+//   change = [[x,y + s], [x,y - s],[x + s,y], [x -s,y]]
+//
+//
+//   p = new Player(5, change[direction_num][0], change[direction_num][1])
+//   return p.collision_with_any(entity_array)[0]
+// }
