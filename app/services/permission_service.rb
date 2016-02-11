@@ -12,7 +12,6 @@ class PermissionService
     @in_game = in_game
     @controller = controller
     @action = action
-
     case
     when user && platform_admin?        then platform_admin_permissions
     when user && in_game        then logged_in_in_game_permissions
@@ -54,7 +53,11 @@ private
     return [:ok, true] if controller == "characters" && action.in?(%w{ show update })
     return [:ok, true] if controller == "stores"
     return [:ok, true] if controller == "trades" && action.in?(%w{ create })
-    return [:ok, true] if controller == "journey" && action.in?(%w{ show destroy summary game })
+    return [:ok, true] if controller == "journey" && action.in?(%w{ show
+                                                                    destroy
+                                                                    summary
+                                                                    game
+                                                                    map })
     [:current_character, false, "Please Save and Quit"]
   end
 end
