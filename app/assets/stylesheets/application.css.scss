@@ -87,6 +87,20 @@ body {
   background-position: center center;
 }
 
+.application-body-restart-true{
+  background-image: url('restart-true.png');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.application-body-restart-false{
+  background-image: url('restart-false.jpg');
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
 .application-body-granite{
   background-image: url('granite.jpg');
   background-size:     cover;
@@ -156,7 +170,7 @@ body {
 }
 
 .application-body-map_edora{
-  background-image: url('map_edora.png');
+  background-image: url('map_edoras.png');
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;

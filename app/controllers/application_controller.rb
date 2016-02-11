@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
 
   before_action :authorize!
 
+
   helper_method :categories, :current_user, :current_admin?,
                 :in_game, :current_character, :current_avatar,
-                :journey_map_path
-
+                :journey_map_path, :status
 
   def current_permission
     @current_permission ||= PermissionService.new(current_user)
@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
 
   def in_game
     session[:in_game]
+  end
+
+  def status
+    session[:alive]
   end
 
   def current_character
