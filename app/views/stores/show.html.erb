@@ -71,8 +71,7 @@
       Total Trade Amount
       <div class="total_value">0
       </div>
-    <!-- <button id="finalize-trade">Finalize Trade</button> -->
-    <button class="finalize" onclick="itemExchange( <%= @store.id %>, <%= current_character.id %> )">Finalize Trade</button>
+    <button class="finalize" onclick="itemExchange( <%= @store.id %>, <%= current_character.id %>, <%= current_character.money %>, '<%= @store.location.slug %>', '<%= @store.category.name %>' )">Finalize Trade</button>
     </div>
   </div>
 </div>

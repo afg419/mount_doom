@@ -11,14 +11,14 @@
       <li> <%= link_to "Map", root_path %> </li>
       <li style="padding-right:10px"><%= link_to "#{current_avatar.name}", character_path(current_character) %></li>
       <li style="font-size: large; padding-right:15px;"><%="Health: #{current_character.avatar.skill_set.health}"%></li>
-      <li style="font-size: large"><%="Bank: $#{current_character.bank}"%></li>
+      <li style="font-size: large"><%="Bank: $#{current_character.money}"%></li>
     </ul>
     <ul class="side-nav" id="mobile-demo">
       <li> <%= link_to "Help", root_path %> </li>
       <li><%= link_to "Map", logout_path, method: :delete %></li>
       <li><%= link_to "#{current_avatar.name}", character_path(current_character) %></li>
       <li><%="Health: #{current_character.avatar.skill_set.health}" %> </li>
-      <li><%= "Bank: $#{current_character.bank}" %></li>
+      <li><%= "Bank: $#{current_character.money}" %></li>
     </ul>
   </div>
 </nav>

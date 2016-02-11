@@ -18,7 +18,7 @@ class CharacterTest < ActiveSupport::TestCase
     assert_equal 10, current_skills["dexterity"]
     assert_equal 11, current_skills["intelligence"]
     assert_equal 13, character.hp
-    assert_equal 6, character.bank
+    assert_equal 10, character.money
     assert_equal 9, current_skills["speed"]
   end
 
@@ -33,7 +33,7 @@ class CharacterTest < ActiveSupport::TestCase
     assert_equal 10, current_skills["dexterity"]
     assert_equal 11, current_skills["intelligence"]
     assert_equal 13, character.hp
-    assert_equal 6, character.bank
+    assert_equal 10, character.money
     assert_equal 10, current_skills["speed"]
   end
 end
