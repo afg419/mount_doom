@@ -55,4 +55,24 @@ class CharacterTest < ActiveSupport::TestCase
     assert_equal 3, character.hp
     assert_equal 10, current_skills["speed"]
   end
+
+  test "heal wounds does its work" do
+    character = create(:character)
+
+    5.times do |i|
+      character.items.create(name: "item#{i}", label: "label#{i}")
+    end
+
+    5.times do |i|
+      character.incidents.create(name: "incident#{i}", label: "label#{i+1}")
+    end
+
+    expected = [["item1", "incident0"],
+              ["item2", "incident1"],
+              ["item3", "incident2"],
+              ["item4", "incident3"]]
+    assert_equal expected, character.heal_wounds
+    assert_equal 1, character.items.count
+    assert_equal 1, character.incidents.count
+  end
 end

@@ -37,7 +37,7 @@ $(document).ready(function() {
 function sellItem(id){
     $(id).toggleClass('hide');
     $(id).toggleClass('show');
-    $('.hide-buy').children().removeClass('mdi-content-add').addClass('mdi-content-clear');
+    $('.hide-sell').children().removeClass('mdi-content-add').addClass('mdi-content-clear');
     findSellTotal();
     updateTotal();
 }

@@ -38,7 +38,27 @@ class Character < ActiveRecord::Base
     self.save
   end
 
+  def heal_wounds
+    array = []
+    incidents.each do |wound|
+      items.each do |item|
+        if item.label == wound.label
+          array << destroy_if_matching(item, wound)
+          break
+        end
+      end
+    end
+    array
+  end
+
 private
+
+def destroy_if_matching(item, wound)
+  item_name, wound_name = item.name, wound.name
+  item.destroy
+  wound.destroy
+  [item_name, wound_name]
+end
 
   def equipped_weapon_attributes
     if equipped_weapon

@@ -26,7 +26,8 @@ class RouletteService
 
   def if_alive_then_heal
     if health_after_game > 0
-      @healed_wounds = heal_wounds
+      @healed_wounds = @character.heal_wounds
+      @character.save
     else
       @healed_wounds = []
     end
@@ -114,29 +115,6 @@ class RouletteService
                                           dexterity: dexterity, health: health,
                                           speed: speed, money: money)
     Incident.new(name: name, skill_set: s, category: category, label: label)
-  end
-
-  def heal_wounds
-    wounds = character.incidents
-    items = character.items.where(category: [@inn, @apothecary] )
-
-    array = []
-    wounds.each do |wound|
-      items.each do |item|
-        if item.label == wound.label
-          array << destroy_if_matching(item, wound)
-          break
-        end
-      end
-    end
-    array
-  end
-
-  def destroy_if_matching(item, wound)
-    item_name, wound_name = item.name, wound.name
-    item.destroy
-    wound.destroy
-    [item_name, wound_name]
   end
 
   def item_list

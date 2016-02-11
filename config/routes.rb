@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # post "notifications/notify" => "notifications#notify"
   # post "twilio/voice" => "twilio#voice"
   root to: "pages#home"
-  resources :characters, only: [:new, :show, :update]
+  resources :characters, only: [:new, :show, :update, :create]
 
   post "/new_game", to: 'journey#create'
   delete "/end_game", to: 'journey#destroy'
