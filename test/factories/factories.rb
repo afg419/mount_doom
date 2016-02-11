@@ -30,6 +30,7 @@
     user
     avatar
     location
+    money 10
   end
 
   factory :category do

@@ -7,19 +7,12 @@ class Character < ActiveRecord::Base
   belongs_to :equipped_armor, :class_name => "Item"
   belongs_to :equipped_weapon, :class_name => "Item"
 
-  def bank
-    items.reduce(avatar.skill_set.money.to_i) do |acc, item|
-      acc + item.skill_set.money.to_i
-    end
-  end
-
   def hp
     items.reduce(avatar.skill_set.health.to_i) do |acc, item|
       acc + item.skill_set.health.to_i
     end
   end
 
-  
 
   def current_skills
     avatar_attributes = [avatar.skill_set.attributes]

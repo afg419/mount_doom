@@ -76,7 +76,14 @@ function updateTotal(){
   $( ".total_value" ).text( total );
 }
 
-function itemExchange(id, char_id){
+function itemExchange(id, char_id, character_total, location_slug, store_slug){
+  console.log(total)
+  console.log(character_total)
+  if ((-1 * total) > character_total){
+    alert("You don't have enought money!")
+    return
+  }
+
   var sold_items = $("ul.character_trades").find(".show")
   var bought_items = $("ul.store_trades").find(".show")
 
@@ -93,7 +100,7 @@ function itemExchange(id, char_id){
 
   $.post("/trades", data).success(function(){
      $(location).attr('href', '/characters/' + char_id);
-   })
+  })
 }
 
 function chooseCharacter(){

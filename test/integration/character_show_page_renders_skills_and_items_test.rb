@@ -17,7 +17,7 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
       assert page.has_content?("Intelligence: 11")
       assert page.has_content?("Speed: 9")
 
-      assert page.has_content?("Money: $6")
+      assert page.has_content?("Money: $10")
       assert page.has_content?("Health: 13")
       assert page.has_content?("Location: Bree")
     end
@@ -51,7 +51,7 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
     @character.equip_armor(@armor)
 
     visit character_path(@character)
-    
+
     within("#blacksmith-item-#{@sword.id}") do
       assert page.has_content?("Equipped")
     end
@@ -69,4 +69,5 @@ class CharacterShowPageRendersSkillsAndItemsTest < ActionDispatch::IntegrationTe
       refute page.has_content?("Equipped")
     end
   end
+
 end

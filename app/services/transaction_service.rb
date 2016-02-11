@@ -1,15 +1,22 @@
 class TransactionService
 
-  attr_accessor :character, :store
+  attr_accessor :character, :store, :total
   attr_reader :sold, :bought
 
-  def initialize(character = nil, store = nil)
+  def initialize(character = nil, store = nil, total = 0)
     @character = character || []
     @store = store || []
+    @total = total.to_i
+  end
+
+  def saves_money
+    @character.money = @character.money + @total
+    @character.save
   end
 
   def collect_items(trade_params)
     @sold = trade_param_to_item(trade_params["0"])
+    saves_money
     @bought = trade_param_to_item(trade_params["1"]).map do |item|
       duplicate_item(item)
     end

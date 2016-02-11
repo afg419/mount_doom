@@ -49,6 +49,8 @@ module JourneyHelper
     end
     current_character.equip_weapon(current_character.items[0])
     current_character.equip_armor(current_character.items[1])
+    current_character.money = current_character.avatar.skill_set.money
+    current_character.save
   end
 
   def create_item(name, category, label,  strength, defense, intelligence, dexterity, health, speed, money)
