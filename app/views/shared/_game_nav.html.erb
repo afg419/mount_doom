@@ -10,7 +10,7 @@
       <li> <%= link_to "Help", root_path %> </li>
       <li> <%= link_to "Map", journey_map_path(current_character.location) %> </li>
       <li style="padding-right:10px"><%= link_to "#{current_avatar.name}", character_path(current_character) %></li>
-      <li style="font-size: large; padding-right:15px;"><%="Health: #{current_character.avatar.skill_set.health}"%></li>
+      <li style="font-size: large; padding-right:15px;"><%="Health: #{current_character.hp}"%></li>
       <li style="font-size: large"><%="Bank: $#{current_character.money}"%></li>
     </ul>
     <ul class="side-nav" id="mobile-demo">

@@ -8,8 +8,7 @@ class Character < ActiveRecord::Base
   belongs_to :equipped_weapon, :class_name => "Item"
 
   def hp
-    (items + incidents).reduce(avatar.skill_set.health.to_i) do |acc, item_incident|
-      acc + item_incident.skill_set.health.to_i
+    (items + incidents).reduce(avatar.skill_set.health.to_i) do |acc, item_incident| acc + item_incident.skill_set.health.to_i
     end
   end
 

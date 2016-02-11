@@ -18,7 +18,7 @@ var Entity = function(hp,x,y,r,str,dex,int,spd,col,active,ac){
 }
 
 Entity.prototype.sketch = function(){
-  fill(this.col)
+  fill(this.col[0],this.col[1],this.col[2])
   ellipse(this.x, this.y, this.r, this.r)
 }
 
