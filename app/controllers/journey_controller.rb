@@ -2,38 +2,18 @@ class JourneyController < ApplicationController
   include JourneyHelper
 
   before_action :current_location_is_slug_location?, only: [ :show, :map ]
-
-  # before_action :still_alive?, except: [:restart]
-  # before_action :journey_authorize!
-  #
-  # def location_permission
-  #   @location_permission ||= LocationService.new(current_user)
-  # end
-  #
-  # def journey_authorize?
-  #   location_permission.allow?(params[:controller], params[:action], last_visited)
-  # end
-  #
-  # def journey_authorize!
-  #   permitted = journey_authorize?
-  #   unless permitted
-  #     flash[:error] = "Don't Cheat!"
-  #     redirect_to restart_game_path
-  #   end
-  # end
+  before_action :still_alive?, except: [:create, :restart]
 
   def current_location_is_slug_location?
     unless current_character.location.slug == params[:slug]
       session[:alive] = false
+      flash[:error] = "Don't Cheat!"
       redirect_to restart_game_path
     end
   end
 
   def show
     @location = Location.where(slug: params[:slug]).includes(:stores)[0]
-
-    current_character.location = @location
-    current_character.save
 
     render layout: 'wide',  :locals => {:background => params[:slug]}
   end
@@ -58,6 +38,9 @@ class JourneyController < ApplicationController
 
   def summary
     @location = Location.find(params[:location_id])
+    current_character.location_id = @location.next_location_id
+    current_character.save
+
     @event_generator = RouletteService.new(params, current_character)
     status = @event_generator.generate_travel_event
     render layout: 'wide',  :locals => {:background => 'start', status: status}
@@ -74,13 +57,10 @@ class JourneyController < ApplicationController
 
   def restart
     @status = status
-    if @status
-      session[:in_game] = nil
-      current_character.user_id = nil
-      render layout: 'wide',  :locals => {:background => "restart-#{session[:alive]}"}
-    else
-      redirect_to root_path
-    end
+    session[:in_game] = nil
+    current_character.user_id = nil
+    current_character.save
+    render layout: 'wide',  :locals => {:background => "restart-#{session[:alive]}"}
   end
 
   def still_alive?
@@ -88,7 +68,7 @@ class JourneyController < ApplicationController
       session[:alive] = true
     else
       session[:alive] = false
-      redirect_to restart_game
+      redirect_to restart_game_path
     end
   end
 

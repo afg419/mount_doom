@@ -31,7 +31,9 @@ class InGameAuthenticationTest < ActionDispatch::IntegrationTest
   test "arriving authentication" do
     create_start_of_game
     ApplicationController.any_instance.stubs(:in_game).returns(true)
-    ApplicationController.any_instance.stubs(:last_visited).returns("bree")
+
+    riv = create(:location, name: "Rivendell", slug: "rivendell")
+    @location = create(:location, next_location_id: riv.id)
 
     visit "/bree"
     visit "travel_game?location_id=1"

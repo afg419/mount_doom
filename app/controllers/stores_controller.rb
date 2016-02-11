@@ -13,8 +13,9 @@ class StoresController < ApplicationController
 private
 
   def current_location_is_slug_location?
-    unless current_character.location.slug == params[:slug]
+    unless current_character.location.slug == params[:location_slug]
       session[:alive] = nil
+      flash[:error] = "Don't Cheat!"
       redirect_to restart_game_path
     end
   end
