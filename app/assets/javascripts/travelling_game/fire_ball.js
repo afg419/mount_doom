@@ -29,6 +29,7 @@ FireBall.prototype.explode = function(entity_array) {
       entity_array[j].hp -= this.damage/4
     }
   }
+  fill(0,0,0)
 }
 
 FireBall.prototype.finished_flight = function(){

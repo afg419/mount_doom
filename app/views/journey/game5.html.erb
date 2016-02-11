@@ -1,6 +1,8 @@
 <div class="container game-play">
   <script type="text/javascript" id="game-play1">
 
+
+
   function setup(){
     height = 1000;
     width = 600;
@@ -37,6 +39,13 @@
 
   var attack;
 
+
+  // !player.would_collide_with(obstacles,0)
+  // !player.would_collide_with(obstacles,1)
+  // !player.would_collide_with(obstacles,2)
+  // !player.would_collide_with(obstacles,3)
+
+
   var keyPressed = function(){
     if (key === "S" && player.y < 590   ) {
       player.y += player.spd;
@@ -56,8 +65,7 @@
   }
 
   var draw = function(){
-    background(184,222,144);
-
+    background(255,255,255);
     player.sketch();
 
     if (mouseIsPressed){

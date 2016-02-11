@@ -281,6 +281,24 @@ button {
   width: 400px;
 }
 
+.card_other_column {
+  float: right;
+  position: relative;
+  left: 10px;
+  top: -36px;
+}
+
+.card_totals {
+  position: relative;
+  top: -7px;
+}
+.link_text {
+  color: #ffab40;
+  &:hover {
+    color: #FDD8A8;
+  }
+}
+
 .nav-links{
   a {
     font-size: large;
@@ -319,6 +337,15 @@ main {
   color: white;
   box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.7);
 }
+
+.character-scrolling {
+  width: auto;
+  height: auto;
+  overflow: scroll;
+  padding: 5px;
+  padding-bottom: 30px !important;
+}
+
 
 .scrolling {
   width: auto;
@@ -405,10 +432,6 @@ font-size: 13px
 
 .inventory-header{
   border-bottom: 2px solid white;
-}
-
-.inventory{
-  display: block;
 }
 
 .admin-dash{

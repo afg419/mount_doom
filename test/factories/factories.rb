@@ -41,7 +41,7 @@
     name
     skill_set
     category
-    label "Antidote"
+    label "poison"
   end
 
   factory :store do
