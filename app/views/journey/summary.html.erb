@@ -1,4 +1,4 @@
-<div class= "center summary_words">
+<div class= "summary_words center">
   <h1>Journey from <%= @location.name %> Summary</h1>
 <ul>
   Items Acquired
@@ -20,5 +20,5 @@ New battle wound <span class="wound_name"><%= @event_generator.main_wound.name %
   <% end %>
 </ul>
 
-<%= link_to "Continue", journey_path(@location.next_location) %>
-<div>
+<%= link_to "Continue", journey_path(@location.next_location), class: "travel_button" %>
+</div>

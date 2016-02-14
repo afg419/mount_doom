@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   post "/new_game", to: 'journey#create'
   delete "/end_game", to: 'journey#destroy'
-  post "/continue_game", to: 'journey#continue'
+  post "/continue_game", to: 'journey#continue' #update action
   get '/about', to: 'pages#about'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   get '/travel_summary', to: 'journey#summary'
   get '/travel_game', to: 'journey#game'
-  get '/restart_game', to: 'journey#restart', as: 'restart_game'
+  get '/restart_game', to: 'journey#restart', as: 'restart_game' #update action
   get '/help', to: 'journey#help'
   get 'admin/activate_avatar', to: 'admin/avatars#activate'
 

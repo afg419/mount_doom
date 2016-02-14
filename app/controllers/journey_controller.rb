@@ -65,6 +65,9 @@ class JourneyController < ApplicationController
     render layout: 'wide',  :locals => {:background => "restart-#{session[:alive]}"}
   end
 
+  def help
+    render layout: 'wide',  :locals => {:background => "granite"}
+  end
 private
 
   def progress_to_next_location
@@ -89,7 +92,4 @@ private
     end
   end
 
-  def help
-    render layout: 'wide',  :locals => {:background => "granite"}
-  end
 end

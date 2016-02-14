@@ -162,14 +162,14 @@ body {
   background-position: center center;
 }
 
-.application-body-map_minas-tirith{
-  background-image: url('map_minas-tirith.png');
+.application-body-map_minas_tirith{
+  background-image: url('map_minas_tirith.png');
   background-size:     cover;
   background-repeat:   no-repeat;
   background-position: center center;
 }
 
-.application-body-map_edora{
+.application-body-map_edoras{
   background-image: url('map_edoras.png');
   background-size:     cover;
   background-repeat:   no-repeat;
@@ -238,7 +238,7 @@ td, th {
 }
 
 .summary_words {
-  font-size: 23px;
+  font-size: 23px !important;
 }
 .travel_button {
   color: white;
